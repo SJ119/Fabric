@@ -13,6 +13,9 @@ class SecondViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var taskTitle: UITextField!
     @IBOutlet var taskDesc: UITextField!
+    @IBOutlet var taskDuration: UITextField!
+    @IBOutlet var taskDate: UIDatePicker!
+    @IBOutlet var taskType: UISwitch!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,10 +29,19 @@ class SecondViewController: UIViewController, UITextFieldDelegate {
     
     // Events
     @IBAction func addButtonClicked(sender: UIButton){
-        taskManager.insertTask(taskTitle.text!, description: taskDesc.text!, date:"", type: "")
+        var type = "Event"
+        if taskType.on {
+            type = "Reminder"
+        }
+        
+        taskManager.insertTask(taskTitle.text!, description: taskDesc.text!, date: taskDate.date, duration: taskDuration.text!, type: type)
+        
         self.view.endEditing(true)
         taskTitle.text = ""
         taskDesc.text = ""
+        taskDuration.text = "0"
+        
+        
         //don't need line below (optional)
         self.tabBarController!.selectedIndex = 0
         
