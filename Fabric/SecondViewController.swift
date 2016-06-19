@@ -28,22 +28,40 @@ class SecondViewController: UIViewController, UITextFieldDelegate {
     }
     
     // Events
+    @IBAction func fillingTaskTitle(sender: UITextField) {
+        taskTitle.layer.borderColor = UIColor.grayColor().CGColor
+        taskTitle.layer.borderWidth = 0
+        taskTitle.layer.cornerRadius = 5
+        
+    }
+    
     @IBAction func addButtonClicked(sender: UIButton){
         var type = "Event"
         if taskType.on {
             type = "Reminder"
+        } else {
+            //Do Nothing
         }
         
-        taskManager.insertTask(taskTitle.text!, description: taskDesc.text!, date: taskDate.date, duration: taskDuration.text!, type: type)
+        if (taskTitle.hasText()) {
+            taskManager.insertTask(taskTitle.text!, description: taskDesc.text!, date: taskDate.date, duration: taskDuration.text!, type: type)
+            self.view.endEditing(true)
+            taskTitle.text = ""
+            taskDesc.text = ""
+            taskDuration.text = "0"
+            self.tabBarController!.selectedIndex = 0
+        }
+        else {
+            taskTitle.layer.borderColor = UIColor.redColor().CGColor
+            taskTitle.layer.borderWidth = 1
+            taskTitle.layer.cornerRadius = 5
+        }
         
-        self.view.endEditing(true)
-        taskTitle.text = ""
-        taskDesc.text = ""
-        taskDuration.text = "0"
+        
         
         
         //don't need line below (optional)
-        self.tabBarController!.selectedIndex = 0
+        
         
     }
     
