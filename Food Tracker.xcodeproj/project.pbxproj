@@ -14,18 +14,19 @@
 		5D001D041C6D5AF200AAB05A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D001D021C6D5AF200AAB05A /* LaunchScreen.storyboard */; };
 		5D001D0F1C6D5AF300AAB05A /* Food_TrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D001D0E1C6D5AF300AAB05A /* Food_TrackerTests.swift */; };
 		5D001D1A1C6D5AF300AAB05A /* Food_TrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D001D191C6D5AF300AAB05A /* Food_TrackerUITests.swift */; };
+		5D7939E51D1C3EF5006C28AB /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7939E41D1C3EF5006C28AB /* ContactViewController.swift */; };
 		5D96B14D1D11E3BA00CD8C95 /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D96B14C1D11E3BA00CD8C95 /* RatingControl.swift */; };
 		5DD7E2461D1849BB003972E1 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD7E2451D1849BB003972E1 /* Meal.swift */; };
 		5DD7E2471D1849BB003972E1 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD7E2451D1849BB003972E1 /* Meal.swift */; };
 		5DD7E2481D1849BB003972E1 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD7E2451D1849BB003972E1 /* Meal.swift */; };
 		5DD7E24A1D185108003972E1 /* MealTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD7E2491D185108003972E1 /* MealTableViewCell.swift */; };
 		5DD7E24C1D18749C003972E1 /* MealTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD7E24B1D18749C003972E1 /* MealTableViewController.swift */; };
-		DA1C0189075DFE7EF5E5DF89 /* Pods_Food_Tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1AB8D201D8230C54A332647 /* Pods_Food_Tracker.framework */; };
 		5DFF5BC81D1C1A74009AD1DB /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFF5BC71D1C1A74009AD1DB /* ContactTableViewCell.swift */; };
 		5DFF5BCA1D1C20E3009AD1DB /* ContactTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFF5BC91D1C20E3009AD1DB /* ContactTableViewController.swift */; };
 		5DFF5BCC1D1C22D2009AD1DB /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFF5BCB1D1C22D2009AD1DB /* Contact.swift */; };
 		5DFF5BCD1D1C22D2009AD1DB /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFF5BCB1D1C22D2009AD1DB /* Contact.swift */; };
 		5DFF5BCE1D1C22D2009AD1DB /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFF5BCB1D1C22D2009AD1DB /* Contact.swift */; };
+		DA1C0189075DFE7EF5E5DF89 /* Pods_Food_Tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1AB8D201D8230C54A332647 /* Pods_Food_Tracker.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,14 +62,15 @@
 		5D001D151C6D5AF300AAB05A /* Food TrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Food TrackerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D001D191C6D5AF300AAB05A /* Food_TrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food_TrackerUITests.swift; sourceTree = "<group>"; };
 		5D001D1B1C6D5AF300AAB05A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5D7939E41D1C3EF5006C28AB /* ContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
 		5D96B14C1D11E3BA00CD8C95 /* RatingControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
 		5DD7E2451D1849BB003972E1 /* Meal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Meal.swift; path = ../Meal.swift; sourceTree = "<group>"; };
 		5DD7E2491D185108003972E1 /* MealTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealTableViewCell.swift; sourceTree = "<group>"; };
 		5DD7E24B1D18749C003972E1 /* MealTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealTableViewController.swift; sourceTree = "<group>"; };
-		D1AB8D201D8230C54A332647 /* Pods_Food_Tracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Food_Tracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DFF5BC71D1C1A74009AD1DB /* ContactTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
 		5DFF5BC91D1C20E3009AD1DB /* ContactTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactTableViewController.swift; sourceTree = "<group>"; };
 		5DFF5BCB1D1C22D2009AD1DB /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		D1AB8D201D8230C54A332647 /* Pods_Food_Tracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Food_Tracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,7 @@
 				5D001CFB1C6D5AF200AAB05A /* MealViewController.swift */,
 				5D001CFD1C6D5AF200AAB05A /* Main.storyboard */,
 				5DFF5BC91D1C20E3009AD1DB /* ContactTableViewController.swift */,
+				5D7939E41D1C3EF5006C28AB /* ContactViewController.swift */,
 				5DFF5BCB1D1C22D2009AD1DB /* Contact.swift */,
 				5DFF5BC71D1C1A74009AD1DB /* ContactTableViewCell.swift */,
 				5DD7E24B1D18749C003972E1 /* MealTableViewController.swift */,
@@ -366,6 +369,7 @@
 				5DFF5BC81D1C1A74009AD1DB /* ContactTableViewCell.swift in Sources */,
 				5DD7E24C1D18749C003972E1 /* MealTableViewController.swift in Sources */,
 				5DD7E24A1D185108003972E1 /* MealTableViewCell.swift in Sources */,
+				5D7939E51D1C3EF5006C28AB /* ContactViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

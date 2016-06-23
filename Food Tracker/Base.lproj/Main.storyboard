@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -20,7 +21,7 @@
                         <segue destination="Cp8-Qv-UXC" kind="relationship" relationship="viewControllers" id="i6x-SO-fYY"/>
                         <segue destination="iQO-0e-Pe8" kind="relationship" relationship="viewControllers" id="nVV-Ec-fYD"/>
                         <segue destination="tQt-eZ-MXf" kind="relationship" relationship="viewControllers" id="VRS-tT-23l"/>
-                        <segue destination="jYg-z4-3WT" kind="relationship" relationship="viewControllers" id="S3u-cn-E2Y"/>
+                        <segue destination="fRl-Id-Y3g" kind="relationship" relationship="viewControllers" id="S3u-cn-E2Y"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Iy-Sq-XUz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -56,7 +57,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ContactTableViewCell" rowHeight="60" id="fNa-3f-83E" customClass="ContactTableViewCell" customModule="Food_Tracker" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="600" height="60"/>
+                                <rect key="frame" x="0.0" y="92" width="600" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fNa-3f-83E" id="toJ-we-nsS">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="59.5"/>
@@ -84,11 +85,74 @@
                             <outlet property="delegate" destination="jYg-z4-3WT" id="zka-YV-jD3"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Contacts" id="j1R-H6-liJ"/>
+                    <navigationItem key="navigationItem" title="Contacts" id="tFc-ab-47t">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="y38-XG-wDK"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vbq-pt-ape" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-368" y="-1726"/>
+            <point key="canvasLocation" x="444" y="-1726"/>
+        </scene>
+        <!--Contact View Controller-->
+        <scene sceneID="63d-3p-CJw">
+            <objects>
+                <viewController id="ax1-oN-H1D" customClass="ContactViewController" customModule="Food_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Kez-tT-Shn"/>
+                        <viewControllerLayoutGuide type="bottom" id="guT-ZI-VWW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bcw-VP-87t">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="UserName" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="quU-l5-A6G">
+                                <rect key="frame" x="20" y="37" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="NickName" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="McK-EP-97D">
+                                <rect key="frame" x="20" y="97" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RbB-gx-ORq">
+                                <rect key="frame" x="20" y="157" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eKk-Q0-7Dk">
+                                <rect key="frame" x="147" y="220" width="306" height="329"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="eKk-Q0-7Dk" secondAttribute="height" multiplier="306:329" id="5vp-fG-OKR"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="RbB-gx-ORq" firstAttribute="top" secondItem="McK-EP-97D" secondAttribute="bottom" constant="30" id="D48-1E-rXF"/>
+                            <constraint firstItem="guT-ZI-VWW" firstAttribute="top" secondItem="eKk-Q0-7Dk" secondAttribute="bottom" constant="51" id="EVc-86-u6r"/>
+                            <constraint firstItem="quU-l5-A6G" firstAttribute="trailing" secondItem="bcw-VP-87t" secondAttribute="trailingMargin" id="Kle-5d-oII"/>
+                            <constraint firstItem="quU-l5-A6G" firstAttribute="top" secondItem="Kez-tT-Shn" secondAttribute="bottom" constant="17" id="Lgi-da-ayL"/>
+                            <constraint firstItem="eKk-Q0-7Dk" firstAttribute="centerX" secondItem="RbB-gx-ORq" secondAttribute="centerX" id="XOe-Qv-28J"/>
+                            <constraint firstItem="McK-EP-97D" firstAttribute="top" secondItem="quU-l5-A6G" secondAttribute="bottom" constant="30" id="fmz-GW-Csy"/>
+                            <constraint firstItem="RbB-gx-ORq" firstAttribute="trailing" secondItem="bcw-VP-87t" secondAttribute="trailingMargin" id="k66-eL-CWQ"/>
+                            <constraint firstItem="McK-EP-97D" firstAttribute="trailing" secondItem="bcw-VP-87t" secondAttribute="trailingMargin" id="kEX-DS-Qwu"/>
+                            <constraint firstItem="RbB-gx-ORq" firstAttribute="leading" secondItem="bcw-VP-87t" secondAttribute="leadingMargin" id="keg-Xc-FhR"/>
+                            <constraint firstItem="McK-EP-97D" firstAttribute="leading" secondItem="bcw-VP-87t" secondAttribute="leadingMargin" id="t4m-FF-LxC"/>
+                            <constraint firstItem="eKk-Q0-7Dk" firstAttribute="top" secondItem="RbB-gx-ORq" secondAttribute="bottom" constant="33" id="zci-a3-Sxx"/>
+                            <constraint firstItem="quU-l5-A6G" firstAttribute="leading" secondItem="bcw-VP-87t" secondAttribute="leadingMargin" id="zjH-CM-vgq"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="EmailTextField" destination="RbB-gx-ORq" id="obr-Z0-CT9"/>
+                        <outlet property="NickNameTextField" destination="McK-EP-97D" id="jlz-2f-nIs"/>
+                        <outlet property="UserNameTextField" destination="quU-l5-A6G" id="MZt-U0-cKB"/>
+                        <outlet property="photoImageView" destination="eKk-Q0-7Dk" id="2x8-oc-4Fd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QJ7-fb-5l7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1268" y="-1714"/>
         </scene>
         <!--Delayed-->
         <scene sceneID="JPK-2r-rJZ">
@@ -221,13 +285,13 @@
                                     <constraint firstAttribute="trailing" secondItem="lF7-Fk-uBo" secondAttribute="trailing" id="tfv-7a-iDZ"/>
                                 </constraints>
                             </stackView>
-                            <datePicker contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="uXR-67-OOu">
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="uXR-67-OOu">
                                 <rect key="frame" x="20" y="177" width="560" height="216"/>
                                 <date key="date" timeIntervalSinceReferenceDate="488310682.25314599">
                                     <!--2016-06-22 17:51:22 +0000-->
                                 </date>
                             </datePicker>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a desc" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JqQ-5b-RyO">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a desc" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JqQ-5b-RyO">
                                 <rect key="frame" x="20" y="131" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -243,6 +307,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="vF1-MT-HNo" secondAttribute="trailing" id="Ao9-Q6-LmV"/>
                             <constraint firstItem="vF1-MT-HNo" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="EhA-Js-qRP"/>
                             <constraint firstItem="vF1-MT-HNo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="F1D-tS-FYX"/>
+                            <constraint firstItem="uXR-67-OOu" firstAttribute="top" secondItem="JqQ-5b-RyO" secondAttribute="bottom" constant="16" id="Gqn-9u-p1c"/>
                             <constraint firstItem="vF1-MT-HNo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="HiI-WP-S0x"/>
                             <constraint firstItem="JqQ-5b-RyO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="ITw-7V-gdz"/>
                             <constraint firstItem="uXR-67-OOu" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="OtZ-YL-35I"/>
@@ -250,6 +315,7 @@
                             <constraint firstItem="vF1-MT-HNo" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="16" id="f1h-LL-2W9"/>
                             <constraint firstItem="JqQ-5b-RyO" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="fTG-el-2Ql"/>
                             <constraint firstItem="vF1-MT-HNo" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="jib-xh-VUb"/>
+                            <constraint firstItem="JqQ-5b-RyO" firstAttribute="top" secondItem="vF1-MT-HNo" secondAttribute="bottom" constant="21" id="pcg-yY-AG1"/>
                             <constraint firstItem="vF1-MT-HNo" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="16" id="u8G-DZ-HC6"/>
                         </constraints>
                     </view>
@@ -318,6 +384,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ll3-gI-rh0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="135" y="1056"/>
+        </scene>
+        <!--Contacts-->
+        <scene sceneID="6n2-FD-3uc">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fRl-Id-Y3g" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Contacts" id="j1R-H6-liJ"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gr4-rm-UL1">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="jYg-z4-3WT" kind="relationship" relationship="rootViewController" id="KFS-cc-wz4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6EL-3T-Uo4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-368" y="-1726"/>
         </scene>
     </scenes>
     <resources>
