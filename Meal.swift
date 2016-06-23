@@ -23,8 +23,6 @@ class Meal: NSObject, NSCoding {
     //MARK: Types
     struct PropertyKey {
         static let name = "name"
-        //static let photoKey = "photo"
-        //static let ratingKey = "rating"
         static let desc = "description"
         static let dueDate = "dueDate"
         static let status = "status"

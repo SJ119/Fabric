@@ -1,17 +1,18 @@
 //
-//  MealTableViewCell.swift
+//  ContactTableViewCell.swift
 //  Food Tracker
 //
-//  Created by Samantha Lauer on 2016-06-20.
+//  Created by Samantha Lauer on 2016-06-23.
 //  Copyright © 2016 Samantha Lauer. All rights reserved.
 //
 
 import UIKit
 
-class MealTableViewCell: UITableViewCell {
+class ContactTableViewCell: UITableViewCell {
     
-    //MARK: Properties
-    @IBOutlet weak var nameLabel: UILabel!
+    //MARK Properties
+    @IBOutlet weak var nameLabel: UIView!
+    @IBOutlet weak var contactPhotoView: UIView!
     
 
     override func awakeFromNib() {
