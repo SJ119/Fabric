@@ -10,7 +10,6 @@
 		5D001CFA1C6D5AF200AAB05A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D001CF91C6D5AF200AAB05A /* AppDelegate.swift */; };
 		5D001CFC1C6D5AF200AAB05A /* MealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D001CFB1C6D5AF200AAB05A /* MealViewController.swift */; };
 		5D001CFF1C6D5AF200AAB05A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D001CFD1C6D5AF200AAB05A /* Main.storyboard */; };
-		5D001D011C6D5AF200AAB05A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D001D001C6D5AF200AAB05A /* Assets.xcassets */; };
 		5D001D041C6D5AF200AAB05A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D001D021C6D5AF200AAB05A /* LaunchScreen.storyboard */; };
 		5D001D0F1C6D5AF300AAB05A /* Food_TrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D001D0E1C6D5AF300AAB05A /* Food_TrackerTests.swift */; };
 		5D001D1A1C6D5AF300AAB05A /* Food_TrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D001D191C6D5AF300AAB05A /* Food_TrackerUITests.swift */; };
@@ -20,6 +19,7 @@
 		5DD7E2481D1849BB003972E1 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD7E2451D1849BB003972E1 /* Meal.swift */; };
 		5DD7E24A1D185108003972E1 /* MealTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD7E2491D185108003972E1 /* MealTableViewCell.swift */; };
 		5DD7E24C1D18749C003972E1 /* MealTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD7E24B1D18749C003972E1 /* MealTableViewController.swift */; };
+		A79CB5F71D1C247E000D52EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A79CB5F61D1C247E000D52EA /* Assets.xcassets */; };
 		DA1C0189075DFE7EF5E5DF89 /* Pods_Food_Tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1AB8D201D8230C54A332647 /* Pods_Food_Tracker.framework */; };
 /* End PBXBuildFile section */
 
@@ -47,7 +47,6 @@
 		5D001CF91C6D5AF200AAB05A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5D001CFB1C6D5AF200AAB05A /* MealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealViewController.swift; sourceTree = "<group>"; };
 		5D001CFE1C6D5AF200AAB05A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		5D001D001C6D5AF200AAB05A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5D001D031C6D5AF200AAB05A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5D001D051C6D5AF200AAB05A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5D001D0A1C6D5AF300AAB05A /* Food TrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Food TrackerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -60,6 +59,7 @@
 		5DD7E2451D1849BB003972E1 /* Meal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		5DD7E2491D185108003972E1 /* MealTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealTableViewCell.swift; sourceTree = "<group>"; };
 		5DD7E24B1D18749C003972E1 /* MealTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealTableViewController.swift; sourceTree = "<group>"; };
+		A79CB5F61D1C247E000D52EA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../.Trash/Assets.xcassets; sourceTree = "<group>"; };
 		D1AB8D201D8230C54A332647 /* Pods_Food_Tracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Food_Tracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -137,8 +137,8 @@
 				5D001CFD1C6D5AF200AAB05A /* Main.storyboard */,
 				5DD7E24B1D18749C003972E1 /* MealTableViewController.swift */,
 				5DD7E2491D185108003972E1 /* MealTableViewCell.swift */,
+				A79CB5F61D1C247E000D52EA /* Assets.xcassets */,
 				5D96B14C1D11E3BA00CD8C95 /* RatingControl.swift */,
-				5D001D001C6D5AF200AAB05A /* Assets.xcassets */,
 				5D001D021C6D5AF200AAB05A /* LaunchScreen.storyboard */,
 				5D001D051C6D5AF200AAB05A /* Info.plist */,
 			);
@@ -234,6 +234,7 @@
 				TargetAttributes = {
 					5D001CF51C6D5AF200AAB05A = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = XBCLLL3LR9;
 					};
 					5D001D091C6D5AF300AAB05A = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -271,7 +272,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D001D041C6D5AF200AAB05A /* LaunchScreen.storyboard in Resources */,
-				5D001D011C6D5AF200AAB05A /* Assets.xcassets in Resources */,
+				A79CB5F71D1C247E000D52EA /* Assets.xcassets in Resources */,
 				5D001CFF1C6D5AF200AAB05A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -495,10 +496,14 @@
 			baseConfigurationReference = 3079EFBD6CA1AE94C3B4D2A2 /* Pods-Food Tracker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Food Tracker/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.example.Food-Tracker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -507,10 +512,14 @@
 			baseConfigurationReference = 356CDDC1CFADE143295D687D /* Pods-Food Tracker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Food Tracker/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.example.Food-Tracker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

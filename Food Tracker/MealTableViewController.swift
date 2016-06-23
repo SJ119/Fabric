@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MGSwipeTableCell
 
 class MealTableViewController: UITableViewController {
     
@@ -43,7 +44,7 @@ class MealTableViewController: UITableViewController {
     }
 
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> MGSwipeTableCell {
         //Table view cells are reused and should be dequeued using a cell identifier.
         let cellIdentifier = "MealTableViewCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! MealTableViewCell
@@ -52,7 +53,19 @@ class MealTableViewController: UITableViewController {
         let meal = meals[indexPath.row]
 
         cell.nameLabel.text = meal.name
-
+        
+        //configure left buttons
+        cell.leftButtons = [MGSwipeButton(title: "", icon: UIImage(named:"checkmark_black.png"), backgroundColor: UIColor.greenColor())]
+        cell.leftSwipeSettings.transition = MGSwipeTransition.Border
+        cell.leftExpansion = MGSwipeExpansionSettings()
+        cell.leftExpansion.buttonIndex = 0
+        cell.leftExpansion.fillOnTrigger = true
+        
+        //configure right buttons
+        cell.rightButtons = [MGSwipeButton(title: "", icon: UIImage(named:"timer_black.png"), backgroundColor: UIColor.yellowColor())]
+        cell.rightSwipeSettings.transition = MGSwipeTransition.Border
+        
+        
 
         return cell
     }
