@@ -13,15 +13,19 @@ class Contact {
     //MARK: Properties
     
     var name:String
+    var nickName:String
+    var email:String
     var photo:UIImage?
     
     // MARK: Initialization
-    init?(name: String, photo: UIImage?) {
+    init?(name: String, nickName: String, email: String, photo: UIImage?) {
         
         //Initialize stored properties.
         self.name = name
         self.photo = photo
-        
+        self.nickName = nickName
+        self.email = email
+    
         if name.isEmpty {
             return nil
         }

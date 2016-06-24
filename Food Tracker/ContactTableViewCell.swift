@@ -11,8 +11,9 @@ import UIKit
 class ContactTableViewCell: UITableViewCell {
     
     //MARK Properties
-    @IBOutlet weak var nameLabel: UIView!
-    @IBOutlet weak var contactPhotoView: UIView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var photoImageView: UIImageView!
+    
     
 
     override func awakeFromNib() {

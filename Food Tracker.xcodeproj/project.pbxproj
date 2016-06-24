@@ -44,6 +44,20 @@
 			remoteGlobalIDString = 5D001CF51C6D5AF200AAB05A;
 			remoteInfo = "Food Tracker";
 		};
+		5D71BCCB1D1D892900E74C7F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5D71BCC61D1D892900E74C7F /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AA325F7B7641FE2DD149E5383C4B33AC;
+			remoteInfo = MGSwipeTableCell;
+		};
+		5D71BCCD1D1D892900E74C7F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5D71BCC61D1D892900E74C7F /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 127882C65D0C27DE566953A48A46E61D;
+			remoteInfo = "Pods-Food Tracker";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +76,7 @@
 		5D001D191C6D5AF300AAB05A /* Food_TrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food_TrackerUITests.swift; sourceTree = "<group>"; };
 		5D001D1B1C6D5AF300AAB05A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5D71BCC41D1C47C600E74C7F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5D71BCC61D1D892900E74C7F /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Pods.xcodeproj; path = Pods/Pods.xcodeproj; sourceTree = "<group>"; };
 		5D7939E41D1C3EF5006C28AB /* ContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
 		5D96B14C1D11E3BA00CD8C95 /* RatingControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
 		5DD7E2451D1849BB003972E1 /* Meal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Meal.swift; path = ../Meal.swift; sourceTree = "<group>"; };
@@ -122,6 +137,7 @@
 				5D001CF81C6D5AF200AAB05A /* Food Tracker */,
 				5D001D0D1C6D5AF300AAB05A /* Food TrackerTests */,
 				5D001D181C6D5AF300AAB05A /* Food TrackerUITests */,
+				5D71BCC61D1D892900E74C7F /* Pods.xcodeproj */,
 				5D001CF71C6D5AF200AAB05A /* Products */,
 				571F29820E754EC528E9BEFF /* Pods */,
 				2EA4B53AB2666681CDF34B4E /* Frameworks */,
@@ -175,6 +191,15 @@
 				5D001D1B1C6D5AF300AAB05A /* Info.plist */,
 			);
 			path = "Food TrackerUITests";
+			sourceTree = "<group>";
+		};
+		5D71BCC71D1D892900E74C7F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5D71BCCC1D1D892900E74C7F /* MGSwipeTableCell.framework */,
+				5D71BCCE1D1D892900E74C7F /* Pods_Food_Tracker.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -271,6 +296,12 @@
 			mainGroup = 5D001CED1C6D5AF200AAB05A;
 			productRefGroup = 5D001CF71C6D5AF200AAB05A /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 5D71BCC71D1D892900E74C7F /* Products */;
+					ProjectRef = 5D71BCC61D1D892900E74C7F /* Pods.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				5D001CF51C6D5AF200AAB05A /* Food Tracker */,
@@ -279,6 +310,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		5D71BCCC1D1D892900E74C7F /* MGSwipeTableCell.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = MGSwipeTableCell.framework;
+			remoteRef = 5D71BCCB1D1D892900E74C7F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5D71BCCE1D1D892900E74C7F /* Pods_Food_Tracker.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Pods_Food_Tracker.framework;
+			remoteRef = 5D71BCCD1D1D892900E74C7F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		5D001CF41C6D5AF200AAB05A /* Resources */ = {
