@@ -312,8 +312,8 @@
                                     <constraint firstAttribute="trailing" secondItem="lF7-Fk-uBo" secondAttribute="trailing" id="tfv-7a-iDZ"/>
                                 </constraints>
                             </stackView>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="uXR-67-OOu">
-                                <rect key="frame" x="20" y="177" width="560" height="216"/>
+                            <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="uXR-67-OOu">
+                                <rect key="frame" x="20" y="213" width="560" height="216"/>
                                 <date key="date" timeIntervalSinceReferenceDate="488310682.25314599">
                                     <!--2016-06-22 17:51:22 +0000-->
                                 </date>
@@ -323,9 +323,25 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Public" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ih-nt-ssA">
+                                <rect key="frame" x="20" y="454" width="97" height="31"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Due at:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="62u-rI-ler">
+                                <rect key="frame" x="20" y="186" width="560" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eUJ-Rj-BCq">
+                                <rect key="frame" x="125" y="454" width="51" height="31"/>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="62u-rI-ler" firstAttribute="top" secondItem="JqQ-5b-RyO" secondAttribute="bottom" constant="25" id="0mK-0x-fyU"/>
                             <constraint firstItem="vF1-MT-HNo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="0vO-Rv-aVW"/>
                             <constraint firstItem="vF1-MT-HNo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="15G-Oi-wM6"/>
                             <constraint firstItem="uXR-67-OOu" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="35p-tG-4ZG"/>
@@ -334,16 +350,20 @@
                             <constraint firstAttribute="trailingMargin" secondItem="vF1-MT-HNo" secondAttribute="trailing" id="Ao9-Q6-LmV"/>
                             <constraint firstItem="vF1-MT-HNo" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="EhA-Js-qRP"/>
                             <constraint firstItem="vF1-MT-HNo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="F1D-tS-FYX"/>
-                            <constraint firstItem="uXR-67-OOu" firstAttribute="top" secondItem="JqQ-5b-RyO" secondAttribute="bottom" constant="16" id="Gqn-9u-p1c"/>
                             <constraint firstItem="vF1-MT-HNo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="HiI-WP-S0x"/>
                             <constraint firstItem="JqQ-5b-RyO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="ITw-7V-gdz"/>
                             <constraint firstItem="uXR-67-OOu" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="OtZ-YL-35I"/>
+                            <constraint firstItem="0ih-nt-ssA" firstAttribute="top" secondItem="uXR-67-OOu" secondAttribute="bottom" constant="25" id="Ww5-uk-MnX"/>
+                            <constraint firstItem="eUJ-Rj-BCq" firstAttribute="top" secondItem="uXR-67-OOu" secondAttribute="bottom" constant="25" id="YSA-R0-SSC"/>
                             <constraint firstItem="vF1-MT-HNo" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="16" id="cBe-V2-Ojd"/>
                             <constraint firstItem="vF1-MT-HNo" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="16" id="f1h-LL-2W9"/>
                             <constraint firstItem="JqQ-5b-RyO" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="fTG-el-2Ql"/>
+                            <constraint firstItem="uXR-67-OOu" firstAttribute="top" secondItem="62u-rI-ler" secondAttribute="bottom" constant="5" id="iI6-q8-9hD"/>
                             <constraint firstItem="vF1-MT-HNo" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="jib-xh-VUb"/>
+                            <constraint firstItem="eUJ-Rj-BCq" firstAttribute="leading" secondItem="0ih-nt-ssA" secondAttribute="trailing" constant="8" id="jvA-zO-JPN"/>
                             <constraint firstItem="JqQ-5b-RyO" firstAttribute="top" secondItem="vF1-MT-HNo" secondAttribute="bottom" constant="21" id="pcg-yY-AG1"/>
                             <constraint firstItem="vF1-MT-HNo" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="16" id="u8G-DZ-HC6"/>
+                            <constraint firstItem="0ih-nt-ssA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="x4l-Cv-KCO"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="New Task" id="Mm3-KY-8FM">
