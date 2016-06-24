@@ -416,7 +416,7 @@
         <scene sceneID="6n2-FD-3uc">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fRl-Id-Y3g" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Contacts" id="j1R-H6-liJ"/>
+                    <tabBarItem key="tabBarItem" title="Contacts" image="contact" id="j1R-H6-liJ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gr4-rm-UL1">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -455,6 +455,7 @@
         <image name="Current" width="40" height="40"/>
         <image name="Delay" width="40" height="40"/>
         <image name="achievements" width="40" height="40"/>
+        <image name="contact" width="40" height="40"/>
         <image name="contacts" width="931" height="1200"/>
     </resources>
     <inferredMetricsTieBreakers>
