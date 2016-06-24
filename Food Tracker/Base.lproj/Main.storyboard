@@ -49,7 +49,7 @@
         <!--Contacts-->
         <scene sceneID="7Ta-PF-xY7">
             <objects>
-                <tableViewController id="jYg-z4-3WT" sceneMemberID="viewController">
+                <tableViewController id="jYg-z4-3WT" customClass="ContactTableViewController" customModule="Food_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Clr-Oo-YVW">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -74,8 +74,8 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="contactPhotoView" destination="toJ-we-nsS" id="4hS-Gn-oKv"/>
-                                    <outlet property="nameLabel" destination="toJ-we-nsS" id="6rR-MF-QQV"/>
+                                    <outlet property="nameLabel" destination="r65-eT-9Bo" id="FPR-ki-zj6"/>
+                                    <outlet property="photoImageView" destination="Atm-pY-jxO" id="JqD-5x-98K"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -85,14 +85,18 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Contacts" id="tFc-ab-47t">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="y38-XG-wDK"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="y38-XG-wDK">
+                            <connections>
+                                <segue destination="ICS-zG-E82" kind="presentation" identifier="AddContact" id="Qji-og-3J4"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vbq-pt-ape" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="444" y="-1726"/>
         </scene>
-        <!--Contact View Controller-->
+        <!--New Contact-->
         <scene sceneID="63d-3p-CJw">
             <objects>
                 <viewController id="ax1-oN-H1D" customClass="ContactViewController" customModule="Food_Tracker" customModuleProvider="target" sceneMemberID="viewController">
@@ -105,53 +109,77 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="UserName" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="quU-l5-A6G">
-                                <rect key="frame" x="20" y="37" width="560" height="30"/>
+                                <rect key="frame" x="20" y="92" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="NickName" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="McK-EP-97D">
-                                <rect key="frame" x="20" y="97" width="560" height="30"/>
+                                <rect key="frame" x="20" y="152" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RbB-gx-ORq">
-                                <rect key="frame" x="20" y="157" width="560" height="30"/>
+                                <rect key="frame" x="20" y="212" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eKk-Q0-7Dk">
-                                <rect key="frame" x="147" y="220" width="306" height="329"/>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="320" image="contacts" translatesAutoresizingMaskIntoConstraints="NO" id="eKk-Q0-7Dk">
+                                <rect key="frame" x="147" y="275" width="252" height="271"/>
+                                <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="eKk-Q0-7Dk" secondAttribute="height" multiplier="306:329" id="5vp-fG-OKR"/>
+                                    <constraint firstAttribute="width" secondItem="eKk-Q0-7Dk" secondAttribute="height" multiplier="252:271" id="5ES-O8-Pto"/>
+                                    <constraint firstAttribute="height" constant="271" id="LJu-rc-2cN"/>
+                                    <constraint firstAttribute="width" constant="252" id="QSX-5n-5f1"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="UUa-Qv-H7O" appends="YES" id="12k-X0-KuB"/>
+                                </connections>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="RbB-gx-ORq" firstAttribute="top" secondItem="McK-EP-97D" secondAttribute="bottom" constant="30" id="D48-1E-rXF"/>
-                            <constraint firstItem="guT-ZI-VWW" firstAttribute="top" secondItem="eKk-Q0-7Dk" secondAttribute="bottom" constant="51" id="EVc-86-u6r"/>
-                            <constraint firstItem="quU-l5-A6G" firstAttribute="trailing" secondItem="bcw-VP-87t" secondAttribute="trailingMargin" id="Kle-5d-oII"/>
-                            <constraint firstItem="quU-l5-A6G" firstAttribute="top" secondItem="Kez-tT-Shn" secondAttribute="bottom" constant="17" id="Lgi-da-ayL"/>
+                            <constraint firstItem="RbB-gx-ORq" firstAttribute="top" secondItem="McK-EP-97D" secondAttribute="bottom" constant="30" id="4F0-zB-E8E"/>
+                            <constraint firstItem="McK-EP-97D" firstAttribute="top" secondItem="quU-l5-A6G" secondAttribute="bottom" constant="30" id="9iO-82-WKD"/>
+                            <constraint firstItem="quU-l5-A6G" firstAttribute="trailing" secondItem="bcw-VP-87t" secondAttribute="trailingMargin" id="A0X-DW-zYV"/>
+                            <constraint firstItem="quU-l5-A6G" firstAttribute="top" secondItem="Kez-tT-Shn" secondAttribute="bottom" constant="28" id="Guk-gC-lf4"/>
                             <constraint firstItem="eKk-Q0-7Dk" firstAttribute="centerX" secondItem="RbB-gx-ORq" secondAttribute="centerX" id="XOe-Qv-28J"/>
-                            <constraint firstItem="McK-EP-97D" firstAttribute="top" secondItem="quU-l5-A6G" secondAttribute="bottom" constant="30" id="fmz-GW-Csy"/>
                             <constraint firstItem="RbB-gx-ORq" firstAttribute="trailing" secondItem="bcw-VP-87t" secondAttribute="trailingMargin" id="k66-eL-CWQ"/>
                             <constraint firstItem="McK-EP-97D" firstAttribute="trailing" secondItem="bcw-VP-87t" secondAttribute="trailingMargin" id="kEX-DS-Qwu"/>
                             <constraint firstItem="RbB-gx-ORq" firstAttribute="leading" secondItem="bcw-VP-87t" secondAttribute="leadingMargin" id="keg-Xc-FhR"/>
+                            <constraint firstItem="quU-l5-A6G" firstAttribute="leading" secondItem="bcw-VP-87t" secondAttribute="leadingMargin" id="p0e-r2-caW"/>
                             <constraint firstItem="McK-EP-97D" firstAttribute="leading" secondItem="bcw-VP-87t" secondAttribute="leadingMargin" id="t4m-FF-LxC"/>
                             <constraint firstItem="eKk-Q0-7Dk" firstAttribute="top" secondItem="RbB-gx-ORq" secondAttribute="bottom" constant="33" id="zci-a3-Sxx"/>
-                            <constraint firstItem="quU-l5-A6G" firstAttribute="leading" secondItem="bcw-VP-87t" secondAttribute="leadingMargin" id="zjH-CM-vgq"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="New Contact" id="V7A-RH-v2W">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="uSA-04-dnX">
+                            <connections>
+                                <action selector="cancel:" destination="ax1-oN-H1D" id="2TJ-aB-F13"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="MXR-Je-sgS">
+                            <connections>
+                                <segue destination="dXT-3W-6VR" kind="unwind" unwindAction="unwindToContactList:" id="zhK-kQ-Be2"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="EmailTextField" destination="RbB-gx-ORq" id="obr-Z0-CT9"/>
                         <outlet property="NickNameTextField" destination="McK-EP-97D" id="jlz-2f-nIs"/>
                         <outlet property="UserNameTextField" destination="quU-l5-A6G" id="MZt-U0-cKB"/>
-                        <outlet property="photoImageView" destination="eKk-Q0-7Dk" id="2x8-oc-4Fd"/>
+                        <outlet property="photoImageView" destination="eKk-Q0-7Dk" id="gow-91-wrF"/>
+                        <outlet property="saveButton" destination="MXR-Je-sgS" id="Aea-Cl-39K"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QJ7-fb-5l7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="dXT-3W-6VR" userLabel="Exit" sceneMemberID="exit"/>
+                <tapGestureRecognizer id="UUa-Qv-H7O">
+                    <connections>
+                        <action selector="selectPhotoFromLibrary:" destination="ax1-oN-H1D" id="3ZG-Ho-amE"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1268" y="-1714"/>
+            <point key="canvasLocation" x="2080" y="-1714"/>
         </scene>
         <!--Delayed-->
         <scene sceneID="JPK-2r-rJZ">
@@ -215,7 +243,7 @@
         <scene sceneID="7st-0K-Any">
             <objects>
                 <tableViewController id="kcl-Cb-CBw" customClass="MealTableViewController" customModule="Food_Tracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" id="paS-5f-aXf">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" id="paS-5f-aXf">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -228,7 +256,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XAL-nV-7dN">
-                                            <rect key="frame" x="8" y="8" width="493" height="22"/>
+                                            <rect key="frame" x="8" y="8" width="584" height="29"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
@@ -402,6 +430,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6EL-3T-Uo4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-368" y="-1726"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Qnt-qi-D9E">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ICS-zG-E82" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2H9-ZO-20I">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ax1-oN-H1D" kind="relationship" relationship="rootViewController" id="UTj-FZ-iSn"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i6w-KX-AA0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1228" y="-1258"/>
         </scene>
     </scenes>
     <resources>

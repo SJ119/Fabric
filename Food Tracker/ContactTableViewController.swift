@@ -11,7 +11,7 @@ import UIKit
 class ContactTableViewController: UITableViewController {
 
     //MARK: Properties
-    //var contacts = [Contact]()
+    var contacts = [Contact]()
     
     
     override func viewDidLoad() {
@@ -33,23 +33,29 @@ class ContactTableViewController: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return contacts.count
     }
 
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
 
-        // Configure the cell...
+        let cellIdentifier = "ContactTableViewCell"
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! ContactTableViewCell
+        
+        // Fetches the appropriate meal for the data source layout.
+        let contact = contacts[indexPath.row]
+        
+        cell.nameLabel.text = contact.name
+        cell.photoImageView.image = contact.photo
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
@@ -95,5 +101,18 @@ class ContactTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    // Action method adds to contact list if Save button selected
+    @IBAction func unwindToContactList(sender: UIStoryboardSegue) {
+        if let sourceViewController = sender.sourceViewController as?
+            ContactViewController, contact = sourceViewController.contact {
+            // Add a new contact
+            let newIndexPath = NSIndexPath(forRow: contacts.count, inSection: 0)
+            contacts.append(contact)
+            
+            // inserts contact at bottom (will want to alphabetize later!!
+            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
+        }
+    }
 
 }
