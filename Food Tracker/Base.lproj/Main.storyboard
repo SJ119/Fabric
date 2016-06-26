@@ -16,7 +16,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="Y1a-MO-6zi" kind="relationship" relationship="viewControllers" id="Lg9-0T-0r1"/>
+                        <segue destination="ogk-pe-sXb" kind="relationship" relationship="viewControllers" id="Lg9-0T-0r1"/>
                         <segue destination="Cp8-Qv-UXC" kind="relationship" relationship="viewControllers" id="i6x-SO-fYY"/>
                         <segue destination="iQO-0e-Pe8" kind="relationship" relationship="viewControllers" id="nVV-Ec-fYD"/>
                         <segue destination="tQt-eZ-MXf" kind="relationship" relationship="viewControllers" id="VRS-tT-23l"/>
@@ -25,7 +25,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Iy-Sq-XUz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1460" y="-791"/>
+            <point key="canvasLocation" x="-2476" y="-519"/>
         </scene>
         <!--Achievements-->
         <scene sceneID="5US-gu-dk7">
@@ -38,13 +38,24 @@
                     <view key="view" contentMode="scaleToFill" id="Z4l-Ae-hBq">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="achieve" translatesAutoresizingMaskIntoConstraints="NO" id="fSU-aI-JIg">
+                                <rect key="frame" x="20" y="64" width="560" height="479"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fSU-aI-JIg" firstAttribute="leading" secondItem="Z4l-Ae-hBq" secondAttribute="leadingMargin" id="dh3-ai-FRQ"/>
+                            <constraint firstItem="fSU-aI-JIg" firstAttribute="trailing" secondItem="Z4l-Ae-hBq" secondAttribute="trailingMargin" id="pFE-c4-Ksb"/>
+                            <constraint firstItem="fSU-aI-JIg" firstAttribute="top" secondItem="ee1-yo-oqa" secondAttribute="bottom" id="wOn-oL-mSp"/>
+                            <constraint firstItem="8er-tZ-BTg" firstAttribute="top" secondItem="fSU-aI-JIg" secondAttribute="bottom" id="wn1-7Q-Pn9"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Achievements" image="achievements" id="Wzl-Uw-PcO"/>
+                    <navigationItem key="navigationItem" title="Achievements" id="orO-W5-YQL"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Uz-se-LyO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-412" y="-2401"/>
+            <point key="canvasLocation" x="-416" y="-2321"/>
         </scene>
         <!--Contacts-->
         <scene sceneID="7Ta-PF-xY7">
@@ -94,7 +105,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vbq-pt-ape" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="444" y="-1726"/>
+            <point key="canvasLocation" x="-564" y="-1598"/>
         </scene>
         <!--New Contact-->
         <scene sceneID="63d-3p-CJw">
@@ -179,7 +190,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2080" y="-1714"/>
+            <point key="canvasLocation" x="1008" y="-1598"/>
         </scene>
         <!--Delayed-->
         <scene sceneID="JPK-2r-rJZ">
@@ -208,7 +219,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rkh-t0-jSh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-369" y="-1027"/>
+            <point key="canvasLocation" x="-1265" y="-923"/>
         </scene>
         <!--Complete-->
         <scene sceneID="oSp-xi-PHD">
@@ -237,7 +248,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ir4-Cw-vJ9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-276" y="-215"/>
+            <point key="canvasLocation" x="-1282" y="-223"/>
         </scene>
         <!--Your Tasks-->
         <scene sceneID="7st-0K-Any">
@@ -449,7 +460,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6EL-3T-Uo4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-368" y="-1726"/>
+            <point key="canvasLocation" x="-1240" y="-1598"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Qnt-qi-D9E">
@@ -467,13 +478,33 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i6w-KX-AA0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1228" y="-1258"/>
+            <point key="canvasLocation" x="252" y="-1598"/>
+        </scene>
+        <!--Achievements-->
+        <scene sceneID="Bet-Db-da3">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ogk-pe-sXb" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Achievements" image="achievements" id="Wzl-Uw-PcO"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="f7J-2Y-xnp">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Y1a-MO-6zi" kind="relationship" relationship="rootViewController" id="1Pn-rr-fsp"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sAT-mK-Igw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1228" y="-2321"/>
         </scene>
     </scenes>
     <resources>
         <image name="Complete" width="40" height="40"/>
         <image name="Current" width="40" height="40"/>
         <image name="Delay" width="40" height="40"/>
+        <image name="achieve" width="333" height="480"/>
         <image name="achievements" width="40" height="40"/>
         <image name="contact" width="40" height="40"/>
         <image name="contacts" width="931" height="1200"/>
