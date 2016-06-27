@@ -232,7 +232,7 @@
             </objects>
             <point key="canvasLocation" x="-1265" y="-923"/>
         </scene>
-        <!--Complete-->
+        <!--Title-->
         <scene sceneID="oSp-xi-PHD">
             <objects>
                 <tableViewController id="tQt-eZ-MXf" customClass="DoneTableViewController" customModule="Food_Tracker" customModuleProvider="target" sceneMemberID="viewController">
@@ -268,6 +268,7 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Complete" image="Complete" id="WFn-1L-tlj"/>
+                    <navigationItem key="navigationItem" title="Title" id="bST-wo-49d"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ir4-Cw-vJ9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

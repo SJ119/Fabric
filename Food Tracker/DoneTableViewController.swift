@@ -24,7 +24,7 @@ class DoneTableViewController: UITableViewController {
         super.viewDidLoad()
         print(meals)
 //        self.tableView.registerClass(DoneTableViewCell.self, forCellReuseIdentifier: "Done")
-//        meals.append(Meal(name: "a",desc: "b",dueDate: NSDate(),status: "")!)
+        meals.append(Meal(name: " ",desc: "b",dueDate: NSDate(),status: "")!)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
