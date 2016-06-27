@@ -16,6 +16,7 @@ class MealTableViewController: UITableViewController {
     var meals = [Meal]()
 
     override func viewDidLoad() {
+        print("loading meal table view")
         super.viewDidLoad()
         //self.view.backgroundColor = UIColor.lightGrayColor()
         // Use the edit button item provided by the table view controller.
@@ -24,8 +25,20 @@ class MealTableViewController: UITableViewController {
         if let savedMeals = loadMeals() {
             meals += savedMeals
         }
-       
     }
+    
+    
+        
+    func presentDestinationViewController(meal: Meal) {
+        let viewController = UIApplication.sharedApplication().windows[0].rootViewController?.childViewControllers[3] as? DoneTableViewController
+        viewController?.addMeal(meal)
+    }
+    
+    func presentDestinationViewControllerDelay(meal: Meal) {
+        let viewController = UIApplication.sharedApplication().windows[0].rootViewController?.childViewControllers[1] as? DelayTableViewController
+        viewController?.addMeal(meal)
+    }
+    
     
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         cell.backgroundColor = UIColor.clearColor()
@@ -58,14 +71,28 @@ class MealTableViewController: UITableViewController {
         cell.nameLabel.text = meal.name
         
         //configure left buttons
-        cell.leftButtons = [MGSwipeButton(title: "", icon: UIImage(named:"checkmark_black.png"), backgroundColor: UIColor.greenColor())]
+        cell.leftButtons = [MGSwipeButton(title: "", icon: UIImage(named:"Complete.png"), backgroundColor: UIColor.greenColor(), callback: {
+            (sender: MGSwipeTableCell!) -> Bool in
+            let meal = self.meals.removeAtIndex(indexPath.row)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+            tableView.reloadData()
+            self.presentDestinationViewController(meal)
+            return true
+        })]
         cell.leftSwipeSettings.transition = MGSwipeTransition.Border
         cell.leftExpansion = MGSwipeExpansionSettings()
         cell.leftExpansion.buttonIndex = 0
         cell.leftExpansion.fillOnTrigger = true
         
         //configure right buttons
-        cell.rightButtons = [MGSwipeButton(title: "", icon: UIImage(named:"timer_black.png"), backgroundColor: UIColor.yellowColor())]
+        cell.rightButtons = [MGSwipeButton(title: "", icon: UIImage(named:"Delay.png"), backgroundColor: UIColor.yellowColor(), callback: {
+            (sender: MGSwipeTableCell!) -> Bool in
+            self.meals.removeAtIndex(indexPath.row)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+            tableView.reloadData()
+            self.presentDestinationViewControllerDelay(meal)
+            return true
+        })]
         cell.rightSwipeSettings.transition = MGSwipeTransition.Border
         
         
@@ -126,10 +153,12 @@ class MealTableViewController: UITableViewController {
             }
         } else if segue.identifier == "AddItem" {
             print("Adding new meal.")
-            
         }
     }
     
+    @IBAction func addToComplete(sender: UIStoryboardSegue) {
+        performSegueWithIdentifier("Complete", sender: self)
+    }
     
     @IBAction func unwindToMealList(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.sourceViewController as? MealViewController, meal = sourceViewController.meal {
