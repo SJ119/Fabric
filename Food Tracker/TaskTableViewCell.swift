@@ -1,5 +1,5 @@
 //
-//  MealTableViewCell.swift
+//  TaskTableViewCell.swift
 //  Food Tracker
 //
 //  Created by Samantha Lauer on 2016-06-20.
@@ -9,7 +9,7 @@
 import UIKit
 import MGSwipeTableCell
 
-class MealTableViewCell: MGSwipeTableCell {
+class TaskTableViewCell: MGSwipeTableCell {
     
     //MARK: Properties
     @IBOutlet weak var nameLabel: UILabel!

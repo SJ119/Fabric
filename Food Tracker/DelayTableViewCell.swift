@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DelayTableViewCell: MealTableViewCell {
+class DelayTableViewCell: TaskTableViewCell {
 
     @IBOutlet weak var nameLabel2: UILabel!
     

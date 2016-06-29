@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DoneTableViewCell: MealTableViewCell {
+class DoneTableViewCell: TaskTableViewCell {
 
     @IBOutlet weak var nameLabel2: UILabel!
     

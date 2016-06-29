@@ -1,5 +1,5 @@
 //
-//  MealViewController.swift
+//  TaskViewController.swift
 //  Food Tracker
 //
 //  Created by Samantha Lauer on 2016-02-11.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MealViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate {
+class TaskViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate {
     //MARK: Properties
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var saveButton: UIBarButtonItem!
@@ -19,31 +19,27 @@ class MealViewController: UIViewController, UITextFieldDelegate, UINavigationCon
     
     /*
      @IBOutlet weak var dueDatePicker: UIDatePicker!
-     This value is either passed by `MealTableViewController` in `prepareForSegue(_:sender:)`
-     or constructed as part of adding a new meal.
+     This value is either passed by `TaskTableViewController` in `prepareForSegue(_:sender:)`
+     or constructed as part of adding a new task.
      */
-    var meal: Meal?
+    var task: Task?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Handle the text field's user input through delegate callbacks
         nameTextField.delegate = self
         
-        // Set up views if editing an existing Meal.
-        if let meal = meal {
-            navigationItem.title = meal.name
-            nameTextField.text = meal.name
-            descTextField.text = meal.desc
-            dueDatePicker.date = meal.dueDate
-            
-            
-            //photoImageView.image = meal.photo
-            //ratingControl.rating = meal.rating
+        // Set up views if editing an existing Task.
+        if let task = task {
+            navigationItem.title = task.name
+            nameTextField.text = task.name
+            descTextField.text = task.desc
+            dueDatePicker.date = task.dueDate
             
         }
         
-        //Enable the Save button only if the text field has a valid Meal name.
-        checkValidMealName()
+        //Enable the Save button only if the text field has a valid Task name.
+        checkValidTaskName()
     }
     
     // MARK: UITextFieldDelegate
@@ -55,7 +51,7 @@ class MealViewController: UIViewController, UITextFieldDelegate, UINavigationCon
     }
     
     func textFieldDidEndEditing(textField: UITextField) {
-        checkValidMealName()
+        checkValidTaskName()
         navigationItem.title = textField.text
         
         
@@ -66,7 +62,7 @@ class MealViewController: UIViewController, UITextFieldDelegate, UINavigationCon
         saveButton.enabled = false
     }
     
-    func checkValidMealName() {
+    func checkValidTaskName() {
         // Disable the Save button if the text field is empty.
         let text = nameTextField.text ?? ""
         saveButton.enabled = !text.isEmpty
@@ -76,9 +72,9 @@ class MealViewController: UIViewController, UITextFieldDelegate, UINavigationCon
     //MARK:Navigation
     @IBAction func cancel(sender: UIBarButtonItem) {
         // Depending on style of presentation (modal or push presentation), this view controller needs to be dismissed in two different ways.
-        let isPresentingInAddMealMode = presentingViewController is UINavigationController
+        let isPresentingInAddTaskMode = presentingViewController is UINavigationController
         
-        if isPresentingInAddMealMode {
+        if isPresentingInAddTaskMode {
             dismissViewControllerAnimated(true, completion: nil)
         } else {
             navigationController!.popViewControllerAnimated(true)
@@ -92,8 +88,8 @@ class MealViewController: UIViewController, UITextFieldDelegate, UINavigationCon
             let desc = descTextField.text ?? ""
             let dueDate = dueDatePicker.date ?? NSDate()
             let status = "Current"
-            // set the meal to be passed to MealTableViewController after the unwind segue.
-            meal = Meal(name: name, desc: desc, dueDate: dueDate, status: status)
+            // set the task to be passed to TaskTableViewController after the unwind segue.
+            task = Task(name: name, desc: desc, dueDate: dueDate, status: status)
         }
         
     }

@@ -1,5 +1,5 @@
 //
-//  Meal.swift
+//  Task.swift
 //  Food Tracker
 //
 //  Created by Samantha Lauer on 2016-06-20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Meal: NSObject, NSCoding {
+class Task: NSObject, NSCoding {
     //MARK: Properties
     
     var name:String
@@ -18,7 +18,7 @@ class Meal: NSObject, NSCoding {
     
     //MARK: Archiving Paths
     static let DocumentsDirectory = NSFileManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
-    static let ArchiveURL = DocumentsDirectory.URLByAppendingPathComponent("meals")
+    static let ArchiveURL = DocumentsDirectory.URLByAppendingPathComponent("tasks")
     
     //MARK: Types
     struct PropertyKey {
@@ -54,10 +54,6 @@ class Meal: NSObject, NSCoding {
     
     required convenience init?(coder aDecoder:NSCoder) {
         let name = aDecoder.decodeObjectForKey(PropertyKey.name) as! String
-        
-        
-        
-        // Because photo is an optional property of Meal, use conditional cast.
         let desc = aDecoder.decodeObjectForKey(PropertyKey.desc) as? String
         let dueDate = aDecoder.decodeObjectForKey(PropertyKey.dueDate) as? NSDate
         let status = aDecoder.decodeObjectForKey(PropertyKey.status) as? String

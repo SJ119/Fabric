@@ -14,25 +14,25 @@ class Food_TrackerTests: XCTestCase {
     
     //MARK: FoodTracker Tests
     
-    // Tests to confirm that the Meal initializer returns when no name or a negative rating is provided.
-    func testMealInitialization() {
+    // Tests to confirm that the Task initializer returns when no name or a negative rating is provided.
+    func testTaskInitialization() {
         // Success case.
-        let potentialItem = Meal(name: "Newest meal", desc: "", dueDate: NSDate(), status: "current")
+        let potentialItem = Task(name: "Newest task", desc: "", dueDate: NSDate(), status: "current")
         XCTAssertNotNil(potentialItem)
         
         //Failure cases.
-        let noName = Meal(name: "", desc: "", dueDate: NSDate(), status: "current")
+        let noName = Task(name: "", desc: "", dueDate: NSDate(), status: "current")
         XCTAssertNil(noName, "Empty name is invalid")
     }
     
     // Test to confirm contact initializer works
     func testContactInitialization() {
         //Success case.
-        let potentialContact = Contact(name: "Samantha", photo: nil)
+        let potentialContact = Contact(name: "Samantha", nickName: "sam", email: "slauer@blah.com", photo: nil)
         XCTAssertNotNil(potentialContact)
         
         //Failure cases.
-        let noName = Contact(name: "", photo: nil)
+        let noName = Contact(name: "", nickName: "", email: "", photo: nil)
         XCTAssertNil(noName, "Empty name is invalid")
     }
     

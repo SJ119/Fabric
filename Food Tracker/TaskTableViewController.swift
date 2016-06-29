@@ -1,5 +1,5 @@
 //
-//  MealTableViewController.swift
+//  TaskTableViewController.swift
 //  Food Tracker
 //
 //  Created by Samantha Lauer on 2016-06-20.
@@ -9,34 +9,34 @@
 import UIKit
 import MGSwipeTableCell
 
-class MealTableViewController: UITableViewController {
+class TaskTableViewController: UITableViewController {
     
     // MARK: Properties
     
-    var meals = [Meal]()
+    var tasks = [Task]()
 
     override func viewDidLoad() {
-        print("loading meal table view")
+        print("loading task table view")
         super.viewDidLoad()
         //self.view.backgroundColor = UIColor.lightGrayColor()
         // Use the edit button item provided by the table view controller.
         navigationItem.leftBarButtonItem = editButtonItem()
-        // Load any saved meals, otherwise load sample data.
-        if let savedMeals = loadMeals() {
-            meals += savedMeals
+        // Load any saved tasks, otherwise load sample data.
+        if let savedTasks = loadTasks() {
+            tasks += savedTasks
         }
     }
     
     
         
-    func presentDestinationViewController(meal: Meal) {
+    func presentDestinationViewController(task: Task) {
         let viewController = UIApplication.sharedApplication().windows[0].rootViewController?.childViewControllers[3] as? DoneTableViewController
-        viewController?.addMeal(meal)
+        viewController?.addTask(task)
     }
     
-    func presentDestinationViewControllerDelay(meal: Meal) {
+    func presentDestinationViewControllerDelay(task: Task) {
         let viewController = UIApplication.sharedApplication().windows[0].rootViewController?.childViewControllers[1] as? DelayTableViewController
-        viewController?.addMeal(meal)
+        viewController?.addTask(task)
     }
     
     
@@ -56,27 +56,27 @@ class MealTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return meals.count
+        return tasks.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> MGSwipeTableCell {
         //Table view cells are reused and should be dequeued using a cell identifier.
-        let cellIdentifier = "MealTableViewCell"
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! MealTableViewCell
+        let cellIdentifier = "TaskTableViewCell"
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! TaskTableViewCell
         
-        // Fetches the appropriate meal for the data source layout.
-        let meal = meals[indexPath.row]
+        // Fetches the appropriate task for the data source layout.
+        let task = tasks[indexPath.row]
 
-        cell.nameLabel.text = meal.name
+        cell.nameLabel.text = task.name
         
         //configure left buttons
         cell.leftButtons = [MGSwipeButton(title: "", icon: UIImage(named:"Complete.png"), backgroundColor: UIColor.greenColor(), callback: {
             (sender: MGSwipeTableCell!) -> Bool in
-            let meal = self.meals.removeAtIndex(indexPath.row)
+            let task = self.tasks.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
             tableView.reloadData()
-            self.presentDestinationViewController(meal)
+            self.presentDestinationViewController(task)
             return true
         })]
         cell.leftSwipeSettings.transition = MGSwipeTransition.Border
@@ -87,10 +87,10 @@ class MealTableViewController: UITableViewController {
         //configure right buttons
         cell.rightButtons = [MGSwipeButton(title: "", icon: UIImage(named:"Delay.png"), backgroundColor: UIColor.yellowColor(), callback: {
             (sender: MGSwipeTableCell!) -> Bool in
-            self.meals.removeAtIndex(indexPath.row)
+            self.tasks.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
             tableView.reloadData()
-            self.presentDestinationViewControllerDelay(meal)
+            self.presentDestinationViewControllerDelay(task)
             return true
         })]
         cell.rightSwipeSettings.transition = MGSwipeTransition.Border
@@ -114,8 +114,8 @@ class MealTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
-            meals.removeAtIndex(indexPath.row)
-            saveMeals()
+            tasks.removeAtIndex(indexPath.row)
+            saveTasks()
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
@@ -144,15 +144,15 @@ class MealTableViewController: UITableViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ShowDetail" {
-            let mealDetailViewController = segue.destinationViewController as! MealViewController
+            let taskDetailViewController = segue.destinationViewController as! TaskViewController
             // Get the cell that generated this segue.
-            if let selectedMealCell = sender as? MealTableViewCell {
-                let indexPath = tableView.indexPathForCell(selectedMealCell)!
-                let selectedMeal = meals[indexPath.row]
-                mealDetailViewController.meal = selectedMeal
+            if let selectedTaskCell = sender as? TaskTableViewCell {
+                let indexPath = tableView.indexPathForCell(selectedTaskCell)!
+                let selectedTask = tasks[indexPath.row]
+                taskDetailViewController.task = selectedTask
             }
         } else if segue.identifier == "AddItem" {
-            print("Adding new meal.")
+            print("Adding new task.")
         }
     }
     
@@ -160,34 +160,34 @@ class MealTableViewController: UITableViewController {
         performSegueWithIdentifier("Complete", sender: self)
     }
     
-    @IBAction func unwindToMealList(sender: UIStoryboardSegue) {
-        if let sourceViewController = sender.sourceViewController as? MealViewController, meal = sourceViewController.meal {
+    @IBAction func unwindToTaskList(sender: UIStoryboardSegue) {
+        if let sourceViewController = sender.sourceViewController as? TaskViewController, task = sourceViewController.task {
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
-                // Update an existing meal.
-                meals[selectedIndexPath.row] = meal
+                // Update an existing task.
+                tasks[selectedIndexPath.row] = task
                 tableView.reloadRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .None)
             }
             else {
-                // Add a new meal.
-                let newIndexPath = NSIndexPath(forRow: meals.count, inSection: 0)
-                meals.append(meal)
+                // Add a new task.
+                let newIndexPath = NSIndexPath(forRow: tasks.count, inSection: 0)
+                tasks.append(task)
                 tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
             }
-            // Save the meals.
-            saveMeals()
+            // Save the tasks.
+            saveTasks()
         }
     }
     
     //MARK: NSCoding
-    func saveMeals() {
-        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(meals, toFile: Meal.ArchiveURL.path!)
+    func saveTasks() {
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(tasks, toFile: Task.ArchiveURL.path!)
         if !isSuccessfulSave {
-            print("Failed to save meals...")
+            print("Failed to save tasks...")
         }
     }
     
-    func loadMeals() -> [Meal]? {
-        return NSKeyedUnarchiver.unarchiveObjectWithFile(Meal.ArchiveURL.path!) as? [Meal]
+    func loadTasks() -> [Task]? {
+        return NSKeyedUnarchiver.unarchiveObjectWithFile(Task.ArchiveURL.path!) as? [Task]
     }
 
 }

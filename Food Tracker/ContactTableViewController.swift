@@ -47,7 +47,7 @@ class ContactTableViewController: UITableViewController {
         let cellIdentifier = "ContactTableViewCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! ContactTableViewCell
         
-        // Fetches the appropriate meal for the data source layout.
+        // Fetches the appropriate task for the data source layout.
         let contact = contacts[indexPath.row]
         
         cell.nameLabel.text = contact.name

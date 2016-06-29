@@ -12,19 +12,19 @@ class DoneTableViewController: UITableViewController {
     
     // MARK: Properties
     
-    var meals = [Meal]()
+    var tasks = [Task]()
     
-    func addMeal(meal: Meal) {
-        meals.append(meal)
+    func addTask(task: Task) {
+        tasks.append(task)
         self.tableView.reloadData()
-        print(meals)
+        print(tasks)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(meals)
+        print(tasks)
 //        self.tableView.registerClass(DoneTableViewCell.self, forCellReuseIdentifier: "Done")
-        meals.append(Meal(name: " ",desc: "b",dueDate: NSDate(),status: "")!)
+        tasks.append(Task(name: " ",desc: "b",dueDate: NSDate(),status: "")!)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -46,20 +46,20 @@ class DoneTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return meals.count
+        return tasks.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        print(meals)
+        print(tasks)
         let cell: DoneTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("Done") as! DoneTableViewCell
 
-        let meal = meals[indexPath.row]
+        let task = tasks[indexPath.row]
         if let label = cell.nameLabel{
-            label.text = meal.name
+            label.text = task.name
         }
         if let label = cell.nameLabel2{
-            label.text = meal.name
+            label.text = task.name
         }
 
         // Configure the cell...
