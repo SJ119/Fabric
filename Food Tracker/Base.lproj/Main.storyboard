@@ -38,18 +38,7 @@
                     <view key="view" contentMode="scaleToFill" id="Z4l-Ae-hBq">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="achieve" translatesAutoresizingMaskIntoConstraints="NO" id="fSU-aI-JIg">
-                                <rect key="frame" x="20" y="64" width="560" height="479"/>
-                            </imageView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="fSU-aI-JIg" firstAttribute="leading" secondItem="Z4l-Ae-hBq" secondAttribute="leadingMargin" id="dh3-ai-FRQ"/>
-                            <constraint firstItem="fSU-aI-JIg" firstAttribute="trailing" secondItem="Z4l-Ae-hBq" secondAttribute="trailingMargin" id="pFE-c4-Ksb"/>
-                            <constraint firstItem="fSU-aI-JIg" firstAttribute="top" secondItem="ee1-yo-oqa" secondAttribute="bottom" id="wOn-oL-mSp"/>
-                            <constraint firstItem="8er-tZ-BTg" firstAttribute="top" secondItem="fSU-aI-JIg" secondAttribute="bottom" id="wn1-7Q-Pn9"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Achievements" id="orO-W5-YQL"/>
                 </viewController>
@@ -530,7 +519,6 @@
         <image name="Complete" width="40" height="40"/>
         <image name="Current" width="40" height="40"/>
         <image name="Delay" width="40" height="40"/>
-        <image name="achieve" width="333" height="480"/>
         <image name="achievements" width="40" height="40"/>
         <image name="contact" width="40" height="40"/>
         <image name="contacts" width="931" height="1200"/>

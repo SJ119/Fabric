@@ -23,7 +23,21 @@ class TaskTableViewController: UITableViewController {
         navigationItem.leftBarButtonItem = editButtonItem()
         // Load any saved tasks, otherwise load sample data.
         if let savedTasks = loadTasks() {
-            tasks += savedTasks
+            // saved Tasks is an array of tasks if any are past their deadline move it to delay list
+            let currentDate = NSDate()
+            
+            for item in savedTasks {
+                if (item.dueDate.compare(currentDate) == NSComparisonResult.OrderedAscending) {
+                    //due date has passed, move to delayed
+                    item.status = "Delayed"
+                    print("delay item: " + item.name)
+                    self.presentDestinationViewControllerDelay(item)
+                    
+                } else {
+                    tasks += [item]
+                }
+            }
+            //tasks += savedTasks
         }
     }
     
@@ -74,6 +88,7 @@ class TaskTableViewController: UITableViewController {
         cell.leftButtons = [MGSwipeButton(title: "", icon: UIImage(named:"Complete.png"), backgroundColor: UIColor.greenColor(), callback: {
             (sender: MGSwipeTableCell!) -> Bool in
             let task = self.tasks.removeAtIndex(indexPath.row)
+            task.status = "Complete"
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
             tableView.reloadData()
             self.presentDestinationViewController(task)
@@ -90,6 +105,7 @@ class TaskTableViewController: UITableViewController {
             self.tasks.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
             tableView.reloadData()
+            task.status = "Delayed"
             self.presentDestinationViewControllerDelay(task)
             return true
         })]
