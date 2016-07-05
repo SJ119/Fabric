@@ -30,7 +30,7 @@
         <!--Achievements-->
         <scene sceneID="5US-gu-dk7">
             <objects>
-                <viewController id="Y1a-MO-6zi" sceneMemberID="viewController">
+                <viewController id="Y1a-MO-6zi" customClass="AchievementsViewController" customModule="Food_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ee1-yo-oqa"/>
                         <viewControllerLayoutGuide type="bottom" id="8er-tZ-BTg"/>

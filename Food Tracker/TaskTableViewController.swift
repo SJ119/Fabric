@@ -188,6 +188,8 @@ class TaskTableViewController: UITableViewController {
                 let newIndexPath = NSIndexPath(forRow: tasks.count, inSection: 0)
                 tasks.append(task)
                 tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
+                
+                
             }
             // Save the tasks.
             saveTasks()
