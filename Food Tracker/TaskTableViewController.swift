@@ -45,12 +45,12 @@ class TaskTableViewController: UITableViewController {
     
         
     func presentDestinationViewController(task: Task) {
-        let viewController = UIApplication.sharedApplication().windows[0].rootViewController?.childViewControllers[3] as? DoneTableViewController
+        let viewController = UIApplication.sharedApplication().windows[0].rootViewController?.childViewControllers[3].childViewControllers[0] as? DoneTableViewController
         viewController?.addTask(task)
     }
     
     func presentDestinationViewControllerDelay(task: Task) {
-        let viewController = UIApplication.sharedApplication().windows[0].rootViewController?.childViewControllers[1] as? DelayTableViewController
+        let viewController = UIApplication.sharedApplication().windows[0].rootViewController?.childViewControllers[1].childViewControllers[0] as? DelayTableViewController
         viewController?.addTask(task)
     }
     
@@ -111,6 +111,9 @@ class TaskTableViewController: UITableViewController {
             return true
         })]
         cell.rightSwipeSettings.transition = MGSwipeTransition.Border
+        cell.rightExpansion = MGSwipeExpansionSettings()
+        cell.rightExpansion.buttonIndex = 0
+        cell.rightExpansion.fillOnTrigger = true
         
         
 
@@ -180,16 +183,19 @@ class TaskTableViewController: UITableViewController {
             
             delayIdx = delayIdx.reverse()
             print("Task length: " + String(self.tasks.count))
+            let taskLength = self.tasks.count
             for idx in delayIdx {
-                print("idx: " + String(idx))
-                //due date has passed, move to delayed
-                let task = self.tasks[idx]
-                self.tasks.removeAtIndex(idx)
-                let indexPath = NSIndexPath(forRow: idx, inSection: 0)
-                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
-                tableView.reloadData()
-                task.status = "Delayed"
-                self.presentDestinationViewControllerDelay(task)
+                if (idx < taskLength) {
+                    print("idx: " + String(idx))
+                    //due date has passed, move to delayed
+                    let task = self.tasks[idx]
+                    self.tasks.removeAtIndex(idx)
+                    let indexPath = NSIndexPath(forRow: idx, inSection: 0)
+                    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+                    tableView.reloadData()
+                    task.status = "Delayed"
+                    self.presentDestinationViewControllerDelay(task)
+                }
             }
         }
     }

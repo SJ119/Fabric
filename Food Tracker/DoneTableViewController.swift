@@ -23,8 +23,7 @@ class DoneTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print(tasks)
-//        self.tableView.registerClass(DoneTableViewCell.self, forCellReuseIdentifier: "Done")
-        tasks.append(Task(name: " ",desc: "b",dueDate: NSDate(),status: "")!)
+        // self.tableView.registerClass(DoneTableViewCell.self, forCellReuseIdentifier: "Done")
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

@@ -17,9 +17,9 @@
                     </tabBar>
                     <connections>
                         <segue destination="ogk-pe-sXb" kind="relationship" relationship="viewControllers" id="Lg9-0T-0r1"/>
-                        <segue destination="Cp8-Qv-UXC" kind="relationship" relationship="viewControllers" id="i6x-SO-fYY"/>
+                        <segue destination="egL-Fp-TkY" kind="relationship" relationship="viewControllers" id="i6x-SO-fYY"/>
                         <segue destination="iQO-0e-Pe8" kind="relationship" relationship="viewControllers" id="nVV-Ec-fYD"/>
-                        <segue destination="tQt-eZ-MXf" kind="relationship" relationship="viewControllers" id="VRS-tT-23l"/>
+                        <segue destination="wrI-ux-HzF" kind="relationship" relationship="viewControllers" id="VRS-tT-23l"/>
                         <segue destination="fRl-Id-Y3g" kind="relationship" relationship="viewControllers" id="S3u-cn-E2Y"/>
                     </connections>
                 </tabBarController>
@@ -191,7 +191,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Delay" id="qcZ-5g-Hdk" customClass="DelayTableViewCell" customModule="Fabric" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qcZ-5g-Hdk" id="wfb-AH-mIE">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -215,13 +215,13 @@
                             <outlet property="delegate" destination="Cp8-Qv-UXC" id="Oxl-Sw-tDO"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Delayed" image="Delay" id="kfW-gz-ZGV"/>
+                    <navigationItem key="navigationItem" title="Delayed" id="Not-7Z-kiq"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rkh-t0-jSh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1265" y="-923"/>
+            <point key="canvasLocation" x="-453" y="-923"/>
         </scene>
-        <!--Title-->
+        <!--Complete-->
         <scene sceneID="oSp-xi-PHD">
             <objects>
                 <tableViewController id="tQt-eZ-MXf" customClass="DoneTableViewController" customModule="Fabric" customModuleProvider="target" sceneMemberID="viewController">
@@ -231,7 +231,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Done" rowHeight="90" id="6Xd-qt-uEA" customClass="DoneTableViewCell" customModule="Fabric" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="600" height="90"/>
+                                <rect key="frame" x="0.0" y="92" width="600" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6Xd-qt-uEA" id="nL8-Pf-4t1">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="89.5"/>
@@ -256,12 +256,11 @@
                             <outlet property="delegate" destination="tQt-eZ-MXf" id="KMV-hW-GXY"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Complete" image="Complete" id="WFn-1L-tlj"/>
-                    <navigationItem key="navigationItem" title="Title" id="bST-wo-49d"/>
+                    <navigationItem key="navigationItem" title="Complete" id="bST-wo-49d"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ir4-Cw-vJ9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1282" y="-223"/>
+            <point key="canvasLocation" x="-470" y="-223"/>
         </scene>
         <!--Your Tasks-->
         <scene sceneID="7st-0K-Any">
@@ -513,6 +512,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sAT-mK-Igw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1228" y="-2321"/>
+        </scene>
+        <!--Complete-->
+        <scene sceneID="xmb-WQ-KoU">
+            <objects>
+                <navigationController title="Complete" automaticallyAdjustsScrollViewInsets="NO" id="wrI-ux-HzF" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Complete" image="Complete" id="WFn-1L-tlj"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="aWN-rZ-FEd">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="tQt-eZ-MXf" kind="relationship" relationship="rootViewController" id="L33-xb-XVX"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hgn-LS-5j8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1282" y="-223"/>
+        </scene>
+        <!--Delayed-->
+        <scene sceneID="E32-cK-cko">
+            <objects>
+                <navigationController title="Delayed" automaticallyAdjustsScrollViewInsets="NO" id="egL-Fp-TkY" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Delayed" image="Delay" id="kfW-gz-ZGV"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1Jr-Z1-K6y">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Cp8-Qv-UXC" kind="relationship" relationship="rootViewController" id="WsM-Vf-bfH"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="diF-dP-3W2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1265" y="-923"/>
         </scene>
     </scenes>
     <resources>
