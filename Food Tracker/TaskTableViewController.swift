@@ -156,27 +156,40 @@ class TaskTableViewController: UITableViewController {
     */
 
     func reloadCurrent(timer: NSTimer) {
+        
+        
+        
+        
+        
         if let savedTasks = loadTasks() {
             // saved Tasks is an array of tasks if any are past their deadline move it to delay list
             let currentDate = NSDate()
             
-            //var i = 0
+            var i = 0
+            var delayIdx = [Int]()
             for item in savedTasks {
                 if (item.dueDate.compare(currentDate) == NSComparisonResult.OrderedAscending) {
-                    //due date has passed, move to delayed
-                    item.status = "Delayed"
-                    //tasks.removeAtIndex(i)
-                    self.tableView.reloadData()
-                    self.presentDestinationViewControllerDelay(item)
-                    
-                    //item.status = "Delayed"
-                    print("delay item: " + item.name)
-                    //self.presentDestinationViewControllerDelay(item)
-                    
+                    print("I am delayed, removing from tasks and adding to delayed")
+                    delayIdx.append(i);
                 } else {
+                    print("I am not delayed, adding to tasks")
                     tasks += [item]
-                   // i += 1
                 }
+                i += 1
+            }
+            
+            delayIdx = delayIdx.reverse()
+            print("Task length: " + String(self.tasks.count))
+            for idx in delayIdx {
+                print("idx: " + String(idx))
+                //due date has passed, move to delayed
+                let task = self.tasks[idx]
+                self.tasks.removeAtIndex(idx)
+                let indexPath = NSIndexPath(forRow: idx, inSection: 0)
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+                tableView.reloadData()
+                task.status = "Delayed"
+                self.presentDestinationViewControllerDelay(task)
             }
         }
     }
