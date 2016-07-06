@@ -1,6 +1,6 @@
 //
-//  Food_TrackerTests.swift
-//  Food TrackerTests
+//  FabricTests.swift
+//  FabricTests
 //
 //  Created by Samantha Lauer on 2016-02-11.
 //  Copyright © 2016 Samantha Lauer. All rights reserved.
@@ -8,11 +8,11 @@
 
 import UIKit
 import XCTest
-@testable import Food_Tracker
+@testable import Fabric
 
-class Food_TrackerTests: XCTestCase {
+class FabricTests: XCTestCase {
     
-    //MARK: FoodTracker Tests
+    //MARK: FabricTests
     
     // Tests to confirm that the Task initializer returns when no name or a negative rating is provided.
     func testTaskInitialization() {

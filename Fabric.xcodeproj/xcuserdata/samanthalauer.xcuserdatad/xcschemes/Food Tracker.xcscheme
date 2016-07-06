@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "5D001CF51C6D5AF200AAB05A"
-               BuildableName = "Food Tracker.app"
-               BlueprintName = "Food Tracker"
-               ReferencedContainer = "container:Food Tracker.xcodeproj">
+               BuildableName = "Fabric.app"
+               BlueprintName = "Fabric"
+               ReferencedContainer = "container:Fabric.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "5D001D091C6D5AF300AAB05A"
-               BuildableName = "Food TrackerTests.xctest"
-               BlueprintName = "Food TrackerTests"
-               ReferencedContainer = "container:Food Tracker.xcodeproj">
+               BuildableName = "FabricTests.xctest"
+               BlueprintName = "FabricTests"
+               ReferencedContainer = "container:Fabric.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "5D001D141C6D5AF300AAB05A"
-               BuildableName = "Food TrackerUITests.xctest"
-               BlueprintName = "Food TrackerUITests"
-               ReferencedContainer = "container:Food Tracker.xcodeproj">
+               BuildableName = "FabricTests.xctest"
+               BlueprintName = "FabricUITests"
+               ReferencedContainer = "container:Fabric.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -53,9 +53,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5D001CF51C6D5AF200AAB05A"
-            BuildableName = "Food Tracker.app"
-            BlueprintName = "Food Tracker"
-            ReferencedContainer = "container:Food Tracker.xcodeproj">
+            BuildableName = "Fabric.app"
+            BlueprintName = "Fabric"
+            ReferencedContainer = "container:Fabric.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -76,9 +76,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5D001CF51C6D5AF200AAB05A"
-            BuildableName = "Food Tracker.app"
-            BlueprintName = "Food Tracker"
-            ReferencedContainer = "container:Food Tracker.xcodeproj">
+            BuildableName = "Fabric.app"
+            BlueprintName = "Fabric"
+            ReferencedContainer = "container:Fabric.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -95,9 +95,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5D001CF51C6D5AF200AAB05A"
-            BuildableName = "Food Tracker.app"
-            BlueprintName = "Food Tracker"
-            ReferencedContainer = "container:Food Tracker.xcodeproj">
+            BuildableName = "Fabric.app"
+            BlueprintName = "Fabric"
+            ReferencedContainer = "container:Fabric.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

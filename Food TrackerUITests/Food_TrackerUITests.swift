@@ -1,6 +1,6 @@
 //
-//  Food_TrackerUITests.swift
-//  Food TrackerUITests
+//  FabricUITests.swift
+//  FabricUITests
 //
 //  Created by Samantha Lauer on 2016-02-11.
 //  Copyright © 2016 Samantha Lauer. All rights reserved.
@@ -8,7 +8,7 @@
 
 import XCTest
 
-class Food_TrackerUITests: XCTestCase {
+class FabricUITests: XCTestCase {
         
     override func setUp() {
         super.setUp()

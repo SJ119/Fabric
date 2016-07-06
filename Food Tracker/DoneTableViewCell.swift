@@ -1,6 +1,6 @@
 //
 //  DoneTableViewCell.swift
-//  Food Tracker
+//  Fabric
 //
 //  Created by Shen Jin on 2016-06-26.
 //  Copyright © 2016 Samantha Lauer. All rights reserved.

@@ -1,6 +1,6 @@
 //
 //  TaskTableViewCell.swift
-//  Food Tracker
+//  Fabric
 //
 //  Created by Samantha Lauer on 2016-06-20.
 //  Copyright © 2016 Samantha Lauer. All rights reserved.
