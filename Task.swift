@@ -14,6 +14,7 @@ class Task: NSObject, NSCoding {
     var name:String
     var desc:String
     var dueDate:NSDate
+    //var timer:NSTimer
     var status:String
     
     //MARK: Archiving Paths

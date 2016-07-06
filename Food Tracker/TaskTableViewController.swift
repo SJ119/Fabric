@@ -18,6 +18,7 @@ class TaskTableViewController: UITableViewController {
     override func viewDidLoad() {
         print("loading task table view")
         super.viewDidLoad()
+        _ = NSTimer.scheduledTimerWithTimeInterval(60, target: self, selector: #selector(TaskTableViewController.reloadCurrent(_:)), userInfo: nil, repeats: true)
         //self.view.backgroundColor = UIColor.lightGrayColor()
         // Use the edit button item provided by the table view controller.
         navigationItem.leftBarButtonItem = editButtonItem()
@@ -154,6 +155,31 @@ class TaskTableViewController: UITableViewController {
     }
     */
 
+    func reloadCurrent(timer: NSTimer) {
+        if let savedTasks = loadTasks() {
+            // saved Tasks is an array of tasks if any are past their deadline move it to delay list
+            let currentDate = NSDate()
+            
+            //var i = 0
+            for item in savedTasks {
+                if (item.dueDate.compare(currentDate) == NSComparisonResult.OrderedAscending) {
+                    //due date has passed, move to delayed
+                    item.status = "Delayed"
+                    //tasks.removeAtIndex(i)
+                    self.tableView.reloadData()
+                    self.presentDestinationViewControllerDelay(item)
+                    
+                    //item.status = "Delayed"
+                    print("delay item: " + item.name)
+                    //self.presentDestinationViewControllerDelay(item)
+                    
+                } else {
+                    tasks += [item]
+                   // i += 1
+                }
+            }
+        }
+    }
     
     // MARK: - Navigation
 
