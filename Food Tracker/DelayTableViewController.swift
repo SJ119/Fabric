@@ -22,7 +22,6 @@ class DelayTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tasks.append(Task(name: " ",desc: "b",dueDate: NSDate(),status: "")!)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
