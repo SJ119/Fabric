@@ -72,8 +72,8 @@ class TaskViewController: UIViewController, UITextFieldDelegate, UINavigationCon
     //MARK:Navigation
     @IBAction func cancel(sender: UIBarButtonItem) {
         // Depending on style of presentation (modal or push presentation), this view controller needs to be dismissed in two different ways.
-        let isPresentingInAddTaskMode = presentingViewController is UINavigationController
-        
+        //let isPresentingInAddTaskMode = presentingViewController is UINavigationController
+        let isPresentingInAddTaskMode = presentingViewController is UITabBarController
         if isPresentingInAddTaskMode {
             dismissViewControllerAnimated(true, completion: nil)
         } else {
