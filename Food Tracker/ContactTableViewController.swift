@@ -92,15 +92,25 @@ class ContactTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "ContactDetails" {
+            let contactInfoViewController = segue.destinationViewController as! ContactInfoViewController
+            if let selectedContactCell = sender as? ContactTableViewCell {
+                let indexPath = tableView.indexPathForCell(selectedContactCell)!
+                let selectedContact = contacts[indexPath.row]
+                contactInfoViewController.contact = selectedContact
+            }
+
+        }
+        
     }
-    */
+
     
     // Action method adds to contact list if Save button selected
     @IBAction func unwindToContactList(sender: UIStoryboardSegue) {

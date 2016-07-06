@@ -27,6 +27,9 @@ class ContactViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         super.viewDidLoad()
         
         // Add any additional setup to load the view, typically from nib
+        if let contact = contact {
+            navigationItem.title = contact.name
+        }
         
         //Handle the text field's user input through delegate callbacks.
         UserNameTextField.delegate = self

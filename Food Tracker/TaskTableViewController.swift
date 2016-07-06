@@ -159,11 +159,6 @@ class TaskTableViewController: UITableViewController {
     */
 
     func reloadCurrent(timer: NSTimer) {
-        
-        
-        
-        
-        
         if let savedTasks = loadTasks() {
             // saved Tasks is an array of tasks if any are past their deadline move it to delay list
             let currentDate = NSDate()

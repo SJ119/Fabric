@@ -76,6 +76,7 @@
                                 <connections>
                                     <outlet property="nameLabel" destination="r65-eT-9Bo" id="FPR-ki-zj6"/>
                                     <outlet property="photoImageView" destination="Atm-pY-jxO" id="JqD-5x-98K"/>
+                                    <segue destination="9n6-Td-nGp" kind="show" identifier="ContactDetails" id="Ige-Gr-Cz3"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -94,7 +95,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vbq-pt-ape" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-564" y="-1598"/>
+            <point key="canvasLocation" x="-356" y="-1598"/>
         </scene>
         <!--New Contact-->
         <scene sceneID="63d-3p-CJw">
@@ -179,7 +180,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1008" y="-1598"/>
+            <point key="canvasLocation" x="1132" y="-1114"/>
         </scene>
         <!--Delayed-->
         <scene sceneID="JPK-2r-rJZ">
@@ -476,6 +477,24 @@
             </objects>
             <point key="canvasLocation" x="-1240" y="-1598"/>
         </scene>
+        <!--Contact Info View Controller-->
+        <scene sceneID="Wos-cB-kiW">
+            <objects>
+                <viewController id="9n6-Td-nGp" customClass="ContactInfoViewController" customModule="Fabric" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yM3-Mt-gOR"/>
+                        <viewControllerLayoutGuide type="bottom" id="sea-Dx-44w"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="r8I-B9-MWQ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ahc-ba-pV8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="360" y="-1840"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="Qnt-qi-D9E">
             <objects>
@@ -492,7 +511,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i6w-KX-AA0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="252" y="-1598"/>
+            <point key="canvasLocation" x="352" y="-1114"/>
         </scene>
         <!--Achievements-->
         <scene sceneID="Bet-Db-da3">
@@ -561,6 +580,6 @@
         <image name="contacts" width="931" height="1200"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Qhq-89-ENo"/>
+        <segue reference="z6m-wH-btM"/>
     </inferredMetricsTieBreakers>
 </document>
