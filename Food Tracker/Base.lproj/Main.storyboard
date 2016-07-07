@@ -488,8 +488,56 @@
                     <view key="view" contentMode="scaleToFill" id="r8I-B9-MWQ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="m26-tB-qSl">
+                                <rect key="frame" x="20" y="72" width="105" height="109"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="m26-tB-qSl" secondAttribute="height" multiplier="105:109" id="uoe-EB-7fm"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Fl-jo-V31">
+                                <rect key="frame" x="133" y="85" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hRU-wK-XAO">
+                                <rect key="frame" x="133" y="121" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u1N-Iu-gJZ">
+                                <rect key="frame" x="550" y="151" width="30" height="30"/>
+                                <state key="normal" title="Edit"/>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="s7v-1m-OEz">
+                                <rect key="frame" x="20" y="199" width="560" height="344"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="sea-Dx-44w" firstAttribute="top" secondItem="m26-tB-qSl" secondAttribute="bottom" constant="370" id="BDZ-9U-dsX"/>
+                            <constraint firstItem="s7v-1m-OEz" firstAttribute="top" secondItem="u1N-Iu-gJZ" secondAttribute="bottom" constant="18" id="DRe-so-s6o"/>
+                            <constraint firstItem="m26-tB-qSl" firstAttribute="leading" secondItem="r8I-B9-MWQ" secondAttribute="leadingMargin" id="M6f-WC-Z16"/>
+                            <constraint firstItem="7Fl-jo-V31" firstAttribute="leading" secondItem="m26-tB-qSl" secondAttribute="trailing" constant="8" id="VEp-g5-szy"/>
+                            <constraint firstItem="sea-Dx-44w" firstAttribute="top" secondItem="u1N-Iu-gJZ" secondAttribute="bottom" constant="370" id="ZBY-rF-kE9"/>
+                            <constraint firstItem="hRU-wK-XAO" firstAttribute="leading" secondItem="m26-tB-qSl" secondAttribute="trailing" constant="8" id="kZK-sf-gAe"/>
+                            <constraint firstItem="u1N-Iu-gJZ" firstAttribute="trailing" secondItem="r8I-B9-MWQ" secondAttribute="trailingMargin" id="m9N-TB-Bo1"/>
+                            <constraint firstItem="7Fl-jo-V31" firstAttribute="top" secondItem="yM3-Mt-gOR" secondAttribute="bottom" constant="21" id="mWA-4Z-3t7"/>
+                            <constraint firstItem="sea-Dx-44w" firstAttribute="top" secondItem="s7v-1m-OEz" secondAttribute="bottom" constant="8" id="nEh-QT-uOX"/>
+                            <constraint firstItem="s7v-1m-OEz" firstAttribute="leading" secondItem="r8I-B9-MWQ" secondAttribute="leadingMargin" id="nbM-cL-cgk"/>
+                            <constraint firstItem="s7v-1m-OEz" firstAttribute="trailing" secondItem="r8I-B9-MWQ" secondAttribute="trailingMargin" id="qNe-3A-KmY"/>
+                            <constraint firstItem="m26-tB-qSl" firstAttribute="top" secondItem="yM3-Mt-gOR" secondAttribute="bottom" constant="8" id="xTc-7R-ktA"/>
+                            <constraint firstItem="hRU-wK-XAO" firstAttribute="top" secondItem="7Fl-jo-V31" secondAttribute="bottom" constant="15" id="xU2-4j-TYr"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="ContactPhoto" destination="m26-tB-qSl" id="b3W-KN-D8R"/>
+                        <outlet property="emailLabel" destination="hRU-wK-XAO" id="iJe-TE-h6X"/>
+                        <outlet property="nickNameLabel" destination="7Fl-jo-V31" id="Ad0-S0-oel"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ahc-ba-pV8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
