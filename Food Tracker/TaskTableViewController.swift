@@ -204,7 +204,7 @@ class TaskTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "ShowDetail" {
+        if segue.identifier == "ShowDetail" || segue.identifier == "EditDetail" {
             let taskDetailViewController = segue.destinationViewController as! TaskViewController
             // Get the cell that generated this segue.
             if let selectedTaskCell = sender as? TaskTableViewCell {
