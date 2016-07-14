@@ -22,6 +22,11 @@ class ContactViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     // or constructed as part of adding a new contact.
     var contact: Contact?
     
+    func presentDestinationViewControllerAchievement() {
+        let viewController = UIApplication.sharedApplication().windows[0].rootViewController?.childViewControllers[0].childViewControllers[0] as? AchievementsViewController
+        let task = Task(name: "Dummy", desc: "", dueDate: NSDate(), status: "Contact")
+        viewController?.addTask(task!)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,7 +84,7 @@ class ContactViewController: UIViewController, UITextFieldDelegate, UIImagePicke
             let photo = photoImageView.image
             
             contact = Contact(name: userName, nickName: nickName, email: email, photo: photo)
-            
+            self.presentDestinationViewControllerAchievement()
         }
     }
     
