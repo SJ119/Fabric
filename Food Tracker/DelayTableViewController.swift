@@ -64,6 +64,19 @@ class DelayTableViewController: UITableViewController {
         return cell
     }
  
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "EditDetail" {
+            let taskDetailViewController = segue.destinationViewController as! TaskViewController
+            // Get the cell that generated this segue.
+            if let selectedTaskCell = sender as? TaskTableViewCell {
+                let indexPath = tableView.indexPathForCell(selectedTaskCell)!
+                let selectedTask = tasks[indexPath.row]
+                taskDetailViewController.task = selectedTask
+            }
+        }
+    }
 
     /*
     // Override to support conditional editing of the table view.

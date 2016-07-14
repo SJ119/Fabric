@@ -199,7 +199,7 @@ class TaskTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "ShowDetail" || segue.identifier == "EditDetail" {
+        if segue.identifier == "ShowDetail" {
             let taskDetailViewController = segue.destinationViewController as! TaskViewController
             // Get the cell that generated this segue.
             if let selectedTaskCell = sender as? TaskTableViewCell {
@@ -218,6 +218,8 @@ class TaskTableViewController: UITableViewController {
     
     @IBAction func unwindToTaskList(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.sourceViewController as? TaskViewController, task = sourceViewController.task {
+            print("TASK: ", task.status)
+            
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
                 // Update an existing task.
                 tasks[selectedIndexPath.row] = task
@@ -228,9 +230,8 @@ class TaskTableViewController: UITableViewController {
                 let newIndexPath = NSIndexPath(forRow: tasks.count, inSection: 0)
                 tasks.append(task)
                 tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
-                
-                
             }
+            
             // Save the tasks.
             saveTasks()
         }

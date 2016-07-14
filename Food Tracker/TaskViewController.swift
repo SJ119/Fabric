@@ -35,9 +35,7 @@ class TaskViewController: UIViewController, UITextFieldDelegate, UINavigationCon
             nameTextField.text = task.name
             descTextField.text = task.desc
             dueDatePicker.date = task.dueDate
-            
             dueDatePicker.minimumDate = NSDate()
-            
         }
         
         //Enable the Save button only if the text field has a valid Task name.
@@ -85,7 +83,6 @@ class TaskViewController: UIViewController, UITextFieldDelegate, UINavigationCon
     
     //This method lets you configure a view controller before it's presented.
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
         if saveButton === sender {
             let name = nameTextField.text ?? ""
             let desc = descTextField.text ?? ""
