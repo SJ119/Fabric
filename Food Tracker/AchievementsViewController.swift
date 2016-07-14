@@ -22,6 +22,7 @@ class AchievementsViewController: UITableViewController, UINavigationControllerD
     
         //helper numbers
         var threshold : [Int] = [1,3,10]
+        var threshold2 : [Int] = [1,3,5]
         var iComplete = 0
         var iDelay = 0
         var iContact = 0
@@ -53,7 +54,7 @@ class AchievementsViewController: UITableViewController, UINavigationControllerD
             }
             else if task.status == "Contact" && iContact <= 2{
                 contact = contact + 1
-                if contact == threshold[iContact] {
+                if contact == threshold2[iContact] {
                     achievements.insert(achieveContact[iContact], atIndex:  0)
                     iContact = iContact + 1
                     newAchieve = true
