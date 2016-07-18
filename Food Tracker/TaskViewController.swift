@@ -14,8 +14,6 @@ class TaskViewController: UIViewController, UITextFieldDelegate, UINavigationCon
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var descTextField: UITextField!
     @IBOutlet weak var dueDatePicker: UIDatePicker!
- 
-
     
     /*
      @IBOutlet weak var dueDatePicker: UIDatePicker!
