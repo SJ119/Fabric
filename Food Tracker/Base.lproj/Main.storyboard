@@ -196,7 +196,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Delay" id="qcZ-5g-Hdk" customClass="DelayTableViewCell" customModule="Fabric" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Delay" id="qcZ-5g-Hdk" customClass="TaskTableViewCell" customModule="Fabric" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qcZ-5g-Hdk" id="wfb-AH-mIE">
@@ -237,7 +237,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Done" rowHeight="90" id="6Xd-qt-uEA" customClass="DoneTableViewCell" customModule="Fabric" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Done" rowHeight="90" id="6Xd-qt-uEA" customClass="TaskTableViewCell" customModule="Fabric" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6Xd-qt-uEA" id="nL8-Pf-4t1">
@@ -254,7 +254,6 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="nameLabel" destination="QIn-ie-Ohl" id="lVa-Fy-lNl"/>
-                                    <outlet property="nameLabel2" destination="QIn-ie-Ohl" id="MgM-f5-ZlU"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

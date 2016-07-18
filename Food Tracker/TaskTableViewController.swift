@@ -16,34 +16,19 @@ class TaskTableViewController: UITableViewController {
     var tasks = [Task]()
 
     override func viewDidLoad() {
-        print("loading task table view")
         super.viewDidLoad()
-        _ = NSTimer.scheduledTimerWithTimeInterval(60, target: self, selector: #selector(TaskTableViewController.reloadCurrent(_:)), userInfo: nil, repeats: true)
-        //self.view.backgroundColor = UIColor.lightGrayColor()
+        print("Loading TaskTableView")
+        
+        NSTimer.scheduledTimerWithTimeInterval(60, target: self, selector: #selector(TaskTableViewController.reloadCurrent(_:)), userInfo: nil, repeats: true)
+        
         // Use the edit button item provided by the table view controller.
         navigationItem.leftBarButtonItem = editButtonItem()
-        // Load any saved tasks, otherwise load sample data.
-        if let savedTasks = loadTasks() {
-            // saved Tasks is an array of tasks if any are past their deadline move it to delay list
-            let currentDate = NSDate()
-            
-            for item in savedTasks {
-                if (item.dueDate.compare(currentDate) == NSComparisonResult.OrderedAscending) {
-                    //due date has passed, move to delayed
-                    item.status = "Delayed"
-                    print("delay item: " + item.name)
-                    self.presentDestinationViewControllerDelay(item)
-                    
-                } else {
-                    tasks += [item]
-                }
-            }
-            //tasks += savedTasks
-        }
+        
+        // Do an initial reload on our current list
+        reloadCurrent(NSTimer())
     }
     
     
-        
     func presentDestinationViewController(task: Task) {
         let viewController = UIApplication.sharedApplication().windows[0].rootViewController?.childViewControllers[3].childViewControllers[0] as? DoneTableViewController
         viewController?.addTask(task)
@@ -93,6 +78,7 @@ class TaskTableViewController: UITableViewController {
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
             tableView.reloadData()
             self.presentDestinationViewController(task)
+            self.saveTasks()
             return true
         })]
         cell.leftSwipeSettings.transition = MGSwipeTransition.Border
@@ -108,6 +94,7 @@ class TaskTableViewController: UITableViewController {
             tableView.reloadData()
             task.status = "Delayed"
             self.presentDestinationViewControllerDelay(task)
+            self.saveTasks()
             return true
         })]
         cell.rightSwipeSettings.transition = MGSwipeTransition.Border
@@ -115,8 +102,6 @@ class TaskTableViewController: UITableViewController {
         cell.rightExpansion.buttonIndex = 0
         cell.rightExpansion.fillOnTrigger = true
         
-        
-
         return cell
     }
     
@@ -141,43 +126,30 @@ class TaskTableViewController: UITableViewController {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 
     func reloadCurrent(timer: NSTimer) {
         if let savedTasks = loadTasks() {
+            if savedTasks.count == 0 {
+                // nothing to process
+                return
+            }
+            
             // saved Tasks is an array of tasks if any are past their deadline move it to delay list
             let currentDate = NSDate()
             
-            var i = 0
             var delayIdx = [Int]()
-            for item in savedTasks {
+            for (i, item) in savedTasks.enumerate() {
                 if (item.dueDate.compare(currentDate) == NSComparisonResult.OrderedAscending) {
-                    print("I am delayed, removing from tasks and adding to delayed")
+                    print("Task \(i) is delayed, recorded \(i) as need to remove")
                     delayIdx.append(i);
                 } else {
-                    print("I am not delayed, adding to tasks")
-                    tasks += [item]
+                    print("Task \(i) is not delayed")
                 }
-                i += 1
             }
             
             delayIdx = delayIdx.reverse()
-            print("Task length: " + String(self.tasks.count))
+            print("Tasks needed to be removed in reverse order are \(delayIdx)")
+            print("Tasks length: \(self.tasks.count)")
             let taskLength = self.tasks.count
             for idx in delayIdx {
                 if (idx < taskLength) {
@@ -192,6 +164,8 @@ class TaskTableViewController: UITableViewController {
                     self.presentDestinationViewControllerDelay(task)
                 }
             }
+            
+            saveTasks()
         }
     }
     
@@ -208,7 +182,7 @@ class TaskTableViewController: UITableViewController {
                 taskDetailViewController.task = selectedTask
             }
         } else if segue.identifier == "AddItem" {
-            print("Adding new task.")
+            print("Preparing to add new task.")
         }
     }
     
@@ -225,11 +199,10 @@ class TaskTableViewController: UITableViewController {
             }
             else {
                 // Add a new task.
+                print("Adding new task \(task.name).")
                 let newIndexPath = NSIndexPath(forRow: tasks.count, inSection: 0)
                 tasks.append(task)
                 tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
-                
-                
             }
             // Save the tasks.
             saveTasks()
