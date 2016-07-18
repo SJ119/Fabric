@@ -26,8 +26,21 @@ class ContactViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         super.viewDidLoad()
         
         // Add any additional setup to load the view, typically from nib
+        /*if let contact = contact {
+            navigationItem.title = contact.name
+        }*/
+        
         if let contact = contact {
             navigationItem.title = contact.name
+            photoImageView.image = contact.photo
+            UserNameTextField.text = contact.name
+            NickNameTextField.text = contact.nickName
+            EmailTextField.text = contact.email
+            UserNameTextField.userInteractionEnabled = false;
+            //nameTextField.text = task.name
+            // descTextField.text = task.desc
+            // dueDatePicker.date = task.dueDate
+            
         }
         
         //Handle the text field's user input through delegate callbacks.
@@ -67,7 +80,14 @@ class ContactViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     // MARK: Navigation
     
     @IBAction func cancel(sender: UIBarButtonItem) {
-        dismissViewControllerAnimated(true, completion: nil)
+        // Depending on style of presentation (modal or push presentation), this view controller needs to be dismissed in two different ways.
+        //let isPresentingInAddTaskMode = presentingViewController is UINavigationController
+        let isPresentingInAddTaskMode = presentingViewController is UITabBarController
+        if isPresentingInAddTaskMode {
+            dismissViewControllerAnimated(true, completion: nil)
+        } else {
+            navigationController!.popViewControllerAnimated(true)
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
