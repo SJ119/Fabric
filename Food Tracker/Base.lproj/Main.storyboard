@@ -201,7 +201,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1132" y="-1114"/>
+            <point key="canvasLocation" x="1110" y="-1412"/>
         </scene>
         <!--Delayed-->
         <scene sceneID="JPK-2r-rJZ">
@@ -531,6 +531,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u1N-Iu-gJZ">
                                 <rect key="frame" x="550" y="151" width="30" height="30"/>
                                 <state key="normal" title="Edit"/>
+                                <connections>
+                                    <segue destination="ax1-oN-H1D" kind="show" identifier="Edit" id="GCG-Tj-WgE"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="s7v-1m-OEz">
                                 <rect key="frame" x="20" y="199" width="560" height="344"/>
@@ -650,5 +653,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="z6m-wH-btM"/>
+        <segue reference="GCG-Tj-WgE"/>
     </inferredMetricsTieBreakers>
 </document>

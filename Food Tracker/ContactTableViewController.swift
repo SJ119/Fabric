@@ -21,7 +21,7 @@ class ContactTableViewController: UITableViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        self.navigationItem.leftBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
@@ -65,17 +65,18 @@ class ContactTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
+            contacts.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+    
 
     /*
     // Override to support rearranging the table view.
@@ -116,12 +117,19 @@ class ContactTableViewController: UITableViewController {
     @IBAction func unwindToContactList(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.sourceViewController as?
             ContactViewController, contact = sourceViewController.contact {
-            // Add a new contact
-            let newIndexPath = NSIndexPath(forRow: contacts.count, inSection: 0)
-            contacts.append(contact)
+            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                // Update an existing task.
+                contacts[selectedIndexPath.row] = contact
+                tableView.reloadRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .None)
+            }
+            else {
+                // Add a new contact
+                let newIndexPath = NSIndexPath(forRow: contacts.count, inSection: 0)
+                contacts.append(contact)
             
-            // inserts contact at bottom (will want to alphabetize later!!
-            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
+                // inserts contact at bottom (will want to alphabetize later!!
+                tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
+            }
         }
     }
 
