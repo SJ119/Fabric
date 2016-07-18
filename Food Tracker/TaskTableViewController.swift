@@ -197,6 +197,7 @@ class TaskTableViewController: UITableViewController {
                     tableView.reloadData()
                     task.status = "Delayed"
                     self.presentDestinationViewControllerDelay(task)
+                    self.presentDestinationViewControllerAchievement(task)
                 }
             }
         }

@@ -8,9 +8,13 @@
 
 import UIKit
 
-class AchievementsViewController: UITableViewController, UINavigationControllerDelegate {
+class AchievementsViewController: UIViewController, UINavigationControllerDelegate {
     
-        var achievements = [String]()
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var pointsLabel: UILabel!
+    
+    var currPoints = 50
+        /*var achievements = [String]()
 
         //achievements
         //Complete Task
@@ -60,13 +64,23 @@ class AchievementsViewController: UITableViewController, UINavigationControllerD
                     newAchieve = true
                 }
             }
-            self.tableView.reloadData()
+            //self.tableView.reloadData()
             if newAchieve {
                 //need to make a different image
                 self.tabBarController?.tabBar.items?[0].image = UIImage(named: "achievementsnotify")
                 newCount = newCount + 1
             }
         }
+ */
+    func addTask(task: Task) {
+        if (task.status == "Complete") {
+            print("completeing a task")
+            currPoints += 10
+        } else if (task.status == "Delayed") {
+            currPoints -= 15
+        }
+        pointsLabel.text = String(currPoints) + "pts"
+    }
     
         override func viewDidLoad() {
             super.viewDidLoad()
@@ -77,28 +91,29 @@ class AchievementsViewController: UITableViewController, UINavigationControllerD
             super.didReceiveMemoryWarning()
             // Dispose of any resources that can be recreated.
         }
-    
+ /*
         func navigationController(navigationController: UINavigationController, didShowViewController viewController: UIViewController, animated: Bool) {
             if newCount == 0 {
-                self.tableView.reloadData()
+                //self.tableView.reloadData()
             }
             self.tabBarController?.tabBar.items?[0].image = UIImage(named: "achievements")
             newCount = 0
         }
-    
+    */
         // MARK: - Table view data source
         
-        override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        /*override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
             // #warning Incomplete implementation, return the number of sections
             return 1
         }
-        
+ */
+/*
         override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             // #warning Incomplete implementation, return the number of rows
             return achievements.count
         }
-        
-        
+*/
+  /*
         override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
             let cell: AchievementTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("Achievement") as! AchievementTableViewCell
             let achievement = achievements[indexPath.row]
@@ -113,7 +128,7 @@ class AchievementsViewController: UITableViewController, UINavigationControllerD
             
             return cell
         }
-        
+   */
         
         /*
          // Override to support conditional editing of the table view.
