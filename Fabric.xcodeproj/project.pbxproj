@@ -23,16 +23,15 @@
 		5DD7E2481D1849BB003972E1 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD7E2451D1849BB003972E1 /* Task.swift */; };
 		5DD7E24A1D185108003972E1 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD7E2491D185108003972E1 /* TaskTableViewCell.swift */; };
 		5DD7E24C1D18749C003972E1 /* TaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD7E24B1D18749C003972E1 /* TaskTableViewController.swift */; };
-		5DFF5BC81D1C1A74009AD1DB /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFF5BC71D1C1A74009AD1DB /* ContactTableViewCell.swift */; };
 		5DFF5BCA1D1C20E3009AD1DB /* ContactTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFF5BC91D1C20E3009AD1DB /* ContactTableViewController.swift */; };
 		5DFF5BCC1D1C22D2009AD1DB /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFF5BCB1D1C22D2009AD1DB /* Contact.swift */; };
 		5DFF5BCD1D1C22D2009AD1DB /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFF5BCB1D1C22D2009AD1DB /* Contact.swift */; };
 		5DFF5BCE1D1C22D2009AD1DB /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFF5BCB1D1C22D2009AD1DB /* Contact.swift */; };
 		84ECCC661D37550900C91BFD /* AchievementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ECCC651D37550900C91BFD /* AchievementTableViewCell.swift */; };
-		A75727F31D20CACB008388CA /* DoneTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75727F21D20CACB008388CA /* DoneTableViewCell.swift */; };
+		A711C6D71D3EB2650075E89D /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFF5BC71D1C1A74009AD1DB /* ContactTableViewCell.swift */; };
+		A737FD5C1D3D66D200857249 /* persistData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A737FD5B1D3D66D200857249 /* persistData.swift */; };
 		A75727F71D20CDEE008388CA /* DoneTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75727F61D20CDEE008388CA /* DoneTableViewController.swift */; };
 		A75727F91D20F6E7008388CA /* DelayTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75727F81D20F6E7008388CA /* DelayTableViewController.swift */; };
-		A75727FB1D20F6F1008388CA /* DelayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75727FA1D20F6F1008388CA /* DelayTableViewCell.swift */; };
 		DA1C0189075DFE7EF5E5DF89 /* Pods_Food_Tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1AB8D201D8230C54A332647 /* Pods_Food_Tracker.framework */; };
 /* End PBXBuildFile section */
 
@@ -95,10 +94,9 @@
 		5DFF5BC91D1C20E3009AD1DB /* ContactTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactTableViewController.swift; sourceTree = "<group>"; };
 		5DFF5BCB1D1C22D2009AD1DB /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		84ECCC651D37550900C91BFD /* AchievementTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AchievementTableViewCell.swift; sourceTree = "<group>"; };
-		A75727F21D20CACB008388CA /* DoneTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoneTableViewCell.swift; sourceTree = "<group>"; };
+		A737FD5B1D3D66D200857249 /* persistData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = persistData.swift; sourceTree = "<group>"; };
 		A75727F61D20CDEE008388CA /* DoneTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoneTableViewController.swift; sourceTree = "<group>"; };
 		A75727F81D20F6E7008388CA /* DelayTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DelayTableViewController.swift; sourceTree = "<group>"; };
-		A75727FA1D20F6F1008388CA /* DelayTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DelayTableViewCell.swift; sourceTree = "<group>"; };
 		D1AB8D201D8230C54A332647 /* Pods_Food_Tracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Food_Tracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -180,12 +178,11 @@
 				84ECCC651D37550900C91BFD /* AchievementTableViewCell.swift */,
 				5DFF5BC91D1C20E3009AD1DB /* ContactTableViewController.swift */,
 				5D7939E41D1C3EF5006C28AB /* ContactViewController.swift */,
-				A75727F21D20CACB008388CA /* DoneTableViewCell.swift */,
 				A75727F61D20CDEE008388CA /* DoneTableViewController.swift */,
 				5DFF5BCB1D1C22D2009AD1DB /* Contact.swift */,
+				A737FD5B1D3D66D200857249 /* persistData.swift */,
 				5DFF5BC71D1C1A74009AD1DB /* ContactTableViewCell.swift */,
 				A75727F81D20F6E7008388CA /* DelayTableViewController.swift */,
-				A75727FA1D20F6F1008388CA /* DelayTableViewCell.swift */,
 				5DD7E24B1D18749C003972E1 /* TaskTableViewController.swift */,
 				5DD7E2491D185108003972E1 /* TaskTableViewCell.swift */,
 				5D71BCC41D1C47C600E74C7F /* Assets.xcassets */,
@@ -432,6 +429,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A711C6D71D3EB2650075E89D /* ContactTableViewCell.swift in Sources */,
 				5DFF5BCC1D1C22D2009AD1DB /* Contact.swift in Sources */,
 				5D804C451D2D84AD0049A9DD /* ContactInfoViewController.swift in Sources */,
 				5DD7E2461D1849BB003972E1 /* Task.swift in Sources */,
@@ -441,14 +439,12 @@
 				A75727F91D20F6E7008388CA /* DelayTableViewController.swift in Sources */,
 				5D96B14D1D11E3BA00CD8C95 /* RatingControl.swift in Sources */,
 				A75727F71D20CDEE008388CA /* DoneTableViewController.swift in Sources */,
+				A737FD5C1D3D66D200857249 /* persistData.swift in Sources */,
 				5DFF5BCA1D1C20E3009AD1DB /* ContactTableViewController.swift in Sources */,
-				5DFF5BC81D1C1A74009AD1DB /* ContactTableViewCell.swift in Sources */,
 				5DD7E24C1D18749C003972E1 /* TaskTableViewController.swift in Sources */,
 				5DD7E24A1D185108003972E1 /* TaskTableViewCell.swift in Sources */,
-				A75727F31D20CACB008388CA /* DoneTableViewCell.swift in Sources */,
 				84ECCC661D37550900C91BFD /* AchievementTableViewCell.swift in Sources */,
 				5D7939E51D1C3EF5006C28AB /* ContactViewController.swift in Sources */,
-				A75727FB1D20F6F1008388CA /* DelayTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

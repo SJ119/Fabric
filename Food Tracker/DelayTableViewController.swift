@@ -14,19 +14,40 @@ class DelayTableViewController: UITableViewController {
     
     var tasks = [Task]()
     
+    func initTasks() {
+        if let savedTasks = loadTasks(Task.ArchiveURLDelay) {
+            tasks = savedTasks
+            print("task count 1 is: \(tasks.count)")
+        }
+    }
+    
     func addTask(task: Task) {
-        tasks.append(task)
+        print("Call to addTask in DelayTable for task \(task.name)")
+        initTasks()
+        print("task count 2 is: \(tasks.count)")
+        tasks += [task]
+        print("task count 3 is: \(tasks.count)")
+        // Save delayed tasks
+        print("task count 4 is: \(tasks.count)")
+        saveTasks(tasks, url: Task.ArchiveURLDelay)
         self.tableView.reloadData()
-        print(tasks)
+    }
+    
+    func removeTask(task_idx: Int) {
+        print("Remove task \(task_idx) in DelayTable)")
+
+        self.tasks.removeAtIndex(task_idx)
+        let indexPath = NSIndexPath(forRow: task_idx, inSection: 0)
+        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+        tableView.reloadData()
+        
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        // Load saved delayed tasks
+        initTasks()
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,69 +66,31 @@ class DelayTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return tasks.count
     }
-
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        print(tasks)
-        let cell: DelayTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("Delay") as! DelayTableViewCell
+        let cell: TaskTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("Delay") as! TaskTableViewCell
         
         let task = tasks[indexPath.row]
-        if let label = cell.nameLabel{
-            label.text = task.name
-        }
-        if let label = cell.nameLabel2{
-            label.text = task.name
-        }
-        
+        cell.nameLabel.text = task.name
+
         // Configure the cell...
         
         return cell
     }
- 
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "EditDetail" {
+            let taskDetailViewController = segue.destinationViewController as! TaskViewController
+            // Get the cell that generated this segue.
+            if let selectedTaskCell = sender as? TaskTableViewCell {
+                let indexPath = tableView.indexPathForCell(selectedTaskCell)!
+                let selectedTask = tasks[indexPath.row]
+                taskDetailViewController.task = selectedTask
+                taskDetailViewController.origin = "Delay"
+                taskDetailViewController.origin_idx = indexPath.row
+            }
+        }
     }
-    */
 
 }

@@ -16,42 +16,32 @@ class TaskTableViewController: UITableViewController {
     var tasks = [Task]()
 
     override func viewDidLoad() {
-        print("loading task table view")
         super.viewDidLoad()
-        _ = NSTimer.scheduledTimerWithTimeInterval(60, target: self, selector: #selector(TaskTableViewController.reloadCurrent(_:)), userInfo: nil, repeats: true)
-        //self.view.backgroundColor = UIColor.lightGrayColor()
+        print("Loading TaskTableView")
+        
+        NSTimer.scheduledTimerWithTimeInterval(60, target: self, selector: #selector(TaskTableViewController.reloadCurrent(_:)), userInfo: nil, repeats: true)
+        
         // Use the edit button item provided by the table view controller.
         navigationItem.leftBarButtonItem = editButtonItem()
-        // Load any saved tasks, otherwise load sample data.
-        if let savedTasks = loadTasks() {
-            // saved Tasks is an array of tasks if any are past their deadline move it to delay list
-            let currentDate = NSDate()
-            
-            for item in savedTasks {
-                if (item.dueDate.compare(currentDate) == NSComparisonResult.OrderedAscending) {
-                    //due date has passed, move to delayed
-                    item.status = "Delayed"
-                    print("delay item: " + item.name)
-                    self.presentDestinationViewControllerDelay(item)
-                    
-                } else {
-                    tasks += [item]
-                }
-            }
-            //tasks += savedTasks
-        }
-    }
-    
-    
         
-    func presentDestinationViewController(task: Task) {
-        let viewController = UIApplication.sharedApplication().windows[0].rootViewController?.childViewControllers[3].childViewControllers[0] as? DoneTableViewController
-        viewController?.addTask(task)
+        // Restore our saved tasks
+        if let savedTasks = loadTasks(Task.ArchiveURL) {
+            tasks = savedTasks
+        }
+        
+        // Do an initial reload on our current list
+        reloadCurrent(NSTimer())
     }
     
-    func presentDestinationViewControllerDelay(task: Task) {
+    func getViewControllerDone() -> DoneTableViewController? {
+        let viewController = UIApplication.sharedApplication().windows[0].rootViewController?.childViewControllers[3].childViewControllers[0] as? DoneTableViewController
+        return viewController
+    }
+    
+    
+    func getViewControllerDelay() -> DelayTableViewController? {
         let viewController = UIApplication.sharedApplication().windows[0].rootViewController?.childViewControllers[1].childViewControllers[0] as? DelayTableViewController
-        viewController?.addTask(task)
+        return viewController
     }
     
     
@@ -97,8 +87,12 @@ class TaskTableViewController: UITableViewController {
             task.status = "Complete"
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
             tableView.reloadData()
-            self.presentDestinationViewController(task)
+
             self.presentDestinationViewControllerAchievement(task)
+            let vcd = self.getViewControllerDone()
+            vcd?.addTask(task)
+            saveTasks(self.tasks, url: Task.ArchiveURL)
+
             return true
         })]
         cell.leftSwipeSettings.transition = MGSwipeTransition.Border
@@ -113,8 +107,12 @@ class TaskTableViewController: UITableViewController {
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
             tableView.reloadData()
             task.status = "Delayed"
-            self.presentDestinationViewControllerDelay(task)
+            
             self.presentDestinationViewControllerAchievement(task)
+            let vcd = self.getViewControllerDelay()
+            vcd?.addTask(task)
+            saveTasks(self.tasks, url: Task.ArchiveURL)
+
             return true
         })]
         cell.rightSwipeSettings.transition = MGSwipeTransition.Border
@@ -122,8 +120,6 @@ class TaskTableViewController: UITableViewController {
         cell.rightExpansion.buttonIndex = 0
         cell.rightExpansion.fillOnTrigger = true
         
-        
-
         return cell
     }
     
@@ -142,64 +138,56 @@ class TaskTableViewController: UITableViewController {
         if editingStyle == .Delete {
             // Delete the row from the data source
             tasks.removeAtIndex(indexPath.row)
-            saveTasks()
+            saveTasks(tasks, url: Task.ArchiveURL)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 
     func reloadCurrent(timer: NSTimer) {
-        if let savedTasks = loadTasks() {
+        if var savedTasks = loadTasks(Task.ArchiveURL) {
+            if savedTasks.count == 0 {
+                // nothing to process
+                print("nothing to process")
+                return
+            }
+            
             // saved Tasks is an array of tasks if any are past their deadline move it to delay list
             let currentDate = NSDate()
             
-            var i = 0
             var delayIdx = [Int]()
-            for item in savedTasks {
+            for (i, item) in savedTasks.enumerate() {
                 if (item.dueDate.compare(currentDate) == NSComparisonResult.OrderedAscending) {
-                    print("I am delayed, removing from tasks and adding to delayed")
+                    print("Task \(i) is delayed, recorded \(i) as need to remove")
                     delayIdx.append(i);
                 } else {
-                    print("I am not delayed, adding to tasks")
-                    tasks += [item]
+                    print("Task \(i) is not delayed")
                 }
-                i += 1
             }
             
             delayIdx = delayIdx.reverse()
-            print("Task length: " + String(self.tasks.count))
+            print("Tasks needed to be removed in reverse order are \(delayIdx)")
+            print("Tasks length: \(self.tasks.count)")
             let taskLength = self.tasks.count
             for idx in delayIdx {
                 if (idx < taskLength) {
                     print("idx: " + String(idx))
                     //due date has passed, move to delayed
-                    let task = self.tasks[idx]
+                    let task = savedTasks[idx]
                     self.tasks.removeAtIndex(idx)
                     let indexPath = NSIndexPath(forRow: idx, inSection: 0)
                     tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
                     tableView.reloadData()
                     task.status = "Delayed"
-                    self.presentDestinationViewControllerDelay(task)
+
                     self.presentDestinationViewControllerAchievement(task)
+                    let vcd = self.getViewControllerDelay()
+                    vcd?.addTask(task)
                 }
             }
+            
+            saveTasks(self.tasks, url: Task.ArchiveURL)
         }
     }
     
@@ -216,7 +204,7 @@ class TaskTableViewController: UITableViewController {
                 taskDetailViewController.task = selectedTask
             }
         } else if segue.identifier == "AddItem" {
-            print("Adding new task.")
+            print("Preparing to add new task.")
         }
     }
     
@@ -225,35 +213,33 @@ class TaskTableViewController: UITableViewController {
     }
     
     @IBAction func unwindToTaskList(sender: UIStoryboardSegue) {
+        print("Call to unwindToTaskList")
         if let sourceViewController = sender.sourceViewController as? TaskViewController, task = sourceViewController.task {
+            print("Call from TaskViewController")
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                print("Updating existing path")
                 // Update an existing task.
                 tasks[selectedIndexPath.row] = task
                 tableView.reloadRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .None)
             }
             else {
                 // Add a new task.
+                print("Adding new task \(task.name).")
                 let newIndexPath = NSIndexPath(forRow: tasks.count, inSection: 0)
+                task.status = "Current"
                 tasks.append(task)
                 tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
                 
-                
+                // check origin of TaskViewController
+                if sourceViewController.origin != nil {
+                    let vcd = getViewControllerDelay()
+                    vcd?.removeTask(sourceViewController.origin_idx!)
+                }
             }
             // Save the tasks.
-            saveTasks()
+            saveTasks(tasks, url: Task.ArchiveURL)
         }
     }
     
-    //MARK: NSCoding
-    func saveTasks() {
-        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(tasks, toFile: Task.ArchiveURL.path!)
-        if !isSuccessfulSave {
-            print("Failed to save tasks...")
-        }
-    }
-    
-    func loadTasks() -> [Task]? {
-        return NSKeyedUnarchiver.unarchiveObjectWithFile(Task.ArchiveURL.path!) as? [Task]
-    }
 
 }

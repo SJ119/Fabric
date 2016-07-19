@@ -20,6 +20,8 @@ class Task: NSObject, NSCoding {
     //MARK: Archiving Paths
     static let DocumentsDirectory = NSFileManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
     static let ArchiveURL = DocumentsDirectory.URLByAppendingPathComponent("tasks")
+    static let ArchiveURLDelay = DocumentsDirectory.URLByAppendingPathComponent("delay")
+    static let ArchiveURLDone = DocumentsDirectory.URLByAppendingPathComponent("done")
     
     //MARK: Types
     struct PropertyKey {
