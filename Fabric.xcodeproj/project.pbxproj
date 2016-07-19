@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B714F241D368E9300803EE8 /* ShowSplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B714F231D368E9300803EE8 /* ShowSplashScreen.swift */; };
 		5D001CFA1C6D5AF200AAB05A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D001CF91C6D5AF200AAB05A /* AppDelegate.swift */; };
 		5D001CFC1C6D5AF200AAB05A /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D001CFB1C6D5AF200AAB05A /* TaskViewController.swift */; };
 		5D001CFF1C6D5AF200AAB05A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D001CFD1C6D5AF200AAB05A /* Main.storyboard */; };
@@ -68,6 +69,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1B714F231D368E9300803EE8 /* ShowSplashScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowSplashScreen.swift; sourceTree = "<group>"; };
 		3079EFBD6CA1AE94C3B4D2A2 /* Pods-Food Tracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Food Tracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Food Tracker/Pods-Food Tracker.debug.xcconfig"; sourceTree = "<group>"; };
 		356CDDC1CFADE143295D687D /* Pods-Food Tracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Food Tracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-Food Tracker/Pods-Food Tracker.release.xcconfig"; sourceTree = "<group>"; };
 		5D001CF61C6D5AF200AAB05A /* Fabric.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fabric.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -175,6 +177,7 @@
 				A711C6D81D3EB9920075E89D /* Points.swift */,
 				5D001CF91C6D5AF200AAB05A /* AppDelegate.swift */,
 				5D001CFB1C6D5AF200AAB05A /* TaskViewController.swift */,
+				1B714F231D368E9300803EE8 /* ShowSplashScreen.swift */,
 				5D001CFD1C6D5AF200AAB05A /* Main.storyboard */,
 				5D804C441D2D84AD0049A9DD /* ContactInfoViewController.swift */,
 				5D804C321D2AC7E60049A9DD /* AchievementsViewController.swift */,
@@ -444,6 +447,8 @@
 				A75727F71D20CDEE008388CA /* DoneTableViewController.swift in Sources */,
 				A737FD5C1D3D66D200857249 /* persistData.swift in Sources */,
 				5DFF5BCA1D1C20E3009AD1DB /* ContactTableViewController.swift in Sources */,
+				5DFF5BC81D1C1A74009AD1DB /* ContactTableViewCell.swift in Sources */,
+				1B714F241D368E9300803EE8 /* ShowSplashScreen.swift in Sources */,
 				5DD7E24C1D18749C003972E1 /* TaskTableViewController.swift in Sources */,
 				5DD7E24A1D185108003972E1 /* TaskTableViewCell.swift in Sources */,
 				84ECCC661D37550900C91BFD /* AchievementTableViewCell.swift in Sources */,
