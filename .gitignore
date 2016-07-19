@@ -1,2 +1,10 @@
 *.DS_Store
 
+
+*.xcuserstate
+
+*.xcuserstate
+
+*.xcbkptlist
+
+Fabric.xcodeproj/xcuserdata/admin.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist
