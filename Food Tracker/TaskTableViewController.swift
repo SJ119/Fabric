@@ -44,11 +44,11 @@ class TaskTableViewController: UITableViewController {
         return viewController
     }
     
-    
     func presentDestinationViewControllerAchievement(task: Task) {
         let viewController = UIApplication.sharedApplication().windows[0].rootViewController?.childViewControllers[0].childViewControllers[0] as? AchievementsViewController
         viewController?.addTask(task)
     }
+    
     
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         cell.backgroundColor = UIColor.clearColor()

@@ -29,6 +29,7 @@
 		5DFF5BCE1D1C22D2009AD1DB /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFF5BCB1D1C22D2009AD1DB /* Contact.swift */; };
 		84ECCC661D37550900C91BFD /* AchievementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ECCC651D37550900C91BFD /* AchievementTableViewCell.swift */; };
 		A711C6D71D3EB2650075E89D /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFF5BC71D1C1A74009AD1DB /* ContactTableViewCell.swift */; };
+		A711C6D91D3EB9920075E89D /* Points.swift in Sources */ = {isa = PBXBuildFile; fileRef = A711C6D81D3EB9920075E89D /* Points.swift */; };
 		A737FD5C1D3D66D200857249 /* persistData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A737FD5B1D3D66D200857249 /* persistData.swift */; };
 		A75727F71D20CDEE008388CA /* DoneTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75727F61D20CDEE008388CA /* DoneTableViewController.swift */; };
 		A75727F91D20F6E7008388CA /* DelayTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75727F81D20F6E7008388CA /* DelayTableViewController.swift */; };
@@ -94,6 +95,7 @@
 		5DFF5BC91D1C20E3009AD1DB /* ContactTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactTableViewController.swift; sourceTree = "<group>"; };
 		5DFF5BCB1D1C22D2009AD1DB /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		84ECCC651D37550900C91BFD /* AchievementTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AchievementTableViewCell.swift; sourceTree = "<group>"; };
+		A711C6D81D3EB9920075E89D /* Points.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Points.swift; sourceTree = "<group>"; };
 		A737FD5B1D3D66D200857249 /* persistData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = persistData.swift; sourceTree = "<group>"; };
 		A75727F61D20CDEE008388CA /* DoneTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoneTableViewController.swift; sourceTree = "<group>"; };
 		A75727F81D20F6E7008388CA /* DelayTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DelayTableViewController.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				5DD7E2451D1849BB003972E1 /* Task.swift */,
+				A711C6D81D3EB9920075E89D /* Points.swift */,
 				5D001CF91C6D5AF200AAB05A /* AppDelegate.swift */,
 				5D001CFB1C6D5AF200AAB05A /* TaskViewController.swift */,
 				5D001CFD1C6D5AF200AAB05A /* Main.storyboard */,
@@ -445,6 +448,7 @@
 				5DD7E24A1D185108003972E1 /* TaskTableViewCell.swift in Sources */,
 				84ECCC661D37550900C91BFD /* AchievementTableViewCell.swift in Sources */,
 				5D7939E51D1C3EF5006C28AB /* ContactViewController.swift in Sources */,
+				A711C6D91D3EB9920075E89D /* Points.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
