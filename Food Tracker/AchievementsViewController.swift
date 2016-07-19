@@ -14,64 +14,7 @@ class AchievementsViewController: UIViewController, UINavigationControllerDelega
     @IBOutlet weak var pointsLabel: UILabel!
     
     var currPoints = 50
-        /*var achievements = [String]()
-
-        //achievements
-        //Complete Task
-        var achieveComplete : [String] = ["Completed a task", "Completed 3 tasks", "Completed 10 tasks"]
-        //Delay Task
-        var achieveDelay : [String] = ["Delayed a task", "Delayed 3 tasks", "Delayed 10 tasks"]
-        //Add Contact
-        var achieveContact : [String] = ["Added a contact", "Added 3 contacts", "Added 5 contacts"]
-    
-        //helper numbers
-        var threshold : [Int] = [1,3,10]
-        var threshold2 : [Int] = [1,3,5]
-        var iComplete = 0
-        var iDelay = 0
-        var iContact = 0
-    
-        //tracking numbers
-        var complete = 0
-        var delay = 0
-        var contact = 0
-    
-        var newCount = 0
-        
-        func addTask(task: Task) {
-            var newAchieve = false
-            if task.status == "Complete" && iComplete <= 2 {
-                complete = complete + 1
-                if complete == threshold[iComplete] {
-                    achievements.insert(achieveComplete[iComplete], atIndex:  0)
-                    iComplete = iComplete + 1
-                    newAchieve = true
-                }
-            }
-            else if task.status == "Delayed" && iDelay <= 2{
-                delay = delay + 1
-                if delay == threshold[iDelay] {
-                    achievements.insert(achieveDelay[iDelay], atIndex:  0)
-                    iDelay = iDelay + 1
-                    newAchieve = true
-                }
-            }
-            else if task.status == "Contact" && iContact <= 2{
-                contact = contact + 1
-                if contact == threshold2[iContact] {
-                    achievements.insert(achieveContact[iContact], atIndex:  0)
-                    iContact = iContact + 1
-                    newAchieve = true
-                }
-            }
-            //self.tableView.reloadData()
-            if newAchieve {
-                //need to make a different image
-                self.tabBarController?.tabBar.items?[0].image = UIImage(named: "achievementsnotify")
-                newCount = newCount + 1
-            }
-        }
- */
+  
     func addTask(task: Task) {
         if (task.status == "Complete") {
             print("completeing a task")
@@ -79,12 +22,16 @@ class AchievementsViewController: UIViewController, UINavigationControllerDelega
         } else if (task.status == "Delayed") {
             currPoints -= 15
         }
-        pointsLabel.text = String(currPoints) + "pts"
+        
+        if pointsLabel != nil  {
+            pointsLabel.text = String(currPoints) + "pts"
+        }
     }
     
         override func viewDidLoad() {
             super.viewDidLoad()
             self.navigationController!.delegate = self
+            pointsLabel.text = String(currPoints) + "pts"
         }
     
         override func didReceiveMemoryWarning() {
