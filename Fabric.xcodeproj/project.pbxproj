@@ -28,6 +28,7 @@
 		5DFF5BCC1D1C22D2009AD1DB /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFF5BCB1D1C22D2009AD1DB /* Contact.swift */; };
 		5DFF5BCD1D1C22D2009AD1DB /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFF5BCB1D1C22D2009AD1DB /* Contact.swift */; };
 		5DFF5BCE1D1C22D2009AD1DB /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFF5BCB1D1C22D2009AD1DB /* Contact.swift */; };
+		A737FD5C1D3D66D200857249 /* persistData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A737FD5B1D3D66D200857249 /* persistData.swift */; };
 		A75727F71D20CDEE008388CA /* DoneTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75727F61D20CDEE008388CA /* DoneTableViewController.swift */; };
 		A75727F91D20F6E7008388CA /* DelayTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75727F81D20F6E7008388CA /* DelayTableViewController.swift */; };
 		DA1C0189075DFE7EF5E5DF89 /* Pods_Food_Tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1AB8D201D8230C54A332647 /* Pods_Food_Tracker.framework */; };
@@ -91,6 +92,7 @@
 		5DFF5BC71D1C1A74009AD1DB /* ContactTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
 		5DFF5BC91D1C20E3009AD1DB /* ContactTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactTableViewController.swift; sourceTree = "<group>"; };
 		5DFF5BCB1D1C22D2009AD1DB /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		A737FD5B1D3D66D200857249 /* persistData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = persistData.swift; sourceTree = "<group>"; };
 		A75727F61D20CDEE008388CA /* DoneTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoneTableViewController.swift; sourceTree = "<group>"; };
 		A75727F81D20F6E7008388CA /* DelayTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DelayTableViewController.swift; sourceTree = "<group>"; };
 		D1AB8D201D8230C54A332647 /* Pods_Food_Tracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Food_Tracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -175,6 +177,7 @@
 				5D7939E41D1C3EF5006C28AB /* ContactViewController.swift */,
 				A75727F61D20CDEE008388CA /* DoneTableViewController.swift */,
 				5DFF5BCB1D1C22D2009AD1DB /* Contact.swift */,
+				A737FD5B1D3D66D200857249 /* persistData.swift */,
 				5DFF5BC71D1C1A74009AD1DB /* ContactTableViewCell.swift */,
 				A75727F81D20F6E7008388CA /* DelayTableViewController.swift */,
 				5DD7E24B1D18749C003972E1 /* TaskTableViewController.swift */,
@@ -432,6 +435,7 @@
 				A75727F91D20F6E7008388CA /* DelayTableViewController.swift in Sources */,
 				5D96B14D1D11E3BA00CD8C95 /* RatingControl.swift in Sources */,
 				A75727F71D20CDEE008388CA /* DoneTableViewController.swift in Sources */,
+				A737FD5C1D3D66D200857249 /* persistData.swift in Sources */,
 				5DFF5BCA1D1C20E3009AD1DB /* ContactTableViewController.swift in Sources */,
 				5DFF5BC81D1C1A74009AD1DB /* ContactTableViewCell.swift in Sources */,
 				5DD7E24C1D18749C003972E1 /* TaskTableViewController.swift in Sources */,

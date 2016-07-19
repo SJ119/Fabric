@@ -18,10 +18,28 @@ class DelayTableViewController: UITableViewController {
         print("Call to addTask in DelayTable for task \(task)")
         tasks.append(task)
         self.tableView.reloadData()
+        
+        // Save delayed tasks
+        saveTasks(tasks, url: Task.ArchiveURLDelay)
+    }
+    
+    func removeTask(task_idx: Int) {
+        print("Remove task \(task_idx) in DelayTable)")
+
+        self.tasks.removeAtIndex(task_idx)
+        let indexPath = NSIndexPath(forRow: task_idx, inSection: 0)
+        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+        tableView.reloadData()
+        
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Load saved delayed tasks
+        if let savedTasks = loadTasks(Task.ArchiveURLDelay) {
+            tasks = savedTasks
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -50,6 +68,21 @@ class DelayTableViewController: UITableViewController {
         // Configure the cell...
         
         return cell
+    }
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "EditDetail" {
+            let taskDetailViewController = segue.destinationViewController as! TaskViewController
+            // Get the cell that generated this segue.
+            if let selectedTaskCell = sender as? TaskTableViewCell {
+                let indexPath = tableView.indexPathForCell(selectedTaskCell)!
+                let selectedTask = tasks[indexPath.row]
+                taskDetailViewController.task = selectedTask
+                taskDetailViewController.origin = "Delay"
+                taskDetailViewController.origin_idx = indexPath.row
+            }
+        }
     }
 
 }

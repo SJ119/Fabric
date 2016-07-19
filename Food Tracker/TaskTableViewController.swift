@@ -24,19 +24,24 @@ class TaskTableViewController: UITableViewController {
         // Use the edit button item provided by the table view controller.
         navigationItem.leftBarButtonItem = editButtonItem()
         
+        // Restore our saved tasks
+        if let savedTasks = loadTasks(Task.ArchiveURL) {
+            tasks = savedTasks
+        }
+        
         // Do an initial reload on our current list
         reloadCurrent(NSTimer())
     }
     
-    
-    func presentDestinationViewController(task: Task) {
+    func getViewControllerDone() -> DoneTableViewController? {
         let viewController = UIApplication.sharedApplication().windows[0].rootViewController?.childViewControllers[3].childViewControllers[0] as? DoneTableViewController
-        viewController?.addTask(task)
+        return viewController
     }
     
-    func presentDestinationViewControllerDelay(task: Task) {
+    
+    func getViewControllerDelay() -> DelayTableViewController? {
         let viewController = UIApplication.sharedApplication().windows[0].rootViewController?.childViewControllers[1].childViewControllers[0] as? DelayTableViewController
-        viewController?.addTask(task)
+        return viewController
     }
     
     
@@ -77,8 +82,9 @@ class TaskTableViewController: UITableViewController {
             task.status = "Complete"
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
             tableView.reloadData()
-            self.presentDestinationViewController(task)
-            self.saveTasks()
+            let vcd = self.getViewControllerDone()
+            vcd?.addTask(task)
+            saveTasks(self.tasks, url: Task.ArchiveURL)
             return true
         })]
         cell.leftSwipeSettings.transition = MGSwipeTransition.Border
@@ -93,8 +99,9 @@ class TaskTableViewController: UITableViewController {
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
             tableView.reloadData()
             task.status = "Delayed"
-            self.presentDestinationViewControllerDelay(task)
-            self.saveTasks()
+            let vcd = self.getViewControllerDelay()
+            vcd?.addTask(task)
+            saveTasks(self.tasks, url: Task.ArchiveURL)
             return true
         })]
         cell.rightSwipeSettings.transition = MGSwipeTransition.Border
@@ -120,7 +127,7 @@ class TaskTableViewController: UITableViewController {
         if editingStyle == .Delete {
             // Delete the row from the data source
             tasks.removeAtIndex(indexPath.row)
-            saveTasks()
+            saveTasks(tasks, url: Task.ArchiveURL)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
@@ -128,7 +135,7 @@ class TaskTableViewController: UITableViewController {
     }
 
     func reloadCurrent(timer: NSTimer) {
-        if let savedTasks = loadTasks() {
+        if var savedTasks = loadTasks(Task.ArchiveURL) {
             if savedTasks.count == 0 {
                 // nothing to process
                 return
@@ -155,17 +162,18 @@ class TaskTableViewController: UITableViewController {
                 if (idx < taskLength) {
                     print("idx: " + String(idx))
                     //due date has passed, move to delayed
-                    let task = self.tasks[idx]
+                    let task = savedTasks[idx]
                     self.tasks.removeAtIndex(idx)
                     let indexPath = NSIndexPath(forRow: idx, inSection: 0)
                     tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
                     tableView.reloadData()
                     task.status = "Delayed"
-                    self.presentDestinationViewControllerDelay(task)
+                    let vcd = self.getViewControllerDelay()
+                    vcd?.addTask(task)
                 }
             }
             
-            saveTasks()
+            saveTasks(self.tasks, url: Task.ArchiveURL)
         }
     }
     
@@ -173,7 +181,7 @@ class TaskTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "ShowDetail" || segue.identifier == "EditDetail" {
+        if segue.identifier == "ShowDetail" {
             let taskDetailViewController = segue.destinationViewController as! TaskViewController
             // Get the cell that generated this segue.
             if let selectedTaskCell = sender as? TaskTableViewCell {
@@ -191,8 +199,11 @@ class TaskTableViewController: UITableViewController {
     }
     
     @IBAction func unwindToTaskList(sender: UIStoryboardSegue) {
+        print("Call to unwindToTaskList")
         if let sourceViewController = sender.sourceViewController as? TaskViewController, task = sourceViewController.task {
+            print("Call from TaskViewController")
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                print("Updating existing path")
                 // Update an existing task.
                 tasks[selectedIndexPath.row] = task
                 tableView.reloadRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .None)
@@ -201,24 +212,20 @@ class TaskTableViewController: UITableViewController {
                 // Add a new task.
                 print("Adding new task \(task.name).")
                 let newIndexPath = NSIndexPath(forRow: tasks.count, inSection: 0)
+                task.status = "Current"
                 tasks.append(task)
                 tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
+                
+                // check origin of TaskViewController
+                if sourceViewController.origin != nil {
+                    let vcd = getViewControllerDelay()
+                    vcd?.removeTask(sourceViewController.origin_idx!)
+                }
             }
             // Save the tasks.
-            saveTasks()
+            saveTasks(tasks, url: Task.ArchiveURL)
         }
     }
     
-    //MARK: NSCoding
-    func saveTasks() {
-        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(tasks, toFile: Task.ArchiveURL.path!)
-        if !isSuccessfulSave {
-            print("Failed to save tasks...")
-        }
-    }
-    
-    func loadTasks() -> [Task]? {
-        return NSKeyedUnarchiver.unarchiveObjectWithFile(Task.ArchiveURL.path!) as? [Task]
-    }
 
 }

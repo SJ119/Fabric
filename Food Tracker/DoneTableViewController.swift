@@ -18,10 +18,18 @@ class DoneTableViewController: UITableViewController {
         print("Call to addTask in DoneTable for task \(task)")
         tasks.append(task)
         self.tableView.reloadData()
+        
+        // Save done tasks
+        saveTasks(tasks, url: Task.ArchiveURLDone)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Load done tasks
+        if let savedTasks = loadTasks(Task.ArchiveURLDone) {
+            tasks = savedTasks
+        }
     }
 
     override func didReceiveMemoryWarning() {
