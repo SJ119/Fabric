@@ -79,6 +79,17 @@ class TaskTableViewController: UITableViewController {
         let task = tasks[indexPath.row]
 
         cell.nameLabel.text = task.name
+        let date = task.dueDate
+        let dateFormater = NSDateFormatter()
+        dateFormater.dateStyle = .MediumStyle
+        dateFormater.timeStyle = .ShortStyle
+        
+        let datestring = dateFormater.stringFromDate(date)
+        cell.DateLabel.text = datestring
+        if (task.status == "Urgent") {
+            cell.DateLabel.textColor = UIColor.redColor()
+        }
+        
         
         //configure left buttons
         cell.leftButtons = [MGSwipeButton(title: "", icon: UIImage(named:"Complete.png"), backgroundColor: UIColor.greenColor(), callback: {
@@ -144,6 +155,14 @@ class TaskTableViewController: UITableViewController {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
+    
+    func daysBetweenDates(startDate: NSDate, endDate: NSDate) -> Int {
+        
+        let calendar = NSCalendar.currentCalendar()
+        let components = calendar.components([.Day], fromDate: startDate, toDate: endDate, options: [])
+        
+        return components.day
+    }
 
     func reloadCurrent(timer: NSTimer) {
         if var savedTasks = loadTasks(Task.ArchiveURL) {
@@ -163,8 +182,14 @@ class TaskTableViewController: UITableViewController {
                     delayIdx.append(i);
                 } else {
                     print("Task \(i) is not delayed")
+                    let dateDifference = daysBetweenDates(currentDate, endDate: item.dueDate)
+                    if (dateDifference == 0) {
+                        self.tasks[i].status = "Urgent"
+                    }
                 }
+                
             }
+            tableView.reloadData()
             
             delayIdx = delayIdx.reverse()
             print("Tasks needed to be removed in reverse order are \(delayIdx)")
