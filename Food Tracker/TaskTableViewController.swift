@@ -55,6 +55,11 @@ class TaskTableViewController: UITableViewController {
     }
     
     
+    func presentDestinationViewControllerAchievement(task: Task) {
+        let viewController = UIApplication.sharedApplication().windows[0].rootViewController?.childViewControllers[0].childViewControllers[0] as? AchievementsViewController
+        viewController?.addTask(task)
+    }
+    
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         cell.backgroundColor = UIColor.clearColor()
     }
@@ -93,6 +98,7 @@ class TaskTableViewController: UITableViewController {
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
             tableView.reloadData()
             self.presentDestinationViewController(task)
+            self.presentDestinationViewControllerAchievement(task)
             return true
         })]
         cell.leftSwipeSettings.transition = MGSwipeTransition.Border
@@ -108,6 +114,7 @@ class TaskTableViewController: UITableViewController {
             tableView.reloadData()
             task.status = "Delayed"
             self.presentDestinationViewControllerDelay(task)
+            self.presentDestinationViewControllerAchievement(task)
             return true
         })]
         cell.rightSwipeSettings.transition = MGSwipeTransition.Border
@@ -190,6 +197,7 @@ class TaskTableViewController: UITableViewController {
                     tableView.reloadData()
                     task.status = "Delayed"
                     self.presentDestinationViewControllerDelay(task)
+                    self.presentDestinationViewControllerAchievement(task)
                 }
             }
         }

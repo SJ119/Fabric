@@ -28,6 +28,7 @@
 		5DFF5BCC1D1C22D2009AD1DB /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFF5BCB1D1C22D2009AD1DB /* Contact.swift */; };
 		5DFF5BCD1D1C22D2009AD1DB /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFF5BCB1D1C22D2009AD1DB /* Contact.swift */; };
 		5DFF5BCE1D1C22D2009AD1DB /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFF5BCB1D1C22D2009AD1DB /* Contact.swift */; };
+		84ECCC661D37550900C91BFD /* AchievementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ECCC651D37550900C91BFD /* AchievementTableViewCell.swift */; };
 		A75727F31D20CACB008388CA /* DoneTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75727F21D20CACB008388CA /* DoneTableViewCell.swift */; };
 		A75727F71D20CDEE008388CA /* DoneTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75727F61D20CDEE008388CA /* DoneTableViewController.swift */; };
 		A75727F91D20F6E7008388CA /* DelayTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75727F81D20F6E7008388CA /* DelayTableViewController.swift */; };
@@ -93,6 +94,7 @@
 		5DFF5BC71D1C1A74009AD1DB /* ContactTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
 		5DFF5BC91D1C20E3009AD1DB /* ContactTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactTableViewController.swift; sourceTree = "<group>"; };
 		5DFF5BCB1D1C22D2009AD1DB /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		84ECCC651D37550900C91BFD /* AchievementTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AchievementTableViewCell.swift; sourceTree = "<group>"; };
 		A75727F21D20CACB008388CA /* DoneTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoneTableViewCell.swift; sourceTree = "<group>"; };
 		A75727F61D20CDEE008388CA /* DoneTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoneTableViewController.swift; sourceTree = "<group>"; };
 		A75727F81D20F6E7008388CA /* DelayTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DelayTableViewController.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				5D001CFD1C6D5AF200AAB05A /* Main.storyboard */,
 				5D804C441D2D84AD0049A9DD /* ContactInfoViewController.swift */,
 				5D804C321D2AC7E60049A9DD /* AchievementsViewController.swift */,
+				84ECCC651D37550900C91BFD /* AchievementTableViewCell.swift */,
 				5DFF5BC91D1C20E3009AD1DB /* ContactTableViewController.swift */,
 				5D7939E41D1C3EF5006C28AB /* ContactViewController.swift */,
 				A75727F21D20CACB008388CA /* DoneTableViewCell.swift */,
@@ -443,6 +446,7 @@
 				5DD7E24C1D18749C003972E1 /* TaskTableViewController.swift in Sources */,
 				5DD7E24A1D185108003972E1 /* TaskTableViewCell.swift in Sources */,
 				A75727F31D20CACB008388CA /* DoneTableViewCell.swift in Sources */,
+				84ECCC661D37550900C91BFD /* AchievementTableViewCell.swift in Sources */,
 				5D7939E51D1C3EF5006C28AB /* ContactViewController.swift in Sources */,
 				A75727FB1D20F6F1008388CA /* DelayTableViewCell.swift in Sources */,
 			);
@@ -599,6 +603,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.Fabric;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -615,6 +620,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.Fabric;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
