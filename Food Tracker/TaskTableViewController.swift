@@ -28,11 +28,21 @@ class TaskTableViewController: UITableViewController {
         if let savedTasks = loadTasks(Task.ArchiveURL) {
             tasks = savedTasks
         }
+<<<<<<< d78dccbad1987720ff4ac875498314b497bb7f23
+=======
+        //now the loadTask is added for Delayed, we need to save here to avoid double loading
+        saveTasks()
+        self.tableView.reloadData()
+    }
+    
+    
+>>>>>>> Fixed double loading
         
         // Do an initial reload on our current list
         reloadCurrent(NSTimer())
     }
     
+<<<<<<< d78dccbad1987720ff4ac875498314b497bb7f23
     func getViewControllerDone() -> DoneTableViewController? {
         let viewController = UIApplication.sharedApplication().windows[0].rootViewController?.childViewControllers[3].childViewControllers[0] as? DoneTableViewController
         return viewController
@@ -44,6 +54,10 @@ class TaskTableViewController: UITableViewController {
         return viewController
     }
     
+=======
+    
+    
+>>>>>>> Fixed double loading
     func presentDestinationViewControllerAchievement(task: Task) {
         let viewController = UIApplication.sharedApplication().windows[0].rootViewController?.childViewControllers[0].childViewControllers[0] as? AchievementsViewController
         viewController?.addTask(task)
@@ -87,11 +101,18 @@ class TaskTableViewController: UITableViewController {
             task.status = "Complete"
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
             tableView.reloadData()
+<<<<<<< d78dccbad1987720ff4ac875498314b497bb7f23
 
             self.presentDestinationViewControllerAchievement(task)
             let vcd = self.getViewControllerDone()
             vcd?.addTask(task)
             saveTasks(self.tasks, url: Task.ArchiveURL)
+=======
+            //avoid double loading
+            self.saveTasks()
+            self.presentDestinationViewController(task)
+            self.presentDestinationViewControllerAchievement(task)
+>>>>>>> Fixed double loading
 
             return true
         })]
@@ -106,12 +127,17 @@ class TaskTableViewController: UITableViewController {
             self.tasks.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
             tableView.reloadData()
+            //avoid double loading
+            self.saveTasks()
             task.status = "Delayed"
             
             self.presentDestinationViewControllerAchievement(task)
+<<<<<<< d78dccbad1987720ff4ac875498314b497bb7f23
             let vcd = self.getViewControllerDelay()
             vcd?.addTask(task)
             saveTasks(self.tasks, url: Task.ArchiveURL)
+=======
+>>>>>>> Fixed double loading
 
             return true
         })]
