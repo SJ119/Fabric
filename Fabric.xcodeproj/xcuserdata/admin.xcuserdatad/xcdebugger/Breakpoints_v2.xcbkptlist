@@ -121,11 +121,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Food Tracker/JsonManager.swift"
-            timestampString = "490594615.765238"
+            timestampString = "490597531.520986"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
             landmarkName = "init(objs:)"
             landmarkType = "5">
          </BreakpointContent>

@@ -31,7 +31,7 @@ class JsonWritableObject : NSObject {
     }
     
     //no "protected" keyword in swift
-    func isList()->Bool {
+    func isString()->Bool {
         return false
     }
 }
@@ -45,6 +45,10 @@ class JsonString : JsonWritableObject {
     
     override func toJson()->String {
         return str;
+    }
+    
+    override func isString()->Bool {
+        return true
     }
 }
 
@@ -72,11 +76,11 @@ class JsonObject : JsonWritableObject {
         for obj in objs {
             count = count + 1
             str = str + "\"" + obj.0 + "\":"
-            if !obj.1.isList() {
+            if obj.1.isString() {
                 str = str + "\""
             }
             str = str +  obj.1.toJson()
-            if !obj.1.isList() {
+            if obj.1.isString() {
                 str = str + "\""
             }
             if count != objs.count {
@@ -95,10 +99,6 @@ class JsonObjectList : JsonWritableObject {
     init(objs : [JsonObject]) {
         
         self.objs = objs
-    }
-    
-    override func isList() -> Bool {
-        return true
     }
     
     override func toJson()->String {
