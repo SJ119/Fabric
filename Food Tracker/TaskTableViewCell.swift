@@ -13,6 +13,7 @@ class TaskTableViewCell: MGSwipeTableCell {
     
     //MARK: Properties
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var DateLabel: UILabel!
     
 
     override func awakeFromNib() {

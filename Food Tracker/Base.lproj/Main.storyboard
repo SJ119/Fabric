@@ -326,15 +326,27 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="59.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XAL-nV-7dN">
-                                            <rect key="frame" x="8" y="8" width="584" height="29"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XAL-nV-7dN">
+                                            <rect key="frame" x="8" y="8" width="534" height="29"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qes-Fk-3es">
+                                            <rect key="frame" x="550" y="30" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="XAL-nV-7dN" firstAttribute="leading" secondItem="Rit-NK-aSQ" secondAttribute="leadingMargin" id="GX8-CH-Dam"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Qes-Fk-3es" secondAttribute="bottom" id="HgU-sk-6H2"/>
+                                        <constraint firstItem="Qes-Fk-3es" firstAttribute="trailing" secondItem="Rit-NK-aSQ" secondAttribute="trailingMargin" id="kdb-Bj-Uon"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="DateLabel" destination="Qes-Fk-3es" id="VTA-qf-moQ"/>
                                     <outlet property="nameLabel" destination="XAL-nV-7dN" id="w5U-3i-h0F"/>
                                     <segue destination="BYZ-38-t0r" kind="show" identifier="ShowDetail" id="z6m-wH-btM"/>
                                 </connections>
@@ -388,6 +400,12 @@
                                 <date key="date" timeIntervalSinceReferenceDate="488310682.25314599">
                                     <!--2016-06-22 17:51:22 +0000-->
                                 </date>
+                                <date key="minimumDate" timeIntervalSinceReferenceDate="-978267600">
+                                    <!--1970-01-01 11:00:00 +0000-->
+                                </date>
+                                <connections>
+                                    <action selector="SelectingDate:" destination="BYZ-38-t0r" eventType="valueChanged" id="giX-EK-ndc"/>
+                                </connections>
                             </datePicker>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a desc" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JqQ-5b-RyO">
                                 <rect key="frame" x="20" y="131" width="560" height="30"/>

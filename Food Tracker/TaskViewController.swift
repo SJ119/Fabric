@@ -15,6 +15,11 @@ class TaskViewController: UIViewController, UITextFieldDelegate, UINavigationCon
     @IBOutlet weak var descTextField: UITextField!
     @IBOutlet weak var dueDatePicker: UIDatePicker!
     
+    @IBAction func SelectingDate(sender: AnyObject) {
+        let currDate = NSDate()
+        self.dueDatePicker.minimumDate = currDate
+        
+    }
     /*
      @IBOutlet weak var dueDatePicker: UIDatePicker!
      This value is either passed by `TaskTableViewController` in `prepareForSegue(_:sender:)`
