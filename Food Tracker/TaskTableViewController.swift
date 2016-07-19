@@ -40,6 +40,8 @@ class TaskTableViewController: UITableViewController {
             }
             //tasks += savedTasks
         }
+        //now the loadTask is added for Delayed, we need to save here to avoid double loading
+        saveTasks()
         self.tableView.reloadData()
     }
     
@@ -53,16 +55,6 @@ class TaskTableViewController: UITableViewController {
     func presentDestinationViewControllerDelay(task: Task) {
         let viewController = UIApplication.sharedApplication().windows[0].rootViewController?.childViewControllers[1].childViewControllers[0] as? DelayTableViewController
         viewController?.addTask(task)
-    }
-    
-    func loadDestinationViewController() {
-        let viewController = UIApplication.sharedApplication().windows[0].rootViewController?.childViewControllers[3].childViewControllers[0] as? DoneTableViewController
-        viewController?.loadTasks()
-    }
-    
-    func loadDestinationViewControllerDelay() {
-        let viewController = UIApplication.sharedApplication().windows[0].rootViewController?.childViewControllers[1].childViewControllers[0] as? DelayTableViewController
-        viewController?.loadTasks()
     }
     
     
@@ -109,8 +101,11 @@ class TaskTableViewController: UITableViewController {
             task.status = "Complete"
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
             tableView.reloadData()
+            //avoid double loading
+            self.saveTasks()
             self.presentDestinationViewController(task)
             self.presentDestinationViewControllerAchievement(task)
+
             return true
         })]
         cell.leftSwipeSettings.transition = MGSwipeTransition.Border
@@ -124,9 +119,12 @@ class TaskTableViewController: UITableViewController {
             self.tasks.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
             tableView.reloadData()
+            //avoid double loading
+            self.saveTasks()
             task.status = "Delayed"
             self.presentDestinationViewControllerDelay(task)
             self.presentDestinationViewControllerAchievement(task)
+
             return true
         })]
         cell.rightSwipeSettings.transition = MGSwipeTransition.Border
