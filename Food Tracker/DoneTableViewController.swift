@@ -14,13 +14,23 @@ class DoneTableViewController: UITableViewController {
     
     var tasks = [Task]()
     
+    func initTasks() {
+        if let savedTasks = loadTasks(Task.ArchiveURLDone) {
+            tasks = savedTasks
+            print("task count 2 is: \(tasks.count)")
+        }
+    }
+    
     func addTask(task: Task) {
         print("Call to addTask in DoneTable for task \(task)")
-        tasks.append(task)
-        self.tableView.reloadData()
+        initTasks()
+        print("task count 2 is: \(tasks.count)")
+        tasks += [task]
         
         // Save done tasks
         saveTasks(tasks, url: Task.ArchiveURLDone)
+        
+        self.tableView.reloadData()
     }
 
     override func viewDidLoad() {

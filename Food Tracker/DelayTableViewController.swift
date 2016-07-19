@@ -14,13 +14,23 @@ class DelayTableViewController: UITableViewController {
     
     var tasks = [Task]()
     
+    func initTasks() {
+        if let savedTasks = loadTasks(Task.ArchiveURLDelay) {
+            tasks = savedTasks
+            print("task count 1 is: \(tasks.count)")
+        }
+    }
+    
     func addTask(task: Task) {
-        print("Call to addTask in DelayTable for task \(task)")
-        tasks.append(task)
-        self.tableView.reloadData()
-        
+        print("Call to addTask in DelayTable for task \(task.name)")
+        initTasks()
+        print("task count 2 is: \(tasks.count)")
+        tasks += [task]
+        print("task count 3 is: \(tasks.count)")
         // Save delayed tasks
+        print("task count 4 is: \(tasks.count)")
         saveTasks(tasks, url: Task.ArchiveURLDelay)
+        self.tableView.reloadData()
     }
     
     func removeTask(task_idx: Int) {
@@ -37,9 +47,7 @@ class DelayTableViewController: UITableViewController {
         super.viewDidLoad()
         
         // Load saved delayed tasks
-        if let savedTasks = loadTasks(Task.ArchiveURLDelay) {
-            tasks = savedTasks
-        }
+        initTasks()
     }
 
     override func didReceiveMemoryWarning() {

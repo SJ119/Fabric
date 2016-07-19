@@ -138,6 +138,7 @@ class TaskTableViewController: UITableViewController {
         if var savedTasks = loadTasks(Task.ArchiveURL) {
             if savedTasks.count == 0 {
                 // nothing to process
+                print("nothing to process")
                 return
             }
             
