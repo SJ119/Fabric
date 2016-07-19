@@ -21,6 +21,9 @@ class TaskViewController: UIViewController, UITextFieldDelegate, UINavigationCon
      or constructed as part of adding a new task.
      */
     var task: Task?
+    var origin: String?
+    var origin_idx: Int?
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,6 +94,12 @@ class TaskViewController: UIViewController, UITextFieldDelegate, UINavigationCon
             let status = "Current"
             // set the task to be passed to TaskTableViewController after the unwind segue.
             task = Task(name: name, desc: desc, dueDate: dueDate, status: status)
+            
+            if origin != nil {
+                navigationController!.popViewControllerAnimated(false)
+            } else {
+                navigationController!.popViewControllerAnimated(true)
+            }
         }
         
     }
