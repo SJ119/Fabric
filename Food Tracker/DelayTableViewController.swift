@@ -18,10 +18,12 @@ class DelayTableViewController: UITableViewController {
         tasks.append(task)
         self.tableView.reloadData()
         print(tasks)
+        saveTasks()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadTasks()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -109,5 +111,25 @@ class DelayTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    //MARK: JsonManager.swift
+    func saveTasks() {     
+        //save to json
+        let block = JsonObject()
+        block.setEntry("status", obj: JsonString(str : "Success!"))
+        block.setEntry("tasks", obj: JsonObjectList(objs: tasks))
+        let isSuccessfulSave = JsonManager.getInstance().writeJson(block, filename: "outDelay.json")
+        if !isSuccessfulSave {
+            print("Failed to save tasks...")
+        }
+    }
+    
+    func loadTasks() {
+        let data = JsonManager.getInstance().readJson("outDelay.json")
+        let tasklist = JsonManager.getInstance().convertToTasks(data)
+        print(tasklist)
+        tasks = Array([tasks, tasklist].flatten())
+        self.tableView.reloadData()
+    }
 
 }

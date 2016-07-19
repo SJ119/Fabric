@@ -18,10 +18,12 @@ class DoneTableViewController: UITableViewController {
         tasks.append(task)
         self.tableView.reloadData()
         print(tasks)
+        saveTasks()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadTasks()
         print(tasks)
         // self.tableView.registerClass(DoneTableViewCell.self, forCellReuseIdentifier: "Done")
         // Uncomment the following line to preserve selection between presentations
@@ -111,5 +113,25 @@ class DoneTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    //MARK: JsonManager.swift
+    func saveTasks() {
+        //save to json
+        print("saveTasksDone")
+        let block = JsonObject()
+        block.setEntry("status", obj: JsonString(str : "Success!"))
+        block.setEntry("tasks", obj: JsonObjectList(objs: tasks))
+        let isSuccessfulSave = JsonManager.getInstance().writeJson(block, filename: "outDone.json")
+        if !isSuccessfulSave {
+            print("Failed to save tasks...")
+        }
+    }
+    
+    func loadTasks() {
+        print("loadTasksDone")
+        let data = JsonManager.getInstance().readJson("outDone.json")
+        let tasklist = JsonManager.getInstance().convertToTasks(data)
+        print(tasklist)
+        tasks = Array([tasks, tasklist].flatten())
+        self.tableView.reloadData()
+    }
 }

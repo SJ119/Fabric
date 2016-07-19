@@ -28,6 +28,7 @@
 		5DFF5BCC1D1C22D2009AD1DB /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFF5BCB1D1C22D2009AD1DB /* Contact.swift */; };
 		5DFF5BCD1D1C22D2009AD1DB /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFF5BCB1D1C22D2009AD1DB /* Contact.swift */; };
 		5DFF5BCE1D1C22D2009AD1DB /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFF5BCB1D1C22D2009AD1DB /* Contact.swift */; };
+		842513521D3D9D5C00417859 /* JsonManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842513511D3D9D5A00417859 /* JsonManager.swift */; };
 		84ECCC661D37550900C91BFD /* AchievementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ECCC651D37550900C91BFD /* AchievementTableViewCell.swift */; };
 		A75727F31D20CACB008388CA /* DoneTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75727F21D20CACB008388CA /* DoneTableViewCell.swift */; };
 		A75727F71D20CDEE008388CA /* DoneTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75727F61D20CDEE008388CA /* DoneTableViewController.swift */; };
@@ -94,6 +95,7 @@
 		5DFF5BC71D1C1A74009AD1DB /* ContactTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
 		5DFF5BC91D1C20E3009AD1DB /* ContactTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactTableViewController.swift; sourceTree = "<group>"; };
 		5DFF5BCB1D1C22D2009AD1DB /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		842513511D3D9D5A00417859 /* JsonManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonManager.swift; sourceTree = "<group>"; };
 		84ECCC651D37550900C91BFD /* AchievementTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AchievementTableViewCell.swift; sourceTree = "<group>"; };
 		A75727F21D20CACB008388CA /* DoneTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoneTableViewCell.swift; sourceTree = "<group>"; };
 		A75727F61D20CDEE008388CA /* DoneTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoneTableViewController.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 				5D96B14C1D11E3BA00CD8C95 /* RatingControl.swift */,
 				5D001D021C6D5AF200AAB05A /* LaunchScreen.storyboard */,
 				5D001D051C6D5AF200AAB05A /* Info.plist */,
+				842513511D3D9D5A00417859 /* JsonManager.swift */,
 			);
 			name = Fabric;
 			path = "Food Tracker";
@@ -447,6 +450,7 @@
 				5DD7E24A1D185108003972E1 /* TaskTableViewCell.swift in Sources */,
 				A75727F31D20CACB008388CA /* DoneTableViewCell.swift in Sources */,
 				84ECCC661D37550900C91BFD /* AchievementTableViewCell.swift in Sources */,
+				842513521D3D9D5C00417859 /* JsonManager.swift in Sources */,
 				5D7939E51D1C3EF5006C28AB /* ContactViewController.swift in Sources */,
 				A75727FB1D20F6F1008388CA /* DelayTableViewCell.swift in Sources */,
 			);

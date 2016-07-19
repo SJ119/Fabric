@@ -40,6 +40,7 @@ class TaskTableViewController: UITableViewController {
             }
             //tasks += savedTasks
         }
+        self.tableView.reloadData()
     }
     
     
@@ -53,6 +54,17 @@ class TaskTableViewController: UITableViewController {
         let viewController = UIApplication.sharedApplication().windows[0].rootViewController?.childViewControllers[1].childViewControllers[0] as? DelayTableViewController
         viewController?.addTask(task)
     }
+    
+    func loadDestinationViewController() {
+        let viewController = UIApplication.sharedApplication().windows[0].rootViewController?.childViewControllers[3].childViewControllers[0] as? DoneTableViewController
+        viewController?.loadTasks()
+    }
+    
+    func loadDestinationViewControllerDelay() {
+        let viewController = UIApplication.sharedApplication().windows[0].rootViewController?.childViewControllers[1].childViewControllers[0] as? DelayTableViewController
+        viewController?.loadTasks()
+    }
+    
     
     
     func presentDestinationViewControllerAchievement(task: Task) {
@@ -243,16 +255,25 @@ class TaskTableViewController: UITableViewController {
         }
     }
     
-    //MARK: NSCoding
+    //MARK: JsonManager.swift
     func saveTasks() {
-        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(tasks, toFile: Task.ArchiveURL.path!)
+        //var isSuccessfulSave = NSKeyedArchiver.archiveRootObject(tasks, toFile: Task.ArchiveURL.path!)
+        
+        //save to json
+        let block = JsonObject()
+        block.setEntry("status", obj: JsonString(str : "Success!"))
+        block.setEntry("tasks", obj: JsonObjectList(objs: tasks))
+        let isSuccessfulSave = JsonManager.getInstance().writeJson(block, filename: "out.json")
         if !isSuccessfulSave {
             print("Failed to save tasks...")
         }
     }
     
     func loadTasks() -> [Task]? {
-        return NSKeyedUnarchiver.unarchiveObjectWithFile(Task.ArchiveURL.path!) as? [Task]
+        let data = JsonManager.getInstance().readJson("out.json")
+        let tasklist = JsonManager.getInstance().convertToTasks(data)
+        return tasklist
+        //return NSKeyedUnarchiver.unarchiveObjectWithFile(Task.ArchiveURL.path!) as? [Task]
     }
 
 }

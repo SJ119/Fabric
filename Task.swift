@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Task: NSObject, NSCoding {
+class Task: JsonObject, NSCoding {
     //MARK: Properties
     
     var name:String
@@ -43,6 +43,8 @@ class Task: NSObject, NSCoding {
         if name.isEmpty {
             return nil
         }
+        
+        //initialize
     }
     //MARK: NSCoding
     func encodeWithCoder(aCoder: NSCoder) {
@@ -62,5 +64,42 @@ class Task: NSObject, NSCoding {
         //Must call designated initializer.
         self.init(name:name, desc: desc!, dueDate: dueDate!, status: status!)
         
+    }
+    
+    override func updateJsonEntries() {
+        self.clear()
+        
+        let date = DateUtils.stringFromDate(self.dueDate, format: "yyyy:MM:dd:HH:mm")
+        self.setEntry("name", obj: JsonString(str: self.name))
+        self.setEntry("description", obj: JsonString(str: self.desc))
+        self.setEntry("due_date", obj: JsonString(str: date))
+        self.setEntry("status", obj: JsonString(str: self.status))
+        self.setEntry("user", obj: JsonString(str: "TBD"))
+    }
+    
+    /*override func toJson()->String {
+        let date = DateUtils.stringFromDate(self.dueDate, format: "yyyy:MM:dd:HH:mm")
+        /*let array = ["task_name": self.name, "description": self.desc, "due_date": date, "status": self.status, "user": "TBD"]
+        return array*/
+        return "{" + "\"task_name\":\"" + self.name + "\","
+                    + "\"description\":\"" + self.desc + "\","
+                    + "\"due_date\":\"" + date + "\","
+                    + "\"status\":\"" + self.status + "\","
+                    + "\"user\":\"" + "TBD" + "\"}"
+    }*/
+}
+
+//date conversion utility
+class DateUtils {
+    class func dateFromString(string: String, format: String) -> NSDate {
+        let formatter: NSDateFormatter = NSDateFormatter()
+        formatter.dateFormat = format
+        return formatter.dateFromString(string)!
+    }
+    
+    class func stringFromDate(date: NSDate, format: String) -> String {
+        let formatter: NSDateFormatter = NSDateFormatter()
+        formatter.dateFormat = format
+        return formatter.stringFromDate(date)
     }
 }
