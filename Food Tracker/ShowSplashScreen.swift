@@ -25,14 +25,13 @@ class ShowSplashScreen: UIViewController {
     }
     func shouldTransition() -> Bool {
         
-        var actionB = false
-        var visited = false
+        var actionB = false// || true
+        var visited = false// || true
         if (userID.text! != "" && password.text! != "")
         {
-            //                print("tapped sign in with username \(userID.text!) and password \(password.text!)")
             
             
-            let url = "http://localhost:3000/confirm_user?name=" + userID.text! + "&password=" + password.text!
+            let url = "http://lit-plains-99831.herokuapp.com/confirm_user?name=" + userID.text! + "&password=" + password.text!
             
             let requestURL: NSURL = NSURL(string: url)!
             
@@ -110,11 +109,11 @@ class ShowSplashScreen: UIViewController {
         var visited = false
         if (userID.text! != "" && password.text! != "")
         {
-            var url = "http://localhost:3000/get_task?name=" + userID.text!
-            var requestURL: NSURL = NSURL(string: url)!
+            let url = "http://lit-plains-99831.herokuapp.com/get_task?name=" + userID.text!
+            let requestURL: NSURL = NSURL(string: url)!
             
-            var urlRequest: NSMutableURLRequest = NSMutableURLRequest(URL: requestURL)
-            var session = NSURLSession.sharedSession()
+            let urlRequest: NSMutableURLRequest = NSMutableURLRequest(URL: requestURL)
+            let session = NSURLSession.sharedSession()
             let task = session.dataTaskWithRequest(urlRequest)
             {
                 (data, response, error) -> Void in
@@ -143,7 +142,7 @@ class ShowSplashScreen: UIViewController {
                             else
                             {
                                 self.updateWarning("Registered")
-                                let myUrl = NSURL(string: "http://localhost:3000/new_user?")
+                                let myUrl = NSURL(string: "http://lit-plains-99831.herokuapp.com/new_user?")
                                 let request = NSMutableURLRequest(URL: myUrl!)
                                 request.HTTPMethod = "POST"
                                 let postString = "name=" + self.userID.text! + "&password=" + self.password.text!
