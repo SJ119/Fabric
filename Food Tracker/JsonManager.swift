@@ -1,0 +1,308 @@
+//
+//  JsonManager.swift
+//  Fabric
+//
+//  Created by yc on 7/19/16.
+//  Copyright © 2016 Samantha Lauer. All rights reserved.
+//
+
+/* How to write to Json
+ * Usage1 : let the class to write inherit JsonObject class
+ *          then override the updateJsonEntries function
+ * Usage2 : create a JsonObject
+ *          manually set entries
+ *
+ * Write to json file : JsonManager.getInstance().writeJson
+ * Send to server : JsonManager.getInstance().send
+ *
+ * How to read from Json
+ * Read from json file : JsonManager.getInstance().readJson
+ *
+ * Convert to Task : JsonManager.getInstance().convertToTasks
+ * Convert to Contact : TBD
+ * Convert to Achievements : TBD
+ *
+ *
+ * Example 1: create Json using inheritance
+ * {"name":"","description":"","due_date":"","status":"","user":""}
+ * 
+ * How to create
+ * (1) In Task.swift, inherit JsonObject class
+ *     class Task: JsonObject, NSCoding
+ * (2) Override updateJsonEntries function by adding whatever entry needed
+ *     Each time toJson() is called the entries will be automatically updated to newest value
+ *     Sample Code:
+ *     override func updateJsonEntries() {
+ *         self.clear()
+ *         let date = DateUtils.stringFromDate(self.dueDate, format: "yyyy:MM:dd:HH:mm")
+ *         self.setEntry("name", obj: JsonString(str: self.name))
+ *         self.setEntry("description", obj: JsonString(str: self.desc))
+ *         self.setEntry("due_date", obj: JsonString(str: date))
+ *         self.setEntry("status", obj: JsonString(str: self.status))
+ *         self.setEntry("user", obj: JsonString(str: ""))
+ *     }
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * Example 2:
+ * {"status":"","tasks":[{"name":"","description":"","due_date":"","status":"","user":""}]}
+ * 
+ * How to create
+ * (1) Do steps in example 1 so that Task is a JsonObject
+ * (2) Create a new Json Object and add entry manually
+ * (3) Use JsonObjectList for list entry
+ * Code:
+ *     let block = JsonObject()
+ *     block.setEntry("status", obj: JsonString(str : "Success!"))
+ *     block.setEntry("tasks", obj: JsonObjectList(objs: tasks))
+ *     JsonManager.getInstance().send(block, url : "")
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * Example 3:
+ * Send to server
+ *     JsonManager.getInstance().send(block, url : "http://lit-plains-99831.herokuapp.com/new_task")
+ *
+ */
+
+import UIKit
+
+class JsonWritableObject : NSObject {
+    //override this function in subclass when necessary
+    func toJson()->String {
+        return ""
+    }
+    
+    //no "protected" keyword in swift
+    func isString()->Bool {
+        return false
+    }
+}
+
+class JsonString : JsonWritableObject {
+    var str = ""
+    
+    init(str : String) {
+        self.str = str
+    }
+    
+    override func toJson()->String {
+        return str;
+    }
+    
+    override func isString()->Bool {
+        return true
+    }
+}
+
+//classes should inherit this class and override setJsonEntry method
+class JsonObject : JsonWritableObject {
+    var objs = [(String, JsonWritableObject)]()
+    
+    func setEntry(name: String, obj : JsonWritableObject) {
+        objs.append((name, obj));
+    }
+    
+    //override this function
+    func updateJsonEntries() {
+    }
+    
+    func clear() {
+        objs.removeAll()
+    }
+    
+    override func toJson()->String {
+        updateJsonEntries()
+        var str = ""
+        var count = 0
+        str = str + "{"
+        for obj in objs {
+            count = count + 1
+            str = str + "\"" + obj.0 + "\":"
+            if obj.1.isString() {
+                str = str + "\""
+            }
+            str = str +  obj.1.toJson()
+            if obj.1.isString() {
+                str = str + "\""
+            }
+            if count != objs.count {
+                str = str + ","
+            }
+        }
+        
+        str = str + "}"
+        return str;
+    }
+}
+
+class JsonObjectList : JsonWritableObject {
+    var objs = [JsonObject]()
+    
+    init(objs : [JsonObject]) {
+        
+        self.objs = objs
+    }
+    
+    override func toJson()->String {
+        var str = ""
+        var count = 0
+        str = str + "["
+        for obj in objs {
+            count = count + 1
+            str = str + obj.toJson()
+            if count != objs.count {
+                str = str + ","
+            }
+        }
+        
+        str = str + "]"
+        return str;
+    }
+}
+
+class JsonManager {
+    private static let m = JsonManager()
+    
+    private init() {
+    }
+    
+    static func getInstance() ->JsonManager {
+        return m
+    }
+    
+    func writeJson(obj : JsonWritableObject, filename : String) -> Bool {
+        //generate Json String
+        let string = obj.toJson()
+        //print(JsonManager.writeJson)
+        //print(string)
+        
+        //write to file
+        let file = filename
+        let text = string
+        
+        if let dir = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true).first {
+            let path = NSURL(fileURLWithPath: dir).URLByAppendingPathComponent(file)
+            
+            //writing
+            do {
+                try text.writeToURL(path, atomically: false, encoding: NSUTF8StringEncoding)
+            }
+            catch {
+                return false
+            }
+            
+        }
+        
+        return true
+    }
+    
+    func readJson(filename : String) -> NSData {
+        
+        let file = filename
+        
+        if let dir = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true).first {
+            let path = NSURL(fileURLWithPath: dir).URLByAppendingPathComponent(file)
+            
+            
+            //reading
+            do {
+                let data = try NSData(contentsOfURL: path, options: [])
+                return data
+            }
+            catch {
+                return NSData()
+            }
+        }
+        
+        return NSData()
+    }
+    
+    func convertToTasks(data : NSData) -> [Task]{
+        var tasks = [Task]()
+        do {
+            let jsonDict = try NSJSONSerialization.JSONObjectWithData(data, options: []) as! NSDictionary
+            let taskEntries = jsonDict["tasks"]
+            
+            let entries = taskEntries! as! [NSDictionary]
+            //print (entries.count)
+            for entry in entries {
+                let date = entry["due_date"]! as! String
+                let nsdate = DateUtils.dateFromString(date, format: "yyyy:MM:dd:HH:mm")
+                let name = String(entry["name"]!)
+                let desc = String(entry["description"]!)
+                let status = String(entry["status"]!)
+                let visible = String(entry["visible"]!) == "True"
+                let task = Task(name: name, desc: desc, dueDate: nsdate, status: status, visible: visible)!
+                //print(task)
+                tasks.append(task)
+            }
+        } catch {
+            
+            
+        }
+        //print(tasks)
+        return tasks
+    }
+    
+    func send(obj : JsonWritableObject, url : String) {
+        // create the request & response
+        let request = NSMutableURLRequest(URL: NSURL(string: url)!, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData, timeoutInterval: 5)
+    
+        // create some JSON data and configure the request
+        let jsonString = obj.toJson()
+        print("Generate Json")
+        print(jsonString)
+        request.HTTPBody = jsonString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
+        request.HTTPMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    
+        // send the request
+        //try NSURLConnection.sendSynchronousRequest(request, returningResponse: &response)
+        let session = NSURLSession.sharedSession()
+        
+        let task = session.dataTaskWithRequest(request) {
+            (data, response, error) -> Void in
+            do {
+                let myJSON = try NSJSONSerialization.JSONObjectWithData(data!, options:.MutableLeaves) as? NSDictionary
+                
+                if let parseJSON = myJSON {
+                    let status = parseJSON["status"] as? String
+                    if(status! == "OK")
+                    {
+                        print("Status OK")
+                    }
+                    else
+                    {
+                        print(parseJSON["message"])
+                    }
+                }
+                
+            } catch {
+                print("error catched")
+                print(error)
+            }
+            
+            // look at the response
+            if let httpResponse = response as? NSHTTPURLResponse {
+                print("HTTP response: \(httpResponse.statusCode)")
+            } else {
+                print("No HTTP response")
+            }
+            
+        }
+        task.resume()
+        print("Json Sent")
+    }
+}
+
+//date conversion utility
+class DateUtils {
+    class func dateFromString(string: String, format: String) -> NSDate {
+        let formatter: NSDateFormatter = NSDateFormatter()
+        formatter.dateFormat = format
+        return formatter.dateFromString(string)!
+    }
+    
+    class func stringFromDate(date: NSDate, format: String) -> String {
+        let formatter: NSDateFormatter = NSDateFormatter()
+        formatter.dateFormat = format
+        return formatter.stringFromDate(date)
+    }
+}
