@@ -228,7 +228,8 @@ class JsonManager {
                 let name = String(entry["name"]!)
                 let desc = String(entry["description"]!)
                 let status = String(entry["status"]!)
-                let task = Task(name: name, desc: desc, dueDate: nsdate, status: status)!
+                let visible = String(entry["visible"]!) == "True"
+                let task = Task(name: name, desc: desc, dueDate: nsdate, status: status, visible: visible)!
                 //print(task)
                 tasks.append(task)
             }

@@ -67,18 +67,24 @@ class Task: JsonObject, NSCoding {
         let visible = aDecoder.decodeObjectForKey(PropertyKey.visible) as? Bool
         
         //Must call designated initializer.
-        self.init(name:name, desc: desc!, dueDate: dueDate!, status: status!, visible: visible!)
+        self.init(name:name,
+                  desc: (desc == nil ? "" : desc!),
+                  dueDate: (dueDate == nil ? NSDate() : dueDate!),
+                  status: (status == nil ? "" : status!),
+                  visible: (visible == nil ? false : visible!))
         
     }
     
     override func updateJsonEntries() {
         self.clear()
         
-        let date = DateUtils.stringFromDate(self.dueDate, format: "yyyy:MM:dd:HH:mm")
+        let date = DateUtils.stringFromDate(self.dueDate!, format: "yyyy:MM:dd:HH:mm")
+        let visible = self.visible ? "True" : "False"
         self.setEntry("name", obj: JsonString(str: self.name))
         self.setEntry("description", obj: JsonString(str: self.desc))
         self.setEntry("due_date", obj: JsonString(str: date))
         self.setEntry("status", obj: JsonString(str: self.status))
         self.setEntry("user", obj: JsonString(str: "kevin"))
+        self.setEntry("visible", obj: JsonString(str: visible))
     }
 }
