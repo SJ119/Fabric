@@ -35,21 +35,28 @@ class TaskTableViewController: UITableViewController {
     }
     
     func getViewControllerDone() -> DoneTableViewController? {
-        let viewController = UIApplication.sharedApplication().windows[0].rootViewController?.childViewControllers[3].childViewControllers[0] as? DoneTableViewController
+        let viewController = self.parentViewController?.parentViewController?.childViewControllers[3].childViewControllers[0] as? DoneTableViewController
         return viewController
     }
     
     
     func getViewControllerDelay() -> DelayTableViewController? {
-        let viewController = UIApplication.sharedApplication().windows[0].rootViewController?.childViewControllers[1].childViewControllers[0] as? DelayTableViewController
+        let viewController = self.parentViewController?.parentViewController?.childViewControllers[1].childViewControllers[0] as? DelayTableViewController
         return viewController
     }
     
     func presentDestinationViewControllerAchievement(task: Task) {
-        let viewController = UIApplication.sharedApplication().windows[0].rootViewController?.childViewControllers[0].childViewControllers[0] as? AchievementsViewController
+        let viewController = self.parentViewController?.parentViewController?.childViewControllers[0].childViewControllers[0] as? AchievementsViewController
         viewController?.addTask(task)
     }
-    
+//    
+//    var window= UIApplication.SharedApplication.KeyWindow;
+//    var vc = window..RootViewController;
+//    while (vc.PresentedViewController != null)
+//    {
+//    vc = vc.PresentedViewController;
+//    }
+//    // Present on vc.
     
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         cell.backgroundColor = UIColor.clearColor()
