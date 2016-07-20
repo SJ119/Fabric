@@ -34,6 +34,7 @@
 		A737FD5C1D3D66D200857249 /* persistData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A737FD5B1D3D66D200857249 /* persistData.swift */; };
 		A75727F71D20CDEE008388CA /* DoneTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75727F61D20CDEE008388CA /* DoneTableViewController.swift */; };
 		A75727F91D20F6E7008388CA /* DelayTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75727F81D20F6E7008388CA /* DelayTableViewController.swift */; };
+		A7A8953B1D4018340029D1B1 /* TaskComposite.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A8953A1D4018340029D1B1 /* TaskComposite.swift */; };
 		DA1C0189075DFE7EF5E5DF89 /* Pods_Food_Tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1AB8D201D8230C54A332647 /* Pods_Food_Tracker.framework */; };
 /* End PBXBuildFile section */
 
@@ -101,6 +102,7 @@
 		A737FD5B1D3D66D200857249 /* persistData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = persistData.swift; sourceTree = "<group>"; };
 		A75727F61D20CDEE008388CA /* DoneTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoneTableViewController.swift; sourceTree = "<group>"; };
 		A75727F81D20F6E7008388CA /* DelayTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DelayTableViewController.swift; sourceTree = "<group>"; };
+		A7A8953A1D4018340029D1B1 /* TaskComposite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskComposite.swift; sourceTree = "<group>"; };
 		D1AB8D201D8230C54A332647 /* Pods_Food_Tracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Food_Tracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -190,6 +192,7 @@
 				5DFF5BC71D1C1A74009AD1DB /* ContactTableViewCell.swift */,
 				A75727F81D20F6E7008388CA /* DelayTableViewController.swift */,
 				5DD7E24B1D18749C003972E1 /* TaskTableViewController.swift */,
+				A7A8953A1D4018340029D1B1 /* TaskComposite.swift */,
 				5DD7E2491D185108003972E1 /* TaskTableViewCell.swift */,
 				5D71BCC41D1C47C600E74C7F /* Assets.xcassets */,
 				5D96B14C1D11E3BA00CD8C95 /* RatingControl.swift */,
@@ -447,13 +450,13 @@
 				A75727F71D20CDEE008388CA /* DoneTableViewController.swift in Sources */,
 				A737FD5C1D3D66D200857249 /* persistData.swift in Sources */,
 				5DFF5BCA1D1C20E3009AD1DB /* ContactTableViewController.swift in Sources */,
-				5DFF5BC81D1C1A74009AD1DB /* ContactTableViewCell.swift in Sources */,
 				1B714F241D368E9300803EE8 /* ShowSplashScreen.swift in Sources */,
 				5DD7E24C1D18749C003972E1 /* TaskTableViewController.swift in Sources */,
 				5DD7E24A1D185108003972E1 /* TaskTableViewCell.swift in Sources */,
 				84ECCC661D37550900C91BFD /* AchievementTableViewCell.swift in Sources */,
 				5D7939E51D1C3EF5006C28AB /* ContactViewController.swift in Sources */,
 				A711C6D91D3EB9920075E89D /* Points.swift in Sources */,
+				A7A8953B1D4018340029D1B1 /* TaskComposite.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

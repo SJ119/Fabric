@@ -48,14 +48,6 @@ class TaskTableViewController: UITableViewController {
         let viewController = self.parentViewController?.parentViewController?.childViewControllers[0].childViewControllers[0] as? AchievementsViewController
         viewController?.addTask(task)
     }
-//    
-//    var window= UIApplication.SharedApplication.KeyWindow;
-//    var vc = window..RootViewController;
-//    while (vc.PresentedViewController != null)
-//    {
-//    vc = vc.PresentedViewController;
-//    }
-//    // Present on vc.
     
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         cell.backgroundColor = UIColor.clearColor()
@@ -220,6 +212,10 @@ class TaskTableViewController: UITableViewController {
             }
             
             saveTasks(self.tasks, url: Task.ArchiveURL)
+            
+            let tvc = self.parentViewController?.parentViewController as! UITabBarController
+            fetch_task_group(tvc)
+            add_to_server()
         }
     }
     
