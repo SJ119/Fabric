@@ -43,7 +43,18 @@ class ContactInfoViewController: UIViewController, UINavigationControllerDelegat
         //Enable the Save button only if the text field has a valid Task name.
     }
     
-    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "Edit" {
+            let contactDetailViewController = segue.destinationViewController as! ContactViewController
+            // Get the contact that generated this segue.
+            /*if let selectedContactCell = sender as? ContactTableViewCell {
+             let indexPath = tableView.indexPathForCell(selectedTaskCell)!
+             let selectedTask = tasks[indexPath.row]
+             taskDetailViewController.task = selectedTask
+             }*/
+            contactDetailViewController.contact = contact
+        }
+    }
 
     
 }
