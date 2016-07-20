@@ -20,8 +20,7 @@ class ContactTableViewController: UITableViewController {
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        self.navigationItem.leftBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
@@ -79,13 +78,19 @@ class ContactTableViewController: UITableViewController {
     @IBAction func unwindToContactList(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.sourceViewController as?
             ContactViewController, contact = sourceViewController.contact {
-            // Add a new contact
-            let newIndexPath = NSIndexPath(forRow: contacts.count, inSection: 0)
-            contacts.append(contact)
-            
-            // inserts contact at bottom (will want to alphabetize later!!
-            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
-        }
-    }
+            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                // Update an existing task.
+                contacts[selectedIndexPath.row] = contact
+                tableView.reloadRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .None)
+            }
+            else {
+                // Add a new contact
+                let newIndexPath = NSIndexPath(forRow: contacts.count, inSection: 0)
+                contacts.append(contact)
+                
+                // inserts contact at bottom (will want to alphabetize later!!
+                tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
+            }
+        }    }
 
 }
