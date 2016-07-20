@@ -14,6 +14,8 @@ class TaskViewController: UIViewController, UITextFieldDelegate, UINavigationCon
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var descTextField: UITextField!
     @IBOutlet weak var dueDatePicker: UIDatePicker!
+    @IBOutlet weak var publicSwitch: UISwitch!
+    @IBOutlet weak var sendToButton: UIButton!
     
     @IBAction func SelectingDate(sender: AnyObject) {
         let currDate = NSDate()
@@ -41,6 +43,7 @@ class TaskViewController: UIViewController, UITextFieldDelegate, UINavigationCon
             nameTextField.text = task.name
             descTextField.text = task.desc
             dueDatePicker.date = task.dueDate
+            publicSwitch.on = task.visible
             
             dueDatePicker.minimumDate = NSDate()
             
@@ -97,8 +100,9 @@ class TaskViewController: UIViewController, UITextFieldDelegate, UINavigationCon
             let desc = descTextField.text ?? ""
             let dueDate = dueDatePicker.date ?? NSDate()
             let status = "Current"
+            let visible = publicSwitch.on ?? true
             // set the task to be passed to TaskTableViewController after the unwind segue.
-            task = Task(name: name, desc: desc, dueDate: dueDate, status: status)
+            task = Task(name: name, desc: desc, dueDate: dueDate, status: status, visible: visible)
             
             if origin != nil {
                 navigationController!.popViewControllerAnimated(false)
@@ -106,7 +110,6 @@ class TaskViewController: UIViewController, UITextFieldDelegate, UINavigationCon
                 navigationController!.popViewControllerAnimated(true)
             }
         }
-        
     }
     
 

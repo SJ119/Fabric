@@ -16,6 +16,7 @@ class Task: NSObject, NSCoding {
     var dueDate:NSDate
     //var timer:NSTimer
     var status:String
+    var visible:Bool
     
     //MARK: Archiving Paths
     static let DocumentsDirectory = NSFileManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
@@ -29,16 +30,18 @@ class Task: NSObject, NSCoding {
         static let desc = "description"
         static let dueDate = "dueDate"
         static let status = "status"
+        static let visible = "visible"
     }
     
     //MARK: Initialization
     
-    init?(name: String, desc:String, dueDate:NSDate, status:String) {
+    init?(name: String, desc:String, dueDate:NSDate, status:String, visible:Bool) {
         // Initialize stored properties.
         self.name = name
         self.desc = desc
         self.dueDate = dueDate
         self.status = status
+        self.visible = visible
         super.init()
         
         // Initialization should fail if there is no name or if the rating is negative.
@@ -52,6 +55,7 @@ class Task: NSObject, NSCoding {
         aCoder.encodeObject(desc, forKey: PropertyKey.desc)
         aCoder.encodeObject(dueDate, forKey: PropertyKey.dueDate)
         aCoder.encodeObject(status, forKey: PropertyKey.status)
+        aCoder.encodeObject(visible, forKey: PropertyKey.visible)
         
     }
     
@@ -60,9 +64,10 @@ class Task: NSObject, NSCoding {
         let desc = aDecoder.decodeObjectForKey(PropertyKey.desc) as? String
         let dueDate = aDecoder.decodeObjectForKey(PropertyKey.dueDate) as? NSDate
         let status = aDecoder.decodeObjectForKey(PropertyKey.status) as? String
+        let visible = aDecoder.decodeObjectForKey(PropertyKey.visible) as? Bool
         
         //Must call designated initializer.
-        self.init(name:name, desc: desc!, dueDate: dueDate!, status: status!)
+        self.init(name:name, desc: desc!, dueDate: dueDate!, status: status!, visible: visible!)
         
     }
 }

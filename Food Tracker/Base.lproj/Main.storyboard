@@ -487,7 +487,9 @@
                         <outlet property="descTextField" destination="JqQ-5b-RyO" id="zhS-DG-r52"/>
                         <outlet property="dueDatePicker" destination="uXR-67-OOu" id="TQy-D9-0h8"/>
                         <outlet property="nameTextField" destination="lF7-Fk-uBo" id="txD-F7-J07"/>
+                        <outlet property="publicSwitch" destination="eUJ-Rj-BCq" id="lLH-lx-xF5"/>
                         <outlet property="saveButton" destination="xkz-vx-t3Q" id="UdA-yM-a7i"/>
+                        <outlet property="sendToButton" destination="5Ds-Yf-1X4" id="EtM-oO-lLe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
