@@ -30,7 +30,8 @@ class TaskTableViewController: UITableViewController {
         }
         
         // Do an initial reload on our current list
-        reloadCurrent(NSTimer())
+        // Cant to this now because we need to wait for our view to load (log in screen to go away)
+        // reloadCurrent(NSTimer())
     }
     
     func getViewControllerDone() -> DoneTableViewController? {
