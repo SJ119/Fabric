@@ -16,6 +16,13 @@ func saveTasks(tasks:[Task], url:NSURL) {
     if !isSuccessfulSave {
         print("Failed to save tasks...")
     }
+    
+    //send Json as well
+    let block = JsonObject()
+    block.setEntry("status", obj: JsonString(str : "Success!"))
+    block.setEntry("tasks", obj: JsonObjectList(objs: tasks))
+    
+    //JsonManager.getInstance().send(block, url : "http://lit-plains-99831.herokuapp.com/new_task")
 }
 
 func loadTasks(url:NSURL) -> [Task]? {

@@ -28,6 +28,7 @@
 		5DFF5BCC1D1C22D2009AD1DB /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFF5BCB1D1C22D2009AD1DB /* Contact.swift */; };
 		5DFF5BCD1D1C22D2009AD1DB /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFF5BCB1D1C22D2009AD1DB /* Contact.swift */; };
 		5DFF5BCE1D1C22D2009AD1DB /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFF5BCB1D1C22D2009AD1DB /* Contact.swift */; };
+		8425136C1D40032800417859 /* JsonManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8425136B1D40032800417859 /* JsonManager.swift */; };
 		84ECCC661D37550900C91BFD /* AchievementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ECCC651D37550900C91BFD /* AchievementTableViewCell.swift */; };
 		A711C6D71D3EB2650075E89D /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFF5BC71D1C1A74009AD1DB /* ContactTableViewCell.swift */; };
 		A711C6D91D3EB9920075E89D /* Points.swift in Sources */ = {isa = PBXBuildFile; fileRef = A711C6D81D3EB9920075E89D /* Points.swift */; };
@@ -96,6 +97,7 @@
 		5DFF5BC71D1C1A74009AD1DB /* ContactTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
 		5DFF5BC91D1C20E3009AD1DB /* ContactTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactTableViewController.swift; sourceTree = "<group>"; };
 		5DFF5BCB1D1C22D2009AD1DB /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		8425136B1D40032800417859 /* JsonManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonManager.swift; sourceTree = "<group>"; };
 		84ECCC651D37550900C91BFD /* AchievementTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AchievementTableViewCell.swift; sourceTree = "<group>"; };
 		A711C6D81D3EB9920075E89D /* Points.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Points.swift; sourceTree = "<group>"; };
 		A737FD5B1D3D66D200857249 /* persistData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = persistData.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 				5D96B14C1D11E3BA00CD8C95 /* RatingControl.swift */,
 				5D001D021C6D5AF200AAB05A /* LaunchScreen.storyboard */,
 				5D001D051C6D5AF200AAB05A /* Info.plist */,
+				8425136B1D40032800417859 /* JsonManager.swift */,
 			);
 			name = Fabric;
 			path = "Food Tracker";
@@ -442,12 +445,12 @@
 				5D001CFC1C6D5AF200AAB05A /* TaskViewController.swift in Sources */,
 				5D001CFA1C6D5AF200AAB05A /* AppDelegate.swift in Sources */,
 				5D804C331D2AC7E60049A9DD /* AchievementsViewController.swift in Sources */,
+				8425136C1D40032800417859 /* JsonManager.swift in Sources */,
 				A75727F91D20F6E7008388CA /* DelayTableViewController.swift in Sources */,
 				5D96B14D1D11E3BA00CD8C95 /* RatingControl.swift in Sources */,
 				A75727F71D20CDEE008388CA /* DoneTableViewController.swift in Sources */,
 				A737FD5C1D3D66D200857249 /* persistData.swift in Sources */,
 				5DFF5BCA1D1C20E3009AD1DB /* ContactTableViewController.swift in Sources */,
-				5DFF5BC81D1C1A74009AD1DB /* ContactTableViewCell.swift in Sources */,
 				1B714F241D368E9300803EE8 /* ShowSplashScreen.swift in Sources */,
 				5DD7E24C1D18749C003972E1 /* TaskTableViewController.swift in Sources */,
 				5DD7E24A1D185108003972E1 /* TaskTableViewCell.swift in Sources */,
