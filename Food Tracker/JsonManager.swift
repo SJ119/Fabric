@@ -2,24 +2,63 @@
 //  JsonManager.swift
 //  Fabric
 //
-//  Created by admin on 7/19/16.
+//  Created by yc on 7/19/16.
 //  Copyright © 2016 Samantha Lauer. All rights reserved.
 //
 
 /* How to write to Json
  * Usage1 : let the class to write inherit JsonObject class
  *          then override the updateJsonEntries function
- *          example shown in Task.swift
  * Usage2 : create a JsonObject
  *          manually set entries
  *
  * Write to json file : JsonManager.getInstance().writeJson
+ * Send to server : JsonManager.getInstance().send
  *
  * How to read from Json
  * Read from json file : JsonManager.getInstance().readJson
+ *
  * Convert to Task : JsonManager.getInstance().convertToTasks
  * Convert to Contact : TBD
- * Conver to Achievements : TBD
+ * Convert to Achievements : TBD
+ *
+ *
+ * Example 1: create Json using inheritance
+ * {"name":"","description":"","due_date":"","status":"","user":""}
+ * 
+ * How to create
+ * (1) In Task.swift, inherit JsonObject class
+ *     class Task: JsonObject, NSCoding
+ * (2) Override updateJsonEntries function by adding whatever entry needed
+ *     Each time toJson() is called the entries will be automatically updated to newest value
+ *     Sample Code:
+ *     override func updateJsonEntries() {
+ *         self.clear()
+ *         let date = DateUtils.stringFromDate(self.dueDate, format: "yyyy:MM:dd:HH:mm")
+ *         self.setEntry("name", obj: JsonString(str: self.name))
+ *         self.setEntry("description", obj: JsonString(str: self.desc))
+ *         self.setEntry("due_date", obj: JsonString(str: date))
+ *         self.setEntry("status", obj: JsonString(str: self.status))
+ *         self.setEntry("user", obj: JsonString(str: ""))
+ *     }
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * Example 2:
+ * {"status":"","tasks":[{"name":"","description":"","due_date":"","status":"","user":""}]}
+ * 
+ * How to create
+ * (1) Do steps in example 1 so that Task is a JsonObject
+ * (2) Create a new Json Object and add entry manually
+ * (3) Use JsonObjectList for list entry
+ * Code:
+ *     let block = JsonObject()
+ *     block.setEntry("status", obj: JsonString(str : "Success!"))
+ *     block.setEntry("tasks", obj: JsonObjectList(objs: tasks))
+ *     JsonManager.getInstance().send(block, url : "")
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * Example 3:
+ * Send to server
+ *     JsonManager.getInstance().send(block, url : "http://lit-plains-99831.herokuapp.com/new_task")
+ *
  */
 
 import UIKit
@@ -165,9 +204,6 @@ class JsonManager {
             //reading
             do {
                 let data = try NSData(contentsOfURL: path, options: [])
-                //print("JsonManager.readJson")
-                //let text = NSString(data: data, encoding: NSUTF8StringEncoding)!
-                //print(text)
                 return data
             }
             catch {
@@ -184,14 +220,9 @@ class JsonManager {
             let jsonDict = try NSJSONSerialization.JSONObjectWithData(data, options: []) as! NSDictionary
             let taskEntries = jsonDict["tasks"]
             
-            //print("converToTasks")
-            //print(taskEntries![0]!["due_date"]!)
-            //print(taskEntries!.dynamicType)
             let entries = taskEntries! as! [NSDictionary]
             //print (entries.count)
             for entry in entries {
-                //print(entry.dynamicType)
-                //print(entry["name"])
                 let date = entry["due_date"]! as! String
                 let nsdate = DateUtils.dateFromString(date, format: "yyyy:MM:dd:HH:mm")
                 let name = String(entry["name"]!)
@@ -209,30 +240,54 @@ class JsonManager {
         return tasks
     }
     
-    func send(obj : JsonWritableObject, url : String) -> Bool {
+    func send(obj : JsonWritableObject, url : String) {
         // create the request & response
         let request = NSMutableURLRequest(URL: NSURL(string: url)!, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData, timeoutInterval: 5)
-        var response: NSURLResponse?
     
         // create some JSON data and configure the request
         let jsonString = obj.toJson()
+        print("Generate Json")
+        print(jsonString)
         request.HTTPBody = jsonString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
         request.HTTPMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
     
         // send the request
-        do {
-            try NSURLConnection.sendSynchronousRequest(request, returningResponse: &response)
-        } catch {
-            return false
+        //try NSURLConnection.sendSynchronousRequest(request, returningResponse: &response)
+        let session = NSURLSession.sharedSession()
+        
+        let task = session.dataTaskWithRequest(request) {
+            (data, response, error) -> Void in
+            do {
+                let myJSON = try NSJSONSerialization.JSONObjectWithData(data!, options:.MutableLeaves) as? NSDictionary
+                
+                if let parseJSON = myJSON {
+                    let status = parseJSON["status"] as? String
+                    if(status! == "OK")
+                    {
+                        print("Status OK")
+                    }
+                    else
+                    {
+                        print(parseJSON["message"])
+                    }
+                }
+                
+            } catch {
+                print("error catched")
+                print(error)
+            }
+            
+            // look at the response
+            if let httpResponse = response as? NSHTTPURLResponse {
+                print("HTTP response: \(httpResponse.statusCode)")
+            } else {
+                print("No HTTP response")
+            }
+            
         }
-        // look at the response
-        if let httpResponse = response as? NSHTTPURLResponse {
-            print("HTTP response: \(httpResponse.statusCode)")
-        } else {
-            print("No HTTP response")
-        }
-        return true
+        task.resume()
+        print("Json Sent")
     }
 }
 
