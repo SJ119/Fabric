@@ -42,7 +42,7 @@ class TaskViewController: UIViewController, UITextFieldDelegate, UINavigationCon
             navigationItem.title = task.name
             nameTextField.text = task.name
             descTextField.text = task.desc
-            dueDatePicker.date = task.dueDate
+            dueDatePicker.date = task.dueDate!
             publicSwitch.on = task.visible
             
             dueDatePicker.minimumDate = NSDate()

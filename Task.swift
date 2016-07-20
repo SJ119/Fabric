@@ -13,7 +13,7 @@ class Task: NSObject, NSCoding {
     
     var name:String
     var desc:String
-    var dueDate:NSDate
+    var dueDate:NSDate?
     //var timer:NSTimer
     var status:String
     var visible:Bool
@@ -35,7 +35,7 @@ class Task: NSObject, NSCoding {
     
     //MARK: Initialization
     
-    init?(name: String, desc:String, dueDate:NSDate, status:String, visible:Bool) {
+    init?(name: String, desc:String, dueDate:NSDate?, status:String, visible:Bool) {
         // Initialize stored properties.
         self.name = name
         self.desc = desc
@@ -62,7 +62,7 @@ class Task: NSObject, NSCoding {
     required convenience init?(coder aDecoder:NSCoder) {
         let name = aDecoder.decodeObjectForKey(PropertyKey.name) as! String
         let desc = aDecoder.decodeObjectForKey(PropertyKey.desc) as? String
-        let dueDate = aDecoder.decodeObjectForKey(PropertyKey.dueDate) as? NSDate
+        let dueDate = aDecoder.decodeObjectForKey(PropertyKey.dueDate) as? NSDate?
         let status = aDecoder.decodeObjectForKey(PropertyKey.status) as? String
         let visible = aDecoder.decodeObjectForKey(PropertyKey.visible) as? Bool
         

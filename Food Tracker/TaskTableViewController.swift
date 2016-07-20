@@ -91,7 +91,7 @@ class TaskTableViewController: UITableViewController {
         dateFormater.dateStyle = .MediumStyle
         dateFormater.timeStyle = .ShortStyle
         
-        let datestring = dateFormater.stringFromDate(date)
+        let datestring = dateFormater.stringFromDate(date!)
         cell.DateLabel.text = datestring
         if (task.status == "Urgent") {
             cell.DateLabel.textColor = UIColor.redColor()
@@ -184,12 +184,12 @@ class TaskTableViewController: UITableViewController {
             
             var delayIdx = [Int]()
             for (i, item) in savedTasks.enumerate() {
-                if (item.dueDate.compare(currentDate) == NSComparisonResult.OrderedAscending) {
+                if (item.dueDate!.compare(currentDate) == NSComparisonResult.OrderedAscending) {
                     print("Task \(i) is delayed, recorded \(i) as need to remove")
                     delayIdx.append(i);
                 } else {
                     print("Task \(i) is not delayed")
-                    let dateDifference = daysBetweenDates(currentDate, endDate: item.dueDate)
+                    let dateDifference = daysBetweenDates(currentDate, endDate: item.dueDate!)
                     if (dateDifference == 0) {
                         self.tasks[i].status = "Urgent"
                     }
