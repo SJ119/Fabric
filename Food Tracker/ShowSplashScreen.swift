@@ -238,25 +238,6 @@ class ShowSplashScreen: UIViewController {
     }
     
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        print("segue identifier: \(segue.identifier)")
-        if segue.identifier! == "showSplashScreen" || segue.identifier! == "registered" {
-            let mainTabBarController = segue.destinationViewController as! UITabBarController
-            
-            
-//            let taskDetailViewController = segue.destinationViewController as! TaskViewController
-//            // Get the cell that generated this segue.
-//            if let selectedTaskCell = sender as? TaskTableViewCell {
-//                let indexPath = tableView.indexPathForCell(selectedTaskCell)!
-//                let selectedTask = tasks[indexPath.row]
-//                taskDetailViewController.task = selectedTask
-//            }
-        } else if segue.identifier == "AddItem" {
-            print("Preparing to add new task.")
-        }
-    }
-    
-    
     
     override func viewDidLoad()
     {

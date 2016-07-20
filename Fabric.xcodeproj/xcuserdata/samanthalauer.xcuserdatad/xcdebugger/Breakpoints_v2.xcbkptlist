@@ -81,6 +81,84 @@
             endingLineNumber = "18"
             landmarkName = "addTask(_:)"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Fabric.AchievementsViewController.diff.getter : Swift.Int"
+                  moduleName = "Fabric"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/samanthalauer/Desktop/DESKTOP/Fabric/Food%20Tracker/AchievementsViewController.swift"
+                  timestampString = "490739910.878272"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "19">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Fabric.AchievementsViewController.diff.setter : Swift.Int"
+                  moduleName = "Fabric"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/samanthalauer/Desktop/DESKTOP/Fabric/Food%20Tracker/AchievementsViewController.swift"
+                  timestampString = "490739910.878375"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "23">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Fabric.AchievementsViewController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.NSBundle&gt;) -&gt; Fabric.AchievementsViewController"
+                  moduleName = "Fabric"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/samanthalauer/Desktop/DESKTOP/Fabric/Food%20Tracker/AchievementsViewController.swift"
+                  timestampString = "490739910.878463"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "239">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Fabric.AchievementsViewController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;Fabric.AchievementsViewController&gt;"
+                  moduleName = "Fabric"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/samanthalauer/Desktop/DESKTOP/Fabric/Food%20Tracker/AchievementsViewController.swift"
+                  timestampString = "490739910.878549"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "163">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Task.swift"
+            timestampString = "490739910.841118"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "init(coder:)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -89,13 +167,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Food Tracker/TaskTableViewController.swift"
-            timestampString = "490653729.763696"
+            filePath = "Task.swift"
+            timestampString = "490739913.12542"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "183"
-            endingLineNumber = "183"
-            landmarkName = "reloadCurrent(_:)"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "init(name:desc:dueDate:status:visible:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Food Tracker/TaskViewController.swift"
+            timestampString = "490739936.594112"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
+            landmarkName = "prepareForSegue(_:sender:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

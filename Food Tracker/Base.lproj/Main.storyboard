@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="JA5-BI-dUU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15A278b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="JA5-BI-dUU">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -255,6 +255,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="nameLabel" destination="E8u-yR-mem" id="DL3-wQ-kX8"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="EditDetail" id="Ono-0F-M0f"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -267,7 +268,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rkh-t0-jSh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-485" y="-923"/>
+            <point key="canvasLocation" x="-401" y="-923"/>
         </scene>
         <!--Complete-->
         <scene sceneID="oSp-xi-PHD">
@@ -487,7 +488,9 @@
                         <outlet property="descTextField" destination="JqQ-5b-RyO" id="zhS-DG-r52"/>
                         <outlet property="dueDatePicker" destination="uXR-67-OOu" id="TQy-D9-0h8"/>
                         <outlet property="nameTextField" destination="lF7-Fk-uBo" id="txD-F7-J07"/>
+                        <outlet property="publicSwitch" destination="eUJ-Rj-BCq" id="lLH-lx-xF5"/>
                         <outlet property="saveButton" destination="xkz-vx-t3Q" id="UdA-yM-a7i"/>
+                        <outlet property="sendToButton" destination="5Ds-Yf-1X4" id="EtM-oO-lLe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -779,6 +782,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="Cra-mz-cdG"/>
         <segue reference="bi2-ln-VU8"/>
-        <segue reference="z6m-wH-btM"/>
+        <segue reference="Ono-0F-M0f"/>
     </inferredMetricsTieBreakers>
 </document>
