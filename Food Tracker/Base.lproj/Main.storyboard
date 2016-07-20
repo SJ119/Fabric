@@ -437,6 +437,9 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ds-Yf-1X4">
                                 <rect key="frame" x="131" y="467" width="22" height="22"/>
+                                <connections>
+                                    <segue destination="Hdy-66-lTQ" kind="show" id="xlP-XL-dvO"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -502,6 +505,89 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="855" y="620"/>
+        </scene>
+        <!--Choose recipient(s)-->
+        <scene sceneID="ysw-GI-vS1">
+            <objects>
+                <tableViewController id="Po5-7v-9qE" customClass="recipientTableViewController" customModule="Fabric" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="66" sectionHeaderHeight="28" sectionFooterHeight="28" id="reY-dd-krv">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" searchBarStyle="minimal" id="qBZ-v4-ZEI">
+                            <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="Po5-7v-9qE" id="dYp-vo-dij"/>
+                            </connections>
+                        </searchBar>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="60" id="M86-hV-Qv5">
+                                <rect key="frame" x="0.0" y="136" width="600" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M86-hV-Qv5" id="9U1-Ah-tyz">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="59.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Contact Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JN6-Gb-C8m">
+                                            <rect key="frame" x="78" y="8" width="111" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="contacts" translatesAutoresizingMaskIntoConstraints="NO" id="EeN-DP-4cx">
+                                            <rect key="frame" x="7" y="-1" width="63" height="59.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="EeN-DP-4cx" secondAttribute="height" multiplier="63:59" id="MW2-CO-nV6"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Nickname" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="znu-CD-p4a">
+                                            <rect key="frame" x="78" y="37" width="77" height="21.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="JN6-Gb-C8m" firstAttribute="top" secondItem="9U1-Ah-tyz" secondAttribute="topMargin" id="3Oa-7D-6LF"/>
+                                        <constraint firstItem="EeN-DP-4cx" firstAttribute="leading" secondItem="9U1-Ah-tyz" secondAttribute="leadingMargin" id="8dL-am-R5V"/>
+                                        <constraint firstItem="znu-CD-p4a" firstAttribute="leading" secondItem="EeN-DP-4cx" secondAttribute="trailing" constant="8" id="A2k-6G-L1s"/>
+                                        <constraint firstItem="znu-CD-p4a" firstAttribute="top" secondItem="JN6-Gb-C8m" secondAttribute="bottom" constant="8" id="g8q-3H-Kdz"/>
+                                        <constraint firstItem="JN6-Gb-C8m" firstAttribute="leading" secondItem="EeN-DP-4cx" secondAttribute="trailing" constant="8" id="r3y-PU-yp1"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Po5-7v-9qE" id="nN9-Xm-175"/>
+                            <outlet property="delegate" destination="Po5-7v-9qE" id="wmz-hA-6DX"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Choose recipient(s)" id="l2H-zv-Ibi">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="VcV-32-eft">
+                            <connections>
+                                <action selector="cancel:" destination="Po5-7v-9qE" id="SU5-Kk-lJc"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="9ph-kZ-wcS"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="PNu-C3-TQo" id="5F2-vP-Kqn"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tCr-cp-qks" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="PNu-C3-TQo">
+                    <connections>
+                        <outlet property="delegate" destination="Po5-7v-9qE" id="hmo-j3-as9"/>
+                        <outlet property="searchBar" destination="qBZ-v4-ZEI" id="qKk-x5-j7d"/>
+                        <outlet property="searchContentsController" destination="Po5-7v-9qE" id="eoT-WO-e16"/>
+                        <outlet property="searchResultsDataSource" destination="Po5-7v-9qE" id="nQL-PU-DHD"/>
+                        <outlet property="searchResultsDelegate" destination="Po5-7v-9qE" id="wu3-v9-hhc"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="2395" y="616"/>
         </scene>
         <!--Current-->
         <scene sceneID="dQP-bs-7cp">
@@ -769,6 +855,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KMa-Du-opi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-4253" y="-1783"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="hOG-hN-6DY">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Hdy-66-lTQ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7e9-sI-2OK">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Po5-7v-9qE" kind="relationship" relationship="rootViewController" id="C7f-OK-OLu"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8Yn-8C-sMx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1583" y="616"/>
         </scene>
     </scenes>
     <resources>
