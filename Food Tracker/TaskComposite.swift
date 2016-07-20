@@ -61,7 +61,10 @@ func add_to_server() {
             for task in tg.tasks {
                 print("Adding task: \(task.name)")
                 let url = "http://lit-plains-99831.herokuapp.com/new_task?name=\(task.name)&description=\(task.desc)&status=\(task.status)&user=shen"
-                let request = NSMutableURLRequest(URL: NSURL(string: url)!)
+                print ("URL: \(url)")
+                let escapedAddress = url.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
+
+                let request = NSMutableURLRequest(URL: NSURL(string: escapedAddress!)!)
                 request.HTTPMethod = "POST"
                 
                 let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in
