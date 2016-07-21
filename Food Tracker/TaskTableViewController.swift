@@ -14,9 +14,11 @@ class TaskTableViewController: UITableViewController {
     // MARK: Properties
     
     var tasks = [Task]()
+    var username: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         print("Loading TaskTableView")
         
         NSTimer.scheduledTimerWithTimeInterval(60, target: self, selector: #selector(TaskTableViewController.reloadCurrent(_:)), userInfo: nil, repeats: true)
