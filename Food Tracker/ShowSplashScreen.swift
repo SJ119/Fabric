@@ -10,12 +10,40 @@ import UIKit
 
 class ShowSplashScreen: UIViewController {
     
+    private var originalPassword:String = ""
     //MARK: Properties
     @IBOutlet weak var userID: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var signIn: UIButton!
-    
     @IBOutlet weak var warning: UILabel!
+    
+    @IBOutlet weak var remainSignedIn: UISwitch!
+    
+    
+    @IBAction func passwordTextBox(sender: UITextField) {
+        let len = password.text!.characters.count
+        if(len == 1)
+        {
+            self.originalPassword = ""
+            self.originalPassword = self.originalPassword + String(password.text!.characters.last!)
+            print(self.originalPassword)
+        }
+        else if(password.text! == "")
+        {
+            self.originalPassword = ""
+        }
+        else if(password.text! != "")
+        {
+            self.originalPassword = self.originalPassword + String(password.text!.characters.last!)
+            print(self.originalPassword)
+        }
+        var newPW:String = ""
+        for i in 0..<len{
+            newPW = "*" + newPW
+            
+        }
+        password.text = newPW
+    }
     
     func updateWarning(msg:String) {
         dispatch_async(dispatch_get_main_queue(), {
@@ -31,7 +59,7 @@ class ShowSplashScreen: UIViewController {
         {
             
             
-            let url = "http://lit-plains-99831.herokuapp.com/confirm_user?name=" + userID.text! + "&password=" + password.text!
+            let url = "http://lit-plains-99831.herokuapp.com/confirm_user?name=" + userID.text! + "&password=" + self.originalPassword
             
             let requestURL: NSURL = NSURL(string: url)!
             
@@ -145,7 +173,7 @@ class ShowSplashScreen: UIViewController {
                                 let myUrl = NSURL(string: "http://lit-plains-99831.herokuapp.com/new_user?")
                                 let request = NSMutableURLRequest(URL: myUrl!)
                                 request.HTTPMethod = "POST"
-                                let postString = "name=" + self.userID.text! + "&password=" + self.password.text!
+                                let postString = "name=" + self.userID.text! + "&password=" + self.originalPassword
                                 
                                 request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
                                 
