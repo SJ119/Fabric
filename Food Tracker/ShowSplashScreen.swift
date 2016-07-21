@@ -11,6 +11,7 @@ import UIKit
 class ShowSplashScreen: UIViewController {
     
     private var originalPassword:String = ""
+    private var status:Bool = false
     //MARK: Properties
     @IBOutlet weak var userID: UITextField!
     @IBOutlet weak var password: UITextField!
@@ -26,7 +27,7 @@ class ShowSplashScreen: UIViewController {
         {
             self.originalPassword = ""
             self.originalPassword = self.originalPassword + String(password.text!.characters.last!)
-            print(self.originalPassword)
+//            print(self.originalPassword)
         }
         else if(password.text! == "")
         {
@@ -35,7 +36,7 @@ class ShowSplashScreen: UIViewController {
         else if(password.text! != "")
         {
             self.originalPassword = self.originalPassword + String(password.text!.characters.last!)
-            print(self.originalPassword)
+//            print(self.originalPassword)
         }
         var newPW:String = ""
         for i in 0..<len{
@@ -48,7 +49,7 @@ class ShowSplashScreen: UIViewController {
     func updateWarning(msg:String) {
         dispatch_async(dispatch_get_main_queue(), {
             self.warning.text = msg
-            print(msg)
+//            print(msg)
         })
     }
     func shouldTransition() -> Bool {
@@ -58,7 +59,7 @@ class ShowSplashScreen: UIViewController {
         if (userID.text! != "" && password.text! != "")
         {
             
-            
+            userID.text = userID.text?.lowercaseString
             let url = "http://lit-plains-99831.herokuapp.com/confirm_user?name=" + userID.text! + "&password=" + self.originalPassword
             
             let requestURL: NSURL = NSURL(string: url)!
@@ -266,14 +267,48 @@ class ShowSplashScreen: UIViewController {
             if ident == "showSplashScreen" {
                 // DO LOGIN IN AUTHENTICATION, IF SUCCESSFUL RETURN TRUE HERE, ELSE RETURN FALSE
                 var res = false
+                
                 res = shouldTransition()
+                if(res)
+                {
+                    status = remainSignedIn.on
+//                    print(status)
+                    if(status)
+                    {
+                        saveUser(true)
+                        print("user wants to be saved")
+                    }
+                    else
+                    {
+                        saveUser(false)
+                        print("user does not want to be saved")
+                    }
+                    
+                }
                 return res
             }
             else if ident == "registered"
             {
                 var res = false
                 res = shouldRegister()
+                if(res)
+                {
+                    status = remainSignedIn.on
+                    print(status)
+                    if(status)
+                    {
+                        saveUser(true)
+                    }
+                    else
+                    {
+                        saveUser(false)
+                    }
+                }
                 return res
+            }
+            else if ident == "autoSeg"
+            {
+                return true
             }
         }
         return true
@@ -284,9 +319,34 @@ class ShowSplashScreen: UIViewController {
     override func viewDidLoad()
     {
         print("ready")
+        remainSignedIn.on = false
         super.viewDidLoad()
-//        ------------------------
-        //        ------------------------
+        
+        if let currentUser:User = loadUser()
+        {
+            if(currentUser.status)
+            {
+//                print("WANTS TO LOAD AUTO")
+                let len = currentUser.password.characters.count
+                var newPW:String = ""
+                for i in 0..<len{
+                    newPW = "*" + newPW
+                    
+                }
+                password.text = newPW
+                userID.text = currentUser.userid
+                originalPassword = currentUser.password
+                remainSignedIn.on = currentUser.status
+                
+                dispatch_async(dispatch_get_main_queue()){
+                    self.performSegueWithIdentifier("autoSeg", sender: self)
+                }
+            }
+        }
+        else
+        {
+//            print("NOTHING SAVED")
+        }
     }
     func showNavController(){
         sleep(2);
@@ -297,4 +357,38 @@ class ShowSplashScreen: UIViewController {
         super.didReceiveMemoryWarning();
     }
 
+    func saveUser(save:Bool) {
+        let currentUser:User
+        if(save)
+        {
+            currentUser = User(userid: self.userID.text!, password: self.originalPassword, status: self.status)!
+//            print("wants to save")
+        }
+        else
+        {
+            currentUser = User(userid: self.userID.text!, password: self.originalPassword, status: false)!
+//            print("does not want to save")
+        }
+        
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(currentUser, toFile: User.ArchiveURL.path!)
+        
+        if !isSuccessfulSave
+        {
+            print("Failed to save user information!")
+        }
+        else
+        {
+            print("saved")
+        }
+    }
+    
+    func loadUser() -> User?{
+        
+        let manager = NSFileManager.defaultManager()
+        if (manager.fileExistsAtPath(User.ArchiveURL.path!))
+        {
+            return (NSKeyedUnarchiver.unarchiveObjectWithFile(User.ArchiveURL.path!) as? User)!
+        }
+        return User(userid: "",password: "",status: false)
+    }
 }

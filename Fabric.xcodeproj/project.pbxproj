@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1B714F241D368E9300803EE8 /* ShowSplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B714F231D368E9300803EE8 /* ShowSplashScreen.swift */; };
+		1BD828C31D414CB90049DE57 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD828C21D414CB90049DE57 /* User.swift */; };
 		5D001CFA1C6D5AF200AAB05A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D001CF91C6D5AF200AAB05A /* AppDelegate.swift */; };
 		5D001CFC1C6D5AF200AAB05A /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D001CFB1C6D5AF200AAB05A /* TaskViewController.swift */; };
 		5D001CFF1C6D5AF200AAB05A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D001CFD1C6D5AF200AAB05A /* Main.storyboard */; };
@@ -74,6 +75,7 @@
 
 /* Begin PBXFileReference section */
 		1B714F231D368E9300803EE8 /* ShowSplashScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowSplashScreen.swift; sourceTree = "<group>"; };
+		1BD828C21D414CB90049DE57 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3079EFBD6CA1AE94C3B4D2A2 /* Pods-Food Tracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Food Tracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Food Tracker/Pods-Food Tracker.debug.xcconfig"; sourceTree = "<group>"; };
 		356CDDC1CFADE143295D687D /* Pods-Food Tracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Food Tracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-Food Tracker/Pods-Food Tracker.release.xcconfig"; sourceTree = "<group>"; };
 		5D001CF61C6D5AF200AAB05A /* Fabric.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fabric.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -181,11 +183,12 @@
 		5D001CF81C6D5AF200AAB05A /* Fabric */ = {
 			isa = PBXGroup;
 			children = (
+				1BD828C21D414CB90049DE57 /* User.swift */,
+				1B714F231D368E9300803EE8 /* ShowSplashScreen.swift */,
 				5DD7E2451D1849BB003972E1 /* Task.swift */,
 				A711C6D81D3EB9920075E89D /* Points.swift */,
 				5D001CF91C6D5AF200AAB05A /* AppDelegate.swift */,
 				5D001CFB1C6D5AF200AAB05A /* TaskViewController.swift */,
-				1B714F231D368E9300803EE8 /* ShowSplashScreen.swift */,
 				5D001CFD1C6D5AF200AAB05A /* Main.storyboard */,
 				5DCC50041D4020BE008D0A29 /* recipientTableViewController.swift */,
 				5D804C441D2D84AD0049A9DD /* ContactInfoViewController.swift */,
@@ -457,6 +460,7 @@
 				8425136C1D40032800417859 /* JsonManager.swift in Sources */,
 				A75727F91D20F6E7008388CA /* DelayTableViewController.swift in Sources */,
 				5D96B14D1D11E3BA00CD8C95 /* RatingControl.swift in Sources */,
+				1BD828C31D414CB90049DE57 /* User.swift in Sources */,
 				A75727F71D20CDEE008388CA /* DoneTableViewController.swift in Sources */,
 				A737FD5C1D3D66D200857249 /* persistData.swift in Sources */,
 				5DCEBDD31D415BE600DD81B4 /* recipientTableCell.swift in Sources */,
