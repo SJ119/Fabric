@@ -21,10 +21,10 @@ class ContactTableViewController: UITableViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
-//        
-//        if let savedContacts = loadContacts() {
-//            contacts += savedContacts
-//        }
+        
+        if let savedContacts = loadContacts() {
+            contacts += savedContacts
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -95,20 +95,20 @@ class ContactTableViewController: UITableViewController {
                 // inserts contact at bottom (will want to alphabetize later!!
                 tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
             }
-//            saveContacts()
+            saveContacts()
         }
     }
     
     //MARK: NSCoding
-//    func saveContacts() {
-//        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(contacts, toFile: Contact.ArchiveURL.path!)
-//        if !isSuccessfulSave {
-//            print("Failed to save contacts...")
-//        }
-//    }
-//    
-//    func loadContacts() -> [Contact]? {
-//        return NSKeyedUnarchiver.unarchiveObjectWithFile(Contact.ArchiveURL.path!) as? [Contact]
-//    }
+    func saveContacts() {
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(contacts, toFile: Contact.ArchiveURL.path!)
+        if !isSuccessfulSave {
+            print("Failed to save contacts...")
+        }
+    }
+    
+    func loadContacts() -> [Contact]? {
+        return NSKeyedUnarchiver.unarchiveObjectWithFile(Contact.ArchiveURL.path!) as? [Contact]
+    }
 
 }
