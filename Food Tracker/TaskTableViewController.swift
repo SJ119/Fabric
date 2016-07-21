@@ -14,9 +14,11 @@ class TaskTableViewController: UITableViewController {
     // MARK: Properties
     
     var tasks = [Task]()
+    var username: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         print("Loading TaskTableView")
         
         NSTimer.scheduledTimerWithTimeInterval(60, target: self, selector: #selector(TaskTableViewController.reloadCurrent(_:)), userInfo: nil, repeats: true)
@@ -215,7 +217,13 @@ class TaskTableViewController: UITableViewController {
             
             let tvc = self.parentViewController?.parentViewController as! UITabBarController
             fetch_task_group(tvc)
-            add_to_server()
+            
+            if username != nil {
+                //            add_to_server(username)
+                get_from_server(tvc, username: username!)
+            }
+
+            tableView.reloadData()
         }
     }
     
