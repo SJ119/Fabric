@@ -217,8 +217,12 @@ class TaskTableViewController: UITableViewController {
             
             let tvc = self.parentViewController?.parentViewController as! UITabBarController
             fetch_task_group(tvc)
-//            add_to_server()
-            get_from_server(tvc)
+            
+            if username != nil {
+                //            add_to_server(username)
+                get_from_server(tvc, username: username!)
+            }
+
             tableView.reloadData()
         }
     }

@@ -64,9 +64,9 @@ func fetch_task_group(tvc: UITabBarController) {
     main_task_group = cached_task_group
 }
 
-func get_from_server(tvc: UITabBarController) {
+func get_from_server(tvc: UITabBarController, username: String) {
     print("GETTING FROM SERVER: ")
-    let url = "http://lit-plains-99831.herokuapp.com/get_task?name=shen"
+    let url = "http://lit-plains-99831.herokuapp.com/get_task?name=\(username)"
     print ("URL: \(url)")
     let escapedAddress = url.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
     
@@ -141,7 +141,7 @@ func convertJSONTasks(jsonTasks: [AnyObject]) {
     }
 }
 
-func add_to_server() {
+func add_to_server(username: String) {
     print("ADDING TO SERVER: ")
     if main_task_group != nil {
         for sub_group in main_task_group!.tasks {
@@ -149,7 +149,7 @@ func add_to_server() {
             print("Looping on: \(tg.name)")
             for task in tg.tasks {
                 print("Adding task: \(task.name)")
-                let url = "http://lit-plains-99831.herokuapp.com/new_task?name=\(task.name)&description=\(task.desc)&status=\(task.status)&user=shen"
+                let url = "http://lit-plains-99831.herokuapp.com/new_task?name=\(task.name)&description=\(task.desc)&status=\(task.status)&user=\(username)"
                 print ("URL: \(url)")
                 let escapedAddress = url.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
 
