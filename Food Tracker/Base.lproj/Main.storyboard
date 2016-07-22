@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15A278b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="JA5-BI-dUU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="JA5-BI-dUU">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -523,40 +523,35 @@
                             </connections>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="60" id="M86-hV-Qv5">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="recipientTableCell" rowHeight="60" id="M86-hV-Qv5" customClass="recipientTableCell" customModule="Fabric" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="136" width="600" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M86-hV-Qv5" id="9U1-Ah-tyz">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="59.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Contact Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JN6-Gb-C8m">
-                                            <rect key="frame" x="78" y="8" width="111" height="21"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="contacts" translatesAutoresizingMaskIntoConstraints="NO" id="EeN-DP-4cx">
+                                            <rect key="frame" x="0.0" y="-1" width="63" height="59.5"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dfo-TZ-mNk">
+                                            <rect key="frame" x="71" y="8" width="521" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="contacts" translatesAutoresizingMaskIntoConstraints="NO" id="EeN-DP-4cx">
-                                            <rect key="frame" x="7" y="-1" width="63" height="59.5"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" secondItem="EeN-DP-4cx" secondAttribute="height" multiplier="63:59" id="MW2-CO-nV6"/>
-                                            </constraints>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Nickname" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="znu-CD-p4a">
-                                            <rect key="frame" x="78" y="37" width="77" height="21.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P45-WU-JFm">
+                                            <rect key="frame" x="71" y="37" width="521" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <constraints>
-                                        <constraint firstItem="JN6-Gb-C8m" firstAttribute="top" secondItem="9U1-Ah-tyz" secondAttribute="topMargin" id="3Oa-7D-6LF"/>
-                                        <constraint firstItem="EeN-DP-4cx" firstAttribute="leading" secondItem="9U1-Ah-tyz" secondAttribute="leadingMargin" id="8dL-am-R5V"/>
-                                        <constraint firstItem="znu-CD-p4a" firstAttribute="leading" secondItem="EeN-DP-4cx" secondAttribute="trailing" constant="8" id="A2k-6G-L1s"/>
-                                        <constraint firstItem="znu-CD-p4a" firstAttribute="top" secondItem="JN6-Gb-C8m" secondAttribute="bottom" constant="8" id="g8q-3H-Kdz"/>
-                                        <constraint firstItem="JN6-Gb-C8m" firstAttribute="leading" secondItem="EeN-DP-4cx" secondAttribute="trailing" constant="8" id="r3y-PU-yp1"/>
-                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="NicknameLabel" destination="P45-WU-JFm" id="xb4-BR-ETW"/>
+                                    <outlet property="nameLabel" destination="dfo-TZ-mNk" id="jrl-H5-Ab1"/>
+                                    <outlet property="photo" destination="EeN-DP-4cx" id="Gm1-BL-Y9T"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -565,9 +560,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Choose recipient(s)" id="l2H-zv-Ibi">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="VcV-32-eft">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="KY9-N4-yGj">
                             <connections>
-                                <action selector="cancel:" destination="Po5-7v-9qE" id="SU5-Kk-lJc"/>
+                                <action selector="cancel:" destination="Po5-7v-9qE" id="KiE-0n-IFI"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="9ph-kZ-wcS"/>
