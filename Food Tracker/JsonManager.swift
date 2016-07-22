@@ -286,6 +286,10 @@ class JsonManager {
         let task = session.dataTaskWithRequest(request) {
             (data, response, error) -> Void in
             do {
+                if data == nil {
+                    print("Network Connection Died, Cannot Send Data")
+                    return
+                }
                 let myJSON = try NSJSONSerialization.JSONObjectWithData(data!, options:.MutableLeaves) as? NSDictionary
                 
                 if let parseJSON = myJSON {
