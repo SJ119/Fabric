@@ -300,8 +300,6 @@ class TaskTableViewController: UITableViewController {
                 tasks.append(task)
                 tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
                 
-                JsonManager.getInstance().send(task, url: "http://lit-plains-99831.herokuapp.com/new_task")
-                
                 // check origin of TaskViewController
                 if sourceViewController.origin != nil {
                     let vcd = getViewControllerDelay()
