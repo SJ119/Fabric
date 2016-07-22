@@ -21,5 +21,12 @@ func saveTasks(tasks:[Task], url:NSURL) {
 func loadTasks(url:NSURL) -> [Task]? {
     let url_str = url.path!
     print("Loading tasks from \(String(url_str.characters.suffix(5)))")
+    /*let data = JsonManager.getInstance().fetch("kevin", url: "http://lit-plains-99831.herokuapp.com/get_task")
+    print("data")
+    print(data)
+    let tasks = JsonManager.getInstance().convertToTasks(data)
+    if tasks.count > 0 {
+        print(tasks[0].toJson())
+    }*/
     return NSKeyedUnarchiver.unarchiveObjectWithFile(url_str) as? [Task]
 }

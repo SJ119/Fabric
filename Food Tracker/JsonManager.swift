@@ -133,21 +133,21 @@ class JsonObject : JsonWritableObject {
 }
 
 class JsonObjectList : JsonWritableObject {
-    var objs = [JsonObject]()
+    var objlist = [JsonObject]()
     
     init(objs : [JsonObject]) {
         
-        self.objs = objs
+        self.objlist = objs
     }
     
     override func toJson()->String {
         var str = ""
         var count = 0
         str = str + "["
-        for obj in objs {
+        for obj in objlist {
             count = count + 1
             str = str + obj.toJson()
-            if count != objs.count {
+            if count != objlist.count {
                 str = str + ","
             }
         }
@@ -228,8 +228,8 @@ class JsonManager {
                 let name = String(entry["name"]!)
                 let desc = String(entry["description"]!)
                 let status = String(entry["status"]!)
-                let visible = String(entry["visible"]!) == "True"
-                let task = Task(name: name, desc: desc, dueDate: nsdate, status: status, visible: visible)!
+                //let visible = String(entry["visible"]!) == "True"
+                let task = Task(name: name, desc: desc, dueDate: nsdate, status: status, visible: true)!
                 //print(task)
                 tasks.append(task)
             }
@@ -241,7 +241,33 @@ class JsonManager {
         return tasks
     }
     
-    func send(obj : JsonWritableObject, url : String) {
+    func convertToTasksWithID(data : NSData) -> [Int : Task] {
+        var idtasks = [Int : Task]()
+        do {
+            let jsonDict = try NSJSONSerialization.JSONObjectWithData(data, options: []) as! NSDictionary
+            let taskEntries = jsonDict["tasks"]
+            
+            let tasks = taskEntries! as! [NSDictionary]
+            //print (entries.count)
+            for task in tasks {
+                let task_name = task["task_name"] as! String
+                let task_status = task["status"] as! String
+                let task_description = task["description"] as! String
+                let task_due_date_string = task["due_date"] as! String
+                let id = task["id"] as! Int
+                
+                let task_due_date = DateUtils.dateFromString(task_due_date_string, format: "yyyy:MM:dd:HH:mm")
+                let t = Task(name: task_name, desc: task_description, dueDate: task_due_date, status: task_status, visible: true)
+                
+                idtasks[id] = t
+            }
+        } catch {
+            
+        }
+        return idtasks
+    }
+    
+    func send(obj : JsonWritableObject, url : String, type : String) {
         // create the request & response
         let request = NSMutableURLRequest(URL: NSURL(string: url)!, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData, timeoutInterval: 5)
     
@@ -249,8 +275,8 @@ class JsonManager {
         let jsonString = obj.toJson()
         print("Generate Json")
         print(jsonString)
-        request.HTTPBody = jsonString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
-        request.HTTPMethod = "POST"
+        request.HTTPBody = jsonString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+        request.HTTPMethod = type
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
     
         // send the request
@@ -275,7 +301,7 @@ class JsonManager {
                 }
                 
             } catch {
-                print("error catched")
+                print("error catched send")
                 print(error)
             }
             
@@ -289,6 +315,43 @@ class JsonManager {
         }
         task.resume()
         print("Json Sent")
+    }
+    
+    func fetch(username : String, url : String, completionHandler: (data: NSData) -> ()) {
+        
+        let url2 = url + "?name=" + username
+        print(url2)
+        let request = NSMutableURLRequest(URL: NSURL(string: url2)!, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData, timeoutInterval: 5)
+
+        request.HTTPMethod = "GET"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        
+        let session = NSURLSession.sharedSession()
+        print("fetch")
+        let task = session.dataTaskWithRequest(request) {
+            (data, response, error) -> Void in
+            do {
+                print("enter callback fetch")
+                let myJSON = try NSJSONSerialization.JSONObjectWithData(data!, options:.MutableLeaves)
+                
+                //print(myJSON)
+                completionHandler(data: data!);
+                
+            } catch {
+                print("error catched fetch")
+                print(error)
+            }
+            
+            // look at the response
+            if let httpResponse = response as? NSHTTPURLResponse {
+                print("HTTP response: \(httpResponse.statusCode)")
+            } else {
+                print("No HTTP response")
+            }
+            
+        }
+        task.resume()
     }
 }
 

@@ -27,12 +27,24 @@ class TaskTableViewController: UITableViewController {
         navigationItem.leftBarButtonItem = editButtonItem()
         
         // Restore our saved tasks
-        if let savedTasks = loadTasks(Task.ArchiveURL) {
+        /*if let savedTasks = loadTasks(Task.ArchiveURL) {
             tasks = savedTasks
-        }
+        }*/
         
         // Do an initial reload on our current list
-        reloadCurrent(NSTimer())
+        //reloadCurrent(NSTimer())
+        //fetch the tasks
+        if username != nil {
+            let tvc = self.parentViewController?.parentViewController as! UITabBarController
+            TaskUtils.fetch_task_group(tvc)
+            JsonManager.getInstance().fetch(self.username!, url: "http://lit-plains-99831.herokuapp.com/get_task") {
+                data in
+                let tasks = JsonManager.getInstance().convertToTasksWithID(data)
+                TaskUtils.saveServerTasks(tasks)
+                TaskUtils.passTasksToViews(tvc)
+                self.tableView.reloadData()
+            }
+        }
     }
     
     func getViewControllerDone() -> DoneTableViewController? {
@@ -166,7 +178,7 @@ class TaskTableViewController: UITableViewController {
     }
 
     func reloadCurrent(timer: NSTimer) {
-        if var savedTasks = loadTasks(Task.ArchiveURL) {
+        /*if var savedTasks = loadTasks(Task.ArchiveURL) {
             if savedTasks.count == 0 {
                 // nothing to process
                 print("nothing to process")
@@ -215,16 +227,38 @@ class TaskTableViewController: UITableViewController {
             
             saveTasks(self.tasks, url: Task.ArchiveURL)
             
-            let tvc = self.parentViewController?.parentViewController as! UITabBarController
-            fetch_task_group(tvc)
+
             
-            if username != nil {
+            //if we add a task and the timer is hit, we don't want this to be called
+            //get from server should happen once at the begining i.e. view_did_load
+            /*if username != nil {
                 //            add_to_server(username)
                 get_from_server(tvc, username: username!)
-            }
+            }*/
+            
 
-            tableView.reloadData()
+        }*/
+        
+        let tvc = self.parentViewController?.parentViewController as! UITabBarController
+        TaskUtils.fetch_task_group(tvc)
+        
+        let mainGroup = TaskUtils.getMainTaskGroup()
+        if mainGroup != nil {
+            let delobj = JsonObject()
+            delobj.setEntry("name", obj: JsonString(str : self.username!))
+            JsonManager.getInstance().send( delobj , url: "http://lit-plains-99831.herokuapp.com/delete_user_tasks", type: "DELETE")
+            
+            let sendobj = JsonObject()
+            sendobj.setEntry("name", obj: JsonString(str : self.username!))
+            
+            let alltasks = (mainGroup!.tasks[0] as! TaskGroup).tasks + (mainGroup!.tasks[1] as! TaskGroup).tasks + (mainGroup!.tasks[2] as! TaskGroup).tasks
+            
+            sendobj.setEntry("tasks", obj: JsonObjectList(objs: alltasks))
+            
+            JsonManager.getInstance().send( sendobj , url: "http://lit-plains-99831.herokuapp.com/create_tasks", type: "POST")
         }
+        
+        tableView.reloadData()
     }
     
     // MARK: - Navigation

@@ -77,13 +77,13 @@ class Task: JsonObject, NSCoding {
     override func updateJsonEntries() {
         self.clear()
         
-        let date = DateUtils.stringFromDate(self.dueDate!, format: "yyyy:MM:dd:HH:mm")
+        let date = DateUtils.stringFromDate(self.dueDate!, format: "yyyy-MM-dd HH:mm:ss")
         let visible = self.visible ? "True" : "False"
         self.setEntry("name", obj: JsonString(str: self.name))
         self.setEntry("description", obj: JsonString(str: self.desc))
         self.setEntry("due_date", obj: JsonString(str: date))
         self.setEntry("status", obj: JsonString(str: self.status))
         self.setEntry("user", obj: JsonString(str: "kevin"))
-        self.setEntry("visible", obj: JsonString(str: visible))
+        //self.setEntry("visible", obj: JsonString(str: visible))
     }
 }

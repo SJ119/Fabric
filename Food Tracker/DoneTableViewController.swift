@@ -40,9 +40,9 @@ class DoneTableViewController: UITableViewController {
         navigationItem.leftBarButtonItem = editButtonItem()
         
         // Load done tasks
-        if let savedTasks = loadTasks(Task.ArchiveURLDone) {
+        /*if let savedTasks = loadTasks(Task.ArchiveURLDone) {
             tasks = savedTasks
-        }
+        }*/
     }
 
     override func didReceiveMemoryWarning() {
