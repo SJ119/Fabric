@@ -168,6 +168,7 @@ class TaskTableViewController: UITableViewController {
             tasks.removeAtIndex(indexPath.row)
             saveTasks(tasks, url: Task.ArchiveURL)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            syncServer()
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
@@ -243,21 +244,12 @@ class TaskTableViewController: UITableViewController {
 
         }*/
         
+        //make sure maingroup is up to date
         let tvc = self.parentViewController?.parentViewController as! UITabBarController
         TaskUtils.fetch_task_group(tvc)
         
         let mainGroup = TaskUtils.getMainTaskGroup()
-        if mainGroup != nil && self.username != nil {
-            let delobj = JsonObject()
-            delobj.setPermanentEntry("name", obj: JsonString(str : self.username!))
-            JsonManager.getInstance().send( delobj , url: "http://lit-plains-99831.herokuapp.com/delete_user_tasks", type: "DELETE")
-            
-            let sendobj = JsonObject()
-            sendobj.setPermanentEntry("name", obj: JsonString(str : self.username!))
-            
-            let alltasks = mainGroup!.getAllTasks()//(mainGroup!.tasks[0] as! TaskGroup).tasks + (mainGroup!.tasks[1] as! TaskGroup).tasks + (mainGroup!.tasks[2] as! TaskGroup).tasks
-            
-            // saved Tasks is an array of tasks if any are past their deadline move it to delay list
+        if mainGroup != nil {
             let savedTasks = mainGroup!.getChild(1)!.getAllTasks()
             let currentDate = NSDate()
             
@@ -297,15 +289,34 @@ class TaskTableViewController: UITableViewController {
                     vcd?.addTask(task)
                 }
             }
-
+        }
+        //sync with server
+        syncServer()
+        tableView.reloadData()
+    }
+    
+    func syncServer() {
+        
+        let tvc = self.parentViewController?.parentViewController as! UITabBarController
+        TaskUtils.fetch_task_group(tvc)
+        
+        let mainGroup = TaskUtils.getMainTaskGroup()
+        if mainGroup != nil && self.username != nil {
+            let delobj = JsonObject()
+            delobj.setPermanentEntry("name", obj: JsonString(str : self.username!))
+            JsonManager.getInstance().send( delobj , url: "http://lit-plains-99831.herokuapp.com/delete_user_tasks", type: "DELETE")
+            
+            let sendobj = JsonObject()
+            sendobj.setPermanentEntry("name", obj: JsonString(str : self.username!))
+            
+            let alltasks = mainGroup!.getAllTasks()
             
             sendobj.setPermanentEntry("tasks", obj: JsonObjectList(objs: alltasks))
             
             JsonManager.getInstance().send( sendobj , url: "http://lit-plains-99831.herokuapp.com/create_tasks", type: "POST")
         }
-        
-        tableView.reloadData()
     }
+
     
     // MARK: - Navigation
 
