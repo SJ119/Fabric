@@ -31,20 +31,24 @@ class TaskTableViewController: UITableViewController {
             tasks = savedTasks
         }*/
         
-        // Do an initial reload on our current list
-        //reloadCurrent(NSTimer())
+        
+        //
         //fetch the tasks
         if username != nil {
             let tvc = self.parentViewController?.parentViewController as! UITabBarController
             TaskUtils.fetch_task_group(tvc)
+            
             JsonManager.getInstance().fetch(self.username!, url: "http://lit-plains-99831.herokuapp.com/get_task") {
                 data in
                 let tasks = JsonManager.getInstance().convertToTasksWithID(data)
                 TaskUtils.saveServerTasks(tasks)
                 TaskUtils.passTasksToViews(tvc)
                 self.tableView.reloadData()
+                // Do an initial reload on our current list
+                self.reloadCurrent(NSTimer())
             }
         }
+
     }
     
     func getViewControllerDone() -> DoneTableViewController? {
@@ -243,17 +247,59 @@ class TaskTableViewController: UITableViewController {
         TaskUtils.fetch_task_group(tvc)
         
         let mainGroup = TaskUtils.getMainTaskGroup()
-        if mainGroup != nil {
+        if mainGroup != nil && self.username != nil {
             let delobj = JsonObject()
-            delobj.setEntry("name", obj: JsonString(str : self.username!))
+            delobj.setPermanentEntry("name", obj: JsonString(str : self.username!))
             JsonManager.getInstance().send( delobj , url: "http://lit-plains-99831.herokuapp.com/delete_user_tasks", type: "DELETE")
             
             let sendobj = JsonObject()
-            sendobj.setEntry("name", obj: JsonString(str : self.username!))
+            sendobj.setPermanentEntry("name", obj: JsonString(str : self.username!))
             
-            let alltasks = (mainGroup!.tasks[0] as! TaskGroup).tasks + (mainGroup!.tasks[1] as! TaskGroup).tasks + (mainGroup!.tasks[2] as! TaskGroup).tasks
+            let alltasks = mainGroup!.getAllTasks()//(mainGroup!.tasks[0] as! TaskGroup).tasks + (mainGroup!.tasks[1] as! TaskGroup).tasks + (mainGroup!.tasks[2] as! TaskGroup).tasks
             
-            sendobj.setEntry("tasks", obj: JsonObjectList(objs: alltasks))
+            // saved Tasks is an array of tasks if any are past their deadline move it to delay list
+            let savedTasks = mainGroup!.getChild(1)!.getAllTasks()
+            let currentDate = NSDate()
+            
+            var delayIdx = [Int]()
+            for (i, item) in savedTasks.enumerate() {
+                if (item.dueDate!.compare(currentDate) == NSComparisonResult.OrderedAscending) {
+                    print("Task \(i) is delayed, recorded \(i) as need to remove")
+                    delayIdx.append(i);
+                } else {
+                    print("Task \(i) is not delayed")
+                    let dateDifference = daysBetweenDates(currentDate, endDate: item.dueDate!)
+                    if (dateDifference == 0) {
+                        self.tasks[i].status = "Urgent"
+                    }
+                }
+                
+            }
+            tableView.reloadData()
+            
+            delayIdx = delayIdx.reverse()
+            print("Tasks needed to be removed in reverse order are \(delayIdx)")
+            print("Tasks length: \(self.tasks.count)")
+            let taskLength = self.tasks.count
+            for idx in delayIdx {
+                if (idx < taskLength) {
+                    print("idx: " + String(idx))
+                    //due date has passed, move to delayed
+                    let task = savedTasks[idx]
+                    self.tasks.removeAtIndex(idx)
+                    let indexPath = NSIndexPath(forRow: idx, inSection: 0)
+                    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+                    tableView.reloadData()
+                    task.status = "Delayed"
+                    
+                    self.presentDestinationViewControllerAchievement(task)
+                    let vcd = self.getViewControllerDelay()
+                    vcd?.addTask(task)
+                }
+            }
+
+            
+            sendobj.setPermanentEntry("tasks", obj: JsonObjectList(objs: alltasks))
             
             JsonManager.getInstance().send( sendobj , url: "http://lit-plains-99831.herokuapp.com/create_tasks", type: "POST")
         }
@@ -299,7 +345,9 @@ class TaskTableViewController: UITableViewController {
                 task.status = "Current"
                 tasks.append(task)
                 tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
-                
+                let sendobj = task
+                sendobj.setPermanentEntry("user", obj: JsonString(str : self.username!))
+                JsonManager.getInstance().send( sendobj , url: "http://lit-plains-99831.herokuapp.com/new_task", type: "POST")
                 // check origin of TaskViewController
                 if sourceViewController.origin != nil {
                     let vcd = getViewControllerDelay()
@@ -307,7 +355,7 @@ class TaskTableViewController: UITableViewController {
                 }
             }
             // Save the tasks.
-            saveTasks(tasks, url: Task.ArchiveURL)
+            //saveTasks(tasks, url: Task.ArchiveURL)
         }
     }
     
