@@ -837,6 +837,9 @@
                                 <rect key="frame" x="20" y="221" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="passwordTextBox:" destination="JA5-BI-dUU" eventType="editingChanged" id="fdk-Fc-F0V"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rei-ci-f2U">
                                 <rect key="frame" x="20" y="362" width="70" height="30"/>
@@ -893,9 +896,11 @@
                     </view>
                     <connections>
                         <outlet property="password" destination="kAT-is-opj" id="f6P-Uh-TeJ"/>
+                        <outlet property="remainSignedIn" destination="OSX-6o-QO7" id="hZg-9M-xVA"/>
                         <outlet property="signIn" destination="8Rv-GT-ftu" id="vZz-6r-h7Q"/>
                         <outlet property="userID" destination="o2K-hH-XE0" id="kHf-30-GkS"/>
                         <outlet property="warning" destination="tyE-If-VKz" id="N1F-Pl-6WL"/>
+                        <segue destination="Lzt-Ig-Nj9" kind="show" identifier="autoSeg" id="hhR-LN-wKI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KMa-Du-opi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -930,8 +935,8 @@
         <image name="contacts" width="931" height="1200"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Cra-mz-cdG"/>
-        <segue reference="z6m-wH-btM"/>
+        <segue reference="Ono-0F-M0f"/>
+        <segue reference="hhR-LN-wKI"/>
         <segue reference="bi2-ln-VU8"/>
     </inferredMetricsTieBreakers>
 </document>
