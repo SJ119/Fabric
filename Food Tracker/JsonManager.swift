@@ -78,8 +78,12 @@ class JsonWritableObject : NSObject {
 class JsonString : JsonWritableObject {
     var str = ""
     
-    init(str : String) {
-        self.str = str
+    init(str : String?) {
+        if str == nil {
+            self.str = ""
+        } else {
+            self.str = str!
+        }
     }
     
     override func toJson()->String {
@@ -94,9 +98,14 @@ class JsonString : JsonWritableObject {
 //classes should inherit this class and override setJsonEntry method
 class JsonObject : JsonWritableObject {
     var objs = [(String, JsonWritableObject)]()
+    var objs2 = [(String, JsonWritableObject)]()
     
     func setEntry(name: String, obj : JsonWritableObject) {
         objs.append((name, obj));
+    }
+    
+    func setPermanentEntry(name: String, obj : JsonWritableObject) {
+        objs2.append((name, obj));
     }
     
     //override this function
@@ -122,7 +131,22 @@ class JsonObject : JsonWritableObject {
             if obj.1.isString() {
                 str = str + "\""
             }
-            if count != objs.count {
+            if count != objs.count || objs2.count != 0 {
+                str = str + ","
+            }
+        }
+        count = 0
+        for obj in objs2 {
+            count = count + 1
+            str = str + "\"" + obj.0 + "\":"
+            if obj.1.isString() {
+                str = str + "\""
+            }
+            str = str +  obj.1.toJson()
+            if obj.1.isString() {
+                str = str + "\""
+            }
+            if count != objs2.count {
                 str = str + ","
             }
         }
@@ -247,9 +271,12 @@ class JsonManager {
             let jsonDict = try NSJSONSerialization.JSONObjectWithData(data, options: []) as! NSDictionary
             let taskEntries = jsonDict["tasks"]
             
-            var tasks:[NSDictionary]
-            if taskEntries != nil{
-                tasks = taskEntries! as! [NSDictionary]
+            let optTasks = taskEntries! as? [NSDictionary]
+            
+            if optTasks == nil {
+                print("no tasks in data")
+            } else {
+                let tasks = optTasks!
                 //print (entries.count)
                 for task in tasks {
                     let task_name = task["task_name"] as! String
@@ -340,9 +367,13 @@ class JsonManager {
             (data, response, error) -> Void in
             do {
                 print("enter callback fetch")
-                let myJSON = try NSJSONSerialization.JSONObjectWithData(data!, options:.MutableLeaves)
+                //let myJSON = try NSJSONSerialization.JSONObjectWithData(data!, options:.MutableLeaves)
                 
                 //print(myJSON)
+                if data == nil {
+                    print("Network Connection Died, Cannot Send Data")
+                    return
+                }
                 completionHandler(data: data!);
                 
             } catch {

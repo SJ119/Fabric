@@ -16,6 +16,7 @@ class Contact:NSObject{
     var nickName:String
     var email:String
     var photo:UIImage?
+    var sending:Bool
     
     //MARK: Types
     struct PropertyKey {
@@ -30,13 +31,14 @@ class Contact:NSObject{
     static let ArchiveURL = DocumentsDirectory.URLByAppendingPathComponent("contacts")
     
     // MARK: Initialization
-    init?(name: String, nickName: String, email: String, photo: UIImage?) {
+    init?(name: String, nickName: String, email: String, photo: UIImage?, sending: Bool) {
         
         //Initialize stored properties.
         self.name = name
         self.photo = photo
         self.nickName = nickName
         self.email = email
+        self.sending = false
         
         super.init()
     
@@ -56,11 +58,11 @@ class Contact:NSObject{
     
     required convenience init?(coder aDecoder:NSCoder) {
         let name = aDecoder.decodeObjectForKey(PropertyKey.nameKey) as! String
-        let nickName = aDecoder.decodeObjectForKey(PropertyKey.nameKey) as! String
+        let nickName = aDecoder.decodeObjectForKey(PropertyKey.nickNameKey) as! String
         let email = aDecoder.decodeObjectForKey(PropertyKey.emailKey) as! String
         let photo = aDecoder.decodeObjectForKey(PropertyKey.photoKey) as! UIImage
         
-        self.init(name:name, nickName: nickName, email: email, photo: photo)
+        self.init(name:name, nickName: nickName, email: email, photo: photo, sending: false)
     }
     
     

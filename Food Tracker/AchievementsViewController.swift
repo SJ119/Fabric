@@ -10,18 +10,6 @@ import UIKit
 
 class AchievementsViewController: UIViewController, UINavigationControllerDelegate {
     
-    @IBAction func logout(sender: UIButton) {
-        
-    }
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "logout"
-        {
-            let detailVC = segue.destinationViewController as! ShowSplashScreen
-            detailVC.loggedout = true
-            print("MAYBEEEEE")
-        }
-    }
-    
     
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var pointsLabel: UILabel!
