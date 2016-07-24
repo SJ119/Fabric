@@ -10,11 +10,9 @@ import UIKit
 
 class TaskGroup: Task {
     var tasks = [Task]()
-    var leaf = true
     
-    init?(name: String, desc:String, leaf:Bool) {
+    init?(name: String, desc:String) {
         super.init(name: name, desc: desc, dueDate: nil, status: "Group", visible: false)
-        self.leaf = leaf
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
@@ -22,38 +20,11 @@ class TaskGroup: Task {
         let desc = aDecoder.decodeObjectForKey(PropertyKey.desc) as? String
         
         //Must call designated initializer.
-        self.init(name:name, desc: desc!, leaf: true)
+        self.init(name:name, desc: desc!)
     }
     
     func add(task: Task) {
         tasks += [task]
-    }
-    
-    func isLeaf() -> Bool {
-        return leaf
-    }
-    
-    func getAllTasks() -> [Task] {
-        var alltasks = [Task]()
-        for task in tasks {
-            let gtask = task as? TaskGroup
-            if gtask != nil {
-                if gtask!.isLeaf() {
-                    alltasks = alltasks + gtask!.tasks
-                } else {
-                    alltasks = alltasks + gtask!.getAllTasks()
-                }
-            } else {
-                alltasks.append(task)
-            }
-
-        }
-        return alltasks
-    }
-    
-    func getChild(index: Int) -> TaskGroup? {
-        let child = tasks[index] as? TaskGroup
-        return child
     }
 }
 
@@ -78,10 +49,10 @@ class TaskUtils {
     }*/
 
     class func fetch_task_group(tvc: UITabBarController) {
-        let cached_task_group = TaskGroup(name: "MainGroup", desc: "Group of 3 sub TaskGroups", leaf: false)!
-        let delayed_task_group = TaskGroup(name: "DelayedGroup", desc: "Delayed TaskGroup", leaf: true)!
-        let current_task_group = TaskGroup(name: "CurrentGroup", desc: "Current TaskGroups", leaf: true)!
-        let completed_task_group = TaskGroup(name: "CompletedGroup", desc: "Completed TaskGroups", leaf: true)!
+        let cached_task_group = TaskGroup(name: "MainGroup", desc: "Group of 3 sub TaskGroups")!
+        let delayed_task_group = TaskGroup(name: "DelayedGroup", desc: "Delayed TaskGroup")!
+        let current_task_group = TaskGroup(name: "CurrentGroup", desc: "Current TaskGroups")!
+        let completed_task_group = TaskGroup(name: "CompletedGroup", desc: "Completed TaskGroups")!
         let delayViewController = tvc.childViewControllers[1].childViewControllers[0] as? DelayTableViewController
         let taskViewController = tvc.childViewControllers[2].childViewControllers[0] as? TaskTableViewController
         let doneViewController = tvc.childViewControllers[3].childViewControllers[0] as? DoneTableViewController

@@ -89,7 +89,7 @@ class ContactViewController: UIViewController, UITextFieldDelegate, UIImagePicke
             let email = EmailTextField.text ?? ""
             let photo = photoImageView.image
             
-            contact = Contact(name: userName, nickName: nickName, email: email, photo: photo, sending: false)
+            contact = Contact(name: userName, nickName: nickName, email: email, photo: photo)
         }
     }
     

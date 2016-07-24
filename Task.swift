@@ -83,7 +83,7 @@ class Task: JsonObject, NSCoding {
         self.setEntry("description", obj: JsonString(str: self.desc))
         self.setEntry("due_date", obj: JsonString(str: date))
         self.setEntry("status", obj: JsonString(str: self.status))
-        //self.setEntry("user", obj: JsonString(str: "kevin"))
+        self.setEntry("user", obj: JsonString(str: "kevin"))
         //self.setEntry("visible", obj: JsonString(str: visible))
     }
 }

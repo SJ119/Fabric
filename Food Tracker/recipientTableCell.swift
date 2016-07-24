@@ -14,7 +14,7 @@ class recipientTableCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var photo: UIImageView!
     @IBOutlet weak var NicknameLabel: UILabel!
-    @IBOutlet weak var sending: UISwitch!
+    
     
     
     

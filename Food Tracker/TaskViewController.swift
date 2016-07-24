@@ -16,7 +16,6 @@ class TaskViewController: UIViewController, UITextFieldDelegate, UINavigationCon
     @IBOutlet weak var dueDatePicker: UIDatePicker!
     @IBOutlet weak var publicSwitch: UISwitch!
     @IBOutlet weak var sendToButton: UIButton!
-    @IBOutlet weak var listContactsForSending: UILabel!
     
     @IBAction func SelectingDate(sender: AnyObject) {
         let currDate = NSDate()
@@ -31,7 +30,6 @@ class TaskViewController: UIViewController, UITextFieldDelegate, UINavigationCon
     var task: Task?
     var origin: String?
     var origin_idx: Int?
-    var recievingContacts: String = ""
     
 
     override func viewDidLoad() {
@@ -46,18 +44,15 @@ class TaskViewController: UIViewController, UITextFieldDelegate, UINavigationCon
             descTextField.text = task.desc
             dueDatePicker.date = task.dueDate!
             publicSwitch.on = task.visible
-            listContactsForSending.text = ""
             
             dueDatePicker.minimumDate = NSDate()
             
         }
         
-        listContactsForSending.text = ""
         //Enable the Save button only if the text field has a valid Task name.
         checkValidTaskName()
     }
     
-
     // MARK: UITextFieldDelegate
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -95,21 +90,6 @@ class TaskViewController: UIViewController, UITextFieldDelegate, UINavigationCon
         } else {
             navigationController!.popViewControllerAnimated(true)
         }
-    }
-    
-    @IBAction func unwindToTask(sender: UIStoryboardSegue) {
-        if let sourceViewController = sender.sourceViewController as? recipientTableViewController {
-            for cell in sourceViewController.tableView.visibleCells as! [recipientTableCell] {
-                if cell.sending.on {
-                    if (cell.nameLabel.text != nil) {
-                        let user = cell.nameLabel.text
-                        recievingContacts += String(user!) + ", "
-                    }
-                }
-            }
-        }
-        listContactsForSending.text = recievingContacts
-        
     }
     
     //This method lets you configure a view controller before it's presented.
