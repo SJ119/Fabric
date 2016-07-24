@@ -12,12 +12,27 @@ class recipientTableViewController: UITableViewController {
     
     //MARK: Properties
     var contacts = [Contact]()
+    var recipients = String()
     
     //MARK: Action
-    
+   
     @IBAction func cancel(sender: UIBarButtonItem) {
         dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    @IBAction func save(sender: AnyObject) {
+        for cell in tableView.visibleCells as! [recipientTableCell] {
+            if cell.sending.on {
+                if (cell.nameLabel.text != nil) {
+                    let user = cell.nameLabel.text
+                    recipients += String(user!) + ","
+                }
+            }
+        }
+        //dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    
     
     
     override func viewDidLoad() {
@@ -30,6 +45,7 @@ class recipientTableViewController: UITableViewController {
         
         
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -60,9 +76,16 @@ class recipientTableViewController: UITableViewController {
         cell.nameLabel.text = contact.name
         cell.NicknameLabel.text = contact.nickName
         cell.photo.image = contact.photo
+        cell.sending.setOn(false, animated: true)
         
         return cell
     }
+    
+    
+    
+    
+    
+
 
     
     //MARK: NSCoding
