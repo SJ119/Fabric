@@ -185,6 +185,7 @@
 			children = (
 				1BD828C21D414CB90049DE57 /* User.swift */,
 				1B714F231D368E9300803EE8 /* ShowSplashScreen.swift */,
+				5D804C321D2AC7E60049A9DD /* AchievementsViewController.swift */,
 				5DD7E2451D1849BB003972E1 /* Task.swift */,
 				A711C6D81D3EB9920075E89D /* Points.swift */,
 				5D001CF91C6D5AF200AAB05A /* AppDelegate.swift */,
@@ -192,7 +193,6 @@
 				5D001CFD1C6D5AF200AAB05A /* Main.storyboard */,
 				5DCC50041D4020BE008D0A29 /* recipientTableViewController.swift */,
 				5D804C441D2D84AD0049A9DD /* ContactInfoViewController.swift */,
-				5D804C321D2AC7E60049A9DD /* AchievementsViewController.swift */,
 				84ECCC651D37550900C91BFD /* AchievementTableViewCell.swift */,
 				5DFF5BC91D1C20E3009AD1DB /* ContactTableViewController.swift */,
 				5D7939E41D1C3EF5006C28AB /* ContactViewController.swift */,
@@ -315,7 +315,7 @@
 				TargetAttributes = {
 					5D001CF51C6D5AF200AAB05A = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = XBCLLL3LR9;
+						DevelopmentTeam = D9VTN5W4N4;
 					};
 					5D001D091C6D5AF300AAB05A = {
 						CreatedOnToolsVersion = 7.2.1;

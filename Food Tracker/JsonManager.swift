@@ -247,19 +247,22 @@ class JsonManager {
             let jsonDict = try NSJSONSerialization.JSONObjectWithData(data, options: []) as! NSDictionary
             let taskEntries = jsonDict["tasks"]
             
-            let tasks = taskEntries! as! [NSDictionary]
-            //print (entries.count)
-            for task in tasks {
-                let task_name = task["task_name"] as! String
-                let task_status = task["status"] as! String
-                let task_description = task["description"] as! String
-                let task_due_date_string = task["due_date"] as! String
-                let id = task["id"] as! Int
-                
-                let task_due_date = DateUtils.dateFromString(task_due_date_string, format: "yyyy:MM:dd:HH:mm")
-                let t = Task(name: task_name, desc: task_description, dueDate: task_due_date, status: task_status, visible: true)
-                
-                idtasks[id] = t
+            var tasks:[NSDictionary]
+            if taskEntries != nil{
+                tasks = taskEntries! as! [NSDictionary]
+                //print (entries.count)
+                for task in tasks {
+                    let task_name = task["task_name"] as! String
+                    let task_status = task["status"] as! String
+                    let task_description = task["description"] as! String
+                    let task_due_date_string = task["due_date"] as! String
+                    let id = task["id"] as! Int
+                    
+                    let task_due_date = DateUtils.dateFromString(task_due_date_string, format: "yyyy:MM:dd:HH:mm")
+                    let t = Task(name: task_name, desc: task_description, dueDate: task_due_date, status: task_status, visible: true)
+                    
+                    idtasks[id] = t
+                }
             }
         } catch {
             

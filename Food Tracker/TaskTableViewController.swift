@@ -243,7 +243,7 @@ class TaskTableViewController: UITableViewController {
         TaskUtils.fetch_task_group(tvc)
         
         let mainGroup = TaskUtils.getMainTaskGroup()
-        if mainGroup != nil {
+        if mainGroup != nil && self.username != nil {
             let delobj = JsonObject()
             delobj.setEntry("name", obj: JsonString(str : self.username!))
             JsonManager.getInstance().send( delobj , url: "http://lit-plains-99831.herokuapp.com/delete_user_tasks", type: "DELETE")
