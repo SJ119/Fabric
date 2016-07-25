@@ -176,28 +176,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="UserName" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="quU-l5-A6G">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="UserName" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="quU-l5-A6G">
                                 <rect key="frame" x="20" y="92" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="NickName" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="McK-EP-97D">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="NickName" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="McK-EP-97D">
                                 <rect key="frame" x="20" y="152" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RbB-gx-ORq">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RbB-gx-ORq">
                                 <rect key="frame" x="20" y="212" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="320" image="contacts" translatesAutoresizingMaskIntoConstraints="NO" id="eKk-Q0-7Dk">
-                                <rect key="frame" x="147" y="275" width="252" height="271"/>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="320" image="contacts" translatesAutoresizingMaskIntoConstraints="NO" id="eKk-Q0-7Dk">
+                                <rect key="frame" x="45" y="272" width="510" height="274"/>
                                 <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="271" id="D2X-t6-fwq"/>
-                                    <constraint firstAttribute="width" constant="252" id="Pr9-Pq-9QJ"/>
-                                </constraints>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="UUa-Qv-H7O" appends="YES" id="12k-X0-KuB"/>
                                 </connections>
@@ -205,12 +201,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="eKk-Q0-7Dk" firstAttribute="leading" secondItem="bcw-VP-87t" secondAttribute="leading" constant="147" id="1Uw-O8-Da0"/>
                             <constraint firstItem="RbB-gx-ORq" firstAttribute="top" secondItem="McK-EP-97D" secondAttribute="bottom" constant="30" id="4F0-zB-E8E"/>
                             <constraint firstItem="McK-EP-97D" firstAttribute="top" secondItem="quU-l5-A6G" secondAttribute="bottom" constant="30" id="9iO-82-WKD"/>
                             <constraint firstItem="quU-l5-A6G" firstAttribute="trailing" secondItem="bcw-VP-87t" secondAttribute="trailingMargin" id="A0X-DW-zYV"/>
                             <constraint firstItem="quU-l5-A6G" firstAttribute="top" secondItem="Kez-tT-Shn" secondAttribute="bottom" constant="28" id="Guk-gC-lf4"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="eKk-Q0-7Dk" secondAttribute="trailing" constant="25" id="PmM-hq-Gh0"/>
+                            <constraint firstItem="eKk-Q0-7Dk" firstAttribute="leading" secondItem="bcw-VP-87t" secondAttribute="leadingMargin" constant="25" id="SPf-Z7-EDh"/>
                             <constraint firstItem="guT-ZI-VWW" firstAttribute="top" secondItem="eKk-Q0-7Dk" secondAttribute="bottom" constant="5" id="U3U-Mi-Qnf"/>
+                            <constraint firstItem="eKk-Q0-7Dk" firstAttribute="top" secondItem="RbB-gx-ORq" secondAttribute="bottom" constant="30" id="eoy-gG-gYK"/>
                             <constraint firstItem="RbB-gx-ORq" firstAttribute="trailing" secondItem="bcw-VP-87t" secondAttribute="trailingMargin" id="k66-eL-CWQ"/>
                             <constraint firstItem="McK-EP-97D" firstAttribute="trailing" secondItem="bcw-VP-87t" secondAttribute="trailingMargin" id="kEX-DS-Qwu"/>
                             <constraint firstItem="RbB-gx-ORq" firstAttribute="leading" secondItem="bcw-VP-87t" secondAttribute="leadingMargin" id="keg-Xc-FhR"/>
