@@ -13,7 +13,7 @@ class User: NSObject, NSCoding{
     var userid:String
     var password:String
     
-    private static var user = User(userid: "", password: "", status: false)
+    private static var user : User?
     
     static let DocumentsDirectory = NSFileManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
     static let ArchiveURL = DocumentsDirectory.URLByAppendingPathComponent("userInfo")
@@ -30,6 +30,9 @@ class User: NSObject, NSCoding{
     }
     
     class func setGlobalInstance(userid: String, password: String, status: Bool) {
+        if self.user == nil {
+            self.user = User(userid: "uid", password: "pswd", status: false)!
+        }
         self.user!.userid = userid
         self.user!.password = password
         self.user!.status = status

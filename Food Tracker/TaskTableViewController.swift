@@ -369,6 +369,12 @@ class TaskTableViewController: UITableViewController {
                         task.desc = task.desc + " Sent by " + self.username!
                     }
                     for usrname in usrnames {
+                        if self.username == usrname {
+                            let newIndexPath = NSIndexPath(forRow: tasks.count, inSection: 0)
+                            task.status = "Current"
+                            tasks.append(task)
+                            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
+                        }
                         //let sendobj = task
                         let sendobj = JsonObject()
                         let taskssend = [task]
