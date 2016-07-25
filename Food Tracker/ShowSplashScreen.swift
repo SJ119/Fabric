@@ -10,6 +10,8 @@ import UIKit
 
 class ShowSplashScreen: UIViewController {
     
+    var loggedout = false
+    
     private var originalPassword:String = ""
     private var status:Bool = false
     //MARK: Properties
@@ -322,30 +324,37 @@ class ShowSplashScreen: UIViewController {
         remainSignedIn.on = false
         super.viewDidLoad()
         
-        if let currentUser:User = loadUser()
+        if(loggedout)
         {
-            if(currentUser.status)
-            {
-//                print("WANTS TO LOAD AUTO")
-                let len = currentUser.password.characters.count
-                var newPW:String = ""
-                for i in 0..<len{
-                    newPW = "*" + newPW
-                    
-                }
-                password.text = newPW
-                userID.text = currentUser.userid
-                originalPassword = currentUser.password
-                remainSignedIn.on = currentUser.status
-                
-                dispatch_async(dispatch_get_main_queue()){
-                    self.performSegueWithIdentifier("autoSeg", sender: self)
-                }
-            }
+            loggedout = false
         }
         else
         {
-//            print("NOTHING SAVED")
+            if let currentUser:User = loadUser()
+            {
+                if(currentUser.status)
+                {
+                    //                print("WANTS TO LOAD AUTO")
+                    let len = currentUser.password.characters.count
+                    var newPW:String = ""
+                    for i in 0..<len{
+                        newPW = "*" + newPW
+                        
+                    }
+                    password.text = newPW
+                    userID.text = currentUser.userid
+                    originalPassword = currentUser.password
+                    remainSignedIn.on = currentUser.status
+                    
+                    dispatch_async(dispatch_get_main_queue()){
+                        self.performSegueWithIdentifier("autoSeg", sender: self)
+                    }
+                }
+            }
+            else
+            {
+                //            print("NOTHING SAVED")
+            }
         }
     }
     func showNavController(){

@@ -14,6 +14,16 @@ class AchievementsViewController: UIViewController, UINavigationControllerDelega
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var pointsLabel: UILabel!
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    {
+        if (segue.identifier == "logout")
+            {
+                let detailVC = segue.destinationViewController as! ShowSplashScreen
+                detailVC.loggedout = true
+                print("MAYBEEEEE")
+            }
+    }
+    
     var points = Points(points:50)
     var username: String?
     
