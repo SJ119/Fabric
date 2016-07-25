@@ -10,6 +10,8 @@ import UIKit
 
 class ShowSplashScreen: UIViewController {
     
+    var loggedout = false
+    
     private var originalPassword:String = ""
     private var status:Bool = false
     //MARK: Properties
@@ -249,9 +251,8 @@ class ShowSplashScreen: UIViewController {
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "showSplashScreen" || segue.identifier == "registered" {
+        if (segue.identifier == "showSplashScreen" || segue.identifier == "registered" || segue.identifier == "autoSeg") {
             let tabBarViewController = segue.destinationViewController as! UITabBarController
-            
             
             let achievementsViewController = tabBarViewController.childViewControllers[0].childViewControllers[0] as? AchievementsViewController
             achievementsViewController!.username = self.userID.text!
@@ -259,8 +260,6 @@ class ShowSplashScreen: UIViewController {
             taskTableViewController!.username = self.userID.text!
         }
     }
-    
-    
     
     override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
         if let ident = identifier {
@@ -322,30 +321,37 @@ class ShowSplashScreen: UIViewController {
         remainSignedIn.on = false
         super.viewDidLoad()
         
-        if let currentUser:User = loadUser()
+        if(loggedout)
         {
-            if(currentUser.status)
-            {
-//                print("WANTS TO LOAD AUTO")
-                let len = currentUser.password.characters.count
-                var newPW:String = ""
-                for i in 0..<len{
-                    newPW = "*" + newPW
-                    
-                }
-                password.text = newPW
-                userID.text = currentUser.userid
-                originalPassword = currentUser.password
-                remainSignedIn.on = currentUser.status
-                
-                dispatch_async(dispatch_get_main_queue()){
-                    self.performSegueWithIdentifier("autoSeg", sender: self)
-                }
-            }
+            loggedout = false
         }
         else
         {
-//            print("NOTHING SAVED")
+            if let currentUser:User = loadUser()
+            {
+                if(currentUser.status)
+                {
+                    //                print("WANTS TO LOAD AUTO")
+                    let len = currentUser.password.characters.count
+                    var newPW:String = ""
+                    for i in 0..<len{
+                        newPW = "*" + newPW
+                        
+                    }
+                    password.text = newPW
+                    userID.text = currentUser.userid
+                    originalPassword = currentUser.password
+                    remainSignedIn.on = currentUser.status
+                    
+                    dispatch_async(dispatch_get_main_queue()){
+                        self.performSegueWithIdentifier("autoSeg", sender: self)
+                    }
+                }
+            }
+            else
+            {
+                //            print("NOTHING SAVED")
+            }
         }
     }
     func showNavController(){

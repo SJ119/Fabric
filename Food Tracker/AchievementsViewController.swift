@@ -14,11 +14,22 @@ class AchievementsViewController: UIViewController, UINavigationControllerDelega
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var pointsLabel: UILabel!
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    {
+        if (segue.identifier == "logout")
+            {
+                let detailVC = segue.destinationViewController as! ShowSplashScreen
+                detailVC.loggedout = true
+                print("MAYBEEEEE")
+            }
+    }
+    
     var points = Points(points:50)
     var username: String?
     
     var diff = 0
-    func addTask(task: Task) {
+    func addTask(task: Task)
+    {
         print("ACHIEVEMENT UPDATING POINTS")
         if (task.status == "Complete") {
             print("completeing a task")
@@ -30,6 +41,10 @@ class AchievementsViewController: UIViewController, UINavigationControllerDelega
         
         if pointsLabel != nil  {
             points!.points += diff
+            if(points!.points < 0)
+            {
+                points!.points = 0
+            }
             pointsLabel.text = String(points!.points) + "pts"
             
             let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(points!, toFile: Points.ArchiveURLPoints.path!)
@@ -47,18 +62,26 @@ class AchievementsViewController: UIViewController, UINavigationControllerDelega
         
         if self.username != nil && self.username != usernameLabel.text {
             usernameLabel.text = self.username
+            print(self.username)
         }
         
         if let points = NSKeyedUnarchiver.unarchiveObjectWithFile(Points.ArchiveURLPoints.path!) as? Points {
             self.points = points
+            if(points.points < 0)
+            {
+                self.points?.points = 0
+            }
         }
         
         self.points!.points += diff
         pointsLabel.text = String(points!.points) + "pts"
         let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(points!, toFile: Points.ArchiveURLPoints.path!)
-        if !isSuccessfulSave {
+        if !isSuccessfulSave
+        {
             print("Failed to save tasks...")
-        } else {
+        }
+        else
+        {
             diff = 0
         }
     }
