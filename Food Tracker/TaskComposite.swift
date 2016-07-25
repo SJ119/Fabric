@@ -10,9 +10,11 @@ import UIKit
 
 class TaskGroup: Task {
     var tasks = [Task]()
+    var leaf = true
     
-    init?(name: String, desc:String) {
+    init?(name: String, desc:String, leaf:Bool) {
         super.init(name: name, desc: desc, dueDate: nil, status: "Group", visible: false)
+        self.leaf = leaf
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
@@ -20,11 +22,38 @@ class TaskGroup: Task {
         let desc = aDecoder.decodeObjectForKey(PropertyKey.desc) as? String
         
         //Must call designated initializer.
-        self.init(name:name, desc: desc!)
+        self.init(name:name, desc: desc!, leaf: true)
     }
     
     func add(task: Task) {
         tasks += [task]
+    }
+    
+    func isLeaf() -> Bool {
+        return leaf
+    }
+    
+    func getAllTasks() -> [Task] {
+        var alltasks = [Task]()
+        for task in tasks {
+            let gtask = task as? TaskGroup
+            if gtask != nil {
+                if gtask!.isLeaf() {
+                    alltasks = alltasks + gtask!.tasks
+                } else {
+                    alltasks = alltasks + gtask!.getAllTasks()
+                }
+            } else {
+                alltasks.append(task)
+            }
+
+        }
+        return alltasks
+    }
+    
+    func getChild(index: Int) -> TaskGroup? {
+        let child = tasks[index] as? TaskGroup
+        return child
     }
 }
 
@@ -49,10 +78,10 @@ class TaskUtils {
     }*/
 
     class func fetch_task_group(tvc: UITabBarController) {
-        let cached_task_group = TaskGroup(name: "MainGroup", desc: "Group of 3 sub TaskGroups")!
-        let delayed_task_group = TaskGroup(name: "DelayedGroup", desc: "Delayed TaskGroup")!
-        let current_task_group = TaskGroup(name: "CurrentGroup", desc: "Current TaskGroups")!
-        let completed_task_group = TaskGroup(name: "CompletedGroup", desc: "Completed TaskGroups")!
+        let cached_task_group = TaskGroup(name: "MainGroup", desc: "Group of 3 sub TaskGroups", leaf: false)!
+        let delayed_task_group = TaskGroup(name: "DelayedGroup", desc: "Delayed TaskGroup", leaf: true)!
+        let current_task_group = TaskGroup(name: "CurrentGroup", desc: "Current TaskGroups", leaf: true)!
+        let completed_task_group = TaskGroup(name: "CompletedGroup", desc: "Completed TaskGroups", leaf: true)!
         let delayViewController = tvc.childViewControllers[1].childViewControllers[0] as? DelayTableViewController
         let taskViewController = tvc.childViewControllers[2].childViewControllers[0] as? TaskTableViewController
         let doneViewController = tvc.childViewControllers[3].childViewControllers[0] as? DoneTableViewController
@@ -149,6 +178,34 @@ class TaskUtils {
     
     class func saveServerTasks(tasks : [Int : Task]) {
         serverTasks = tasks
+    }
+    
+    class func retriveTaskContacts(task : Task) -> [String] {
+        var names = [String]()
+        var name = ""
+        var count = 0
+        
+        if task.status.characters.count > 8 {
+            if task.status[task.status.startIndex..<task.status.startIndex.advancedBy(8)] != "ToBeSent" {
+                return names
+            }
+        } else {
+            return names
+        }
+        
+        for char in task.status.characters {
+            if char == "," {
+                names.append(name)
+                name = ""
+            } else if count < 8 {
+                
+                count = count + 1
+            } else if char != " " {
+                name = name + String(char)
+            }
+        }
+        return names
+        
     }
 
     /*class func add_to_server(username: String) {

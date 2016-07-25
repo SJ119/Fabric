@@ -31,20 +31,25 @@ class TaskTableViewController: UITableViewController {
             tasks = savedTasks
         }*/
         
-        // Do an initial reload on our current list
-        //reloadCurrent(NSTimer())
+        
+        //
         //fetch the tasks
         if username != nil {
             let tvc = self.parentViewController?.parentViewController as! UITabBarController
             TaskUtils.fetch_task_group(tvc)
+            
             JsonManager.getInstance().fetch(self.username!, url: "http://lit-plains-99831.herokuapp.com/get_task") {
                 data in
                 let tasks = JsonManager.getInstance().convertToTasksWithID(data)
                 TaskUtils.saveServerTasks(tasks)
                 TaskUtils.passTasksToViews(tvc)
+
+                // Do an initial reload on our current list
+                self.reloadCurrent(NSTimer())
                 self.tableView.reloadData()
             }
         }
+
     }
     
     func getViewControllerDone() -> DoneTableViewController? {
@@ -164,6 +169,7 @@ class TaskTableViewController: UITableViewController {
             tasks.removeAtIndex(indexPath.row)
             saveTasks(tasks, url: Task.ArchiveURL)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            syncServer()
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
@@ -239,27 +245,84 @@ class TaskTableViewController: UITableViewController {
 
         }*/
         
+        //make sure maingroup is up to date
+        let tvc = self.parentViewController?.parentViewController as! UITabBarController
+        TaskUtils.fetch_task_group(tvc)
+        
+        var delayed = false
+        let mainGroup = TaskUtils.getMainTaskGroup()
+        if mainGroup != nil {
+            let savedTasks = mainGroup!.getChild(1)!.getAllTasks()
+            let currentDate = NSDate()
+            
+            var delayIdx = [Int]()
+            for (i, item) in savedTasks.enumerate() {
+                if (item.dueDate!.compare(currentDate) == NSComparisonResult.OrderedAscending) {
+                    print("Task \(i) is delayed, recorded \(i) as need to remove")
+                    delayIdx.append(i);
+                    delayed = true
+                } else {
+                    print("Task \(i) is not delayed")
+                    let dateDifference = daysBetweenDates(currentDate, endDate: item.dueDate!)
+                    if (dateDifference == 0) {
+                        self.tasks[i].status = "Urgent"
+                    }
+                }
+                
+            }
+            tableView.reloadData()
+            
+            delayIdx = delayIdx.reverse()
+            print("Tasks needed to be removed in reverse order are \(delayIdx)")
+            print("Tasks length: \(self.tasks.count)")
+            let taskLength = self.tasks.count
+            for idx in delayIdx {
+                if (idx < taskLength) {
+                    print("idx: " + String(idx))
+                    //due date has passed, move to delayed
+                    let task = savedTasks[idx]
+                    self.tasks.removeAtIndex(idx)
+                    let indexPath = NSIndexPath(forRow: idx, inSection: 0)
+                    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+                    tableView.reloadData()
+                    task.status = "Delayed"
+                    
+                    self.presentDestinationViewControllerAchievement(task)
+                    let vcd = self.getViewControllerDelay()
+                    vcd?.addTask(task)
+                }
+            }
+        }
+        //sync with server only when something is delayed
+        if delayed {
+            syncServer()
+        }
+        tableView.reloadData()
+    }
+    
+    func syncServer() {
+        
         let tvc = self.parentViewController?.parentViewController as! UITabBarController
         TaskUtils.fetch_task_group(tvc)
         
         let mainGroup = TaskUtils.getMainTaskGroup()
-        if mainGroup != nil {
+        if mainGroup != nil && self.username != nil {
+            print("sync with server")
             let delobj = JsonObject()
-            delobj.setEntry("name", obj: JsonString(str : self.username!))
+            delobj.setPermanentEntry("name", obj: JsonString(str : self.username!))
             JsonManager.getInstance().send( delobj , url: "http://lit-plains-99831.herokuapp.com/delete_user_tasks", type: "DELETE")
             
             let sendobj = JsonObject()
-            sendobj.setEntry("name", obj: JsonString(str : self.username!))
+            sendobj.setPermanentEntry("name", obj: JsonString(str : self.username!))
             
-            let alltasks = (mainGroup!.tasks[0] as! TaskGroup).tasks + (mainGroup!.tasks[1] as! TaskGroup).tasks + (mainGroup!.tasks[2] as! TaskGroup).tasks
+            let alltasks = mainGroup!.getAllTasks()
             
-            sendobj.setEntry("tasks", obj: JsonObjectList(objs: alltasks))
+            sendobj.setPermanentEntry("tasks", obj: JsonObjectList(objs: alltasks))
             
             JsonManager.getInstance().send( sendobj , url: "http://lit-plains-99831.herokuapp.com/create_tasks", type: "POST")
         }
-        
-        tableView.reloadData()
     }
+
     
     // MARK: - Navigation
 
@@ -295,19 +358,52 @@ class TaskTableViewController: UITableViewController {
             else {
                 // Add a new task.
                 print("Adding new task \(task.name).")
-                let newIndexPath = NSIndexPath(forRow: tasks.count, inSection: 0)
-                task.status = "Current"
-                tasks.append(task)
-                tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
                 
-                // check origin of TaskViewController
-                if sourceViewController.origin != nil {
-                    let vcd = getViewControllerDelay()
-                    vcd?.removeTask(sourceViewController.origin_idx!)
+                let usrnames = TaskUtils.retriveTaskContacts(task)
+                print("usrnames")
+                print(task.status)
+                print(usrnames.count)
+                if usrnames.count != 0 {
+                    task.status = "Current"
+                    for usrname in usrnames {
+                        //let sendobj = task
+                        let sendobj = JsonObject()
+                        let taskssend = [task]
+                        sendobj.setPermanentEntry("name", obj: JsonString(str : usrname))
+                        sendobj.setPermanentEntry("tasks", obj:JsonObjectList(objs : taskssend) )
+                        JsonManager.getInstance().send( sendobj , url: "http://lit-plains-99831.herokuapp.com/create_tasks", type: "POST")
+                    }
+                } else {
+                
+                    let newIndexPath = NSIndexPath(forRow: tasks.count, inSection: 0)
+                    task.status = "Current"
+                    tasks.append(task)
+                    tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
+                    
+                    
+                    if self.username != nil {
+                        let usrname = self.username!
+                        //uncomment when new_task is fixed
+                        //let sendobj = task
+                        //sendobj.setPermanentEntry("user", obj: JsonString(str : usrname))
+                        //JsonManager.getInstance().send( sendobj , url: "http://lit-plains-99831.herokuapp.com/new_task", type: "POST")
+                        let sendobj = JsonObject()
+                        sendobj.setPermanentEntry("name", obj: JsonString(str : usrname))
+                        sendobj.setPermanentEntry("tasks", obj: JsonObjectList(objs : [task]))
+                        JsonManager.getInstance().send( sendobj , url: "http://lit-plains-99831.herokuapp.com/create_tasks", type: "POST")
+                    } else {
+                        print ("nil usrname detected, cannot send")
+                    }
+
+                    // check origin of TaskViewController
+                    if sourceViewController.origin != nil {
+                        let vcd = getViewControllerDelay()
+                        vcd?.removeTask(sourceViewController.origin_idx!)
+                    }
                 }
             }
             // Save the tasks.
-            saveTasks(tasks, url: Task.ArchiveURL)
+            //saveTasks(tasks, url: Task.ArchiveURL)
         }
     }
     
