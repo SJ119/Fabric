@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="JA5-BI-dUU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15A278b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="JA5-BI-dUU">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -176,23 +176,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="UserName" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="quU-l5-A6G">
-                                <rect key="frame" x="20" y="92" width="560" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="UserName" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="quU-l5-A6G">
+                                <rect key="frame" x="20" y="122" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="NickName" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="McK-EP-97D">
-                                <rect key="frame" x="20" y="152" width="560" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="NickName" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="McK-EP-97D">
+                                <rect key="frame" x="20" y="182" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RbB-gx-ORq">
-                                <rect key="frame" x="20" y="212" width="560" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RbB-gx-ORq">
+                                <rect key="frame" x="20" y="242" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="320" image="contacts" translatesAutoresizingMaskIntoConstraints="NO" id="eKk-Q0-7Dk">
-                                <rect key="frame" x="147" y="275" width="252" height="271"/>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="320" image="contacts" translatesAutoresizingMaskIntoConstraints="NO" id="eKk-Q0-7Dk">
+                                <rect key="frame" x="196" y="328" width="203" height="218"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="271" id="D2X-t6-fwq"/>
@@ -202,6 +202,12 @@
                                     <outletCollection property="gestureRecognizers" destination="UUa-Qv-H7O" appends="YES" id="12k-X0-KuB"/>
                                 </connections>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mcp-C6-Axb">
+                                <rect key="frame" x="20" y="79" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -214,6 +220,7 @@
                             <constraint firstItem="RbB-gx-ORq" firstAttribute="trailing" secondItem="bcw-VP-87t" secondAttribute="trailingMargin" id="k66-eL-CWQ"/>
                             <constraint firstItem="McK-EP-97D" firstAttribute="trailing" secondItem="bcw-VP-87t" secondAttribute="trailingMargin" id="kEX-DS-Qwu"/>
                             <constraint firstItem="RbB-gx-ORq" firstAttribute="leading" secondItem="bcw-VP-87t" secondAttribute="leadingMargin" id="keg-Xc-FhR"/>
+                            <constraint firstItem="mcp-C6-Axb" firstAttribute="top" secondItem="Kez-tT-Shn" secondAttribute="bottom" constant="5" id="miQ-IT-8UY"/>
                             <constraint firstItem="quU-l5-A6G" firstAttribute="leading" secondItem="bcw-VP-87t" secondAttribute="leadingMargin" id="p0e-r2-caW"/>
                             <constraint firstItem="McK-EP-97D" firstAttribute="leading" secondItem="bcw-VP-87t" secondAttribute="leadingMargin" id="t4m-FF-LxC"/>
                         </constraints>
@@ -236,6 +243,7 @@
                         <outlet property="UserNameTextField" destination="quU-l5-A6G" id="MZt-U0-cKB"/>
                         <outlet property="photoImageView" destination="eKk-Q0-7Dk" id="gow-91-wrF"/>
                         <outlet property="saveButton" destination="MXR-Je-sgS" id="Aea-Cl-39K"/>
+                        <outlet property="statusLabel" destination="mcp-C6-Axb" id="hLo-HV-TGq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QJ7-fb-5l7" userLabel="First Responder" sceneMemberID="firstResponder"/>

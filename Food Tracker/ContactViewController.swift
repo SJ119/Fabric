@@ -16,7 +16,9 @@ class ContactViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     @IBOutlet weak var EmailTextField: UITextField!
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var statusLabel: UILabel!
     
+    var contacts = [Contact]()
     
     // contact ispassed by `ContactTableViewController` in `prepareForSegue(_:sender:)`
     // or constructed as part of adding a new contact.
@@ -88,6 +90,8 @@ class ContactViewController: UIViewController, UITextFieldDelegate, UIImagePicke
             let nickName = NickNameTextField.text ?? ""
             let email = EmailTextField.text ?? ""
             let photo = photoImageView.image
+            
+            
             
             contact = Contact(name: userName, nickName: nickName, email: email, photo: photo, sending: false)
         }
