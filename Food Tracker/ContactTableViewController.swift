@@ -75,6 +75,7 @@ class ContactTableViewController: UITableViewController {
         let contact = contacts[indexPath.row]
         
         cell.nameLabel.text = contact.name
+        cell.nickNameLabel.text = contact.nickName
         cell.photoImageView.image = contact.photo
 
         return cell
