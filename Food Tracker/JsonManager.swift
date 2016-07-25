@@ -351,6 +351,42 @@ class JsonManager {
         print("Json Sent")
     }
     
+    func check(username : String, completionHandler: (data:NSData) -> ()) {
+        let url = "http://lit-plains-99831.herokuapp.com/confirm_user?name=" + username
+        print(url)
+        let request = NSMutableURLRequest(URL: NSURL(string: url)!, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData, timeoutInterval: 5)
+        
+        request.HTTPMethod = "GET"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        let session = NSURLSession.sharedSession()
+        print("check")
+        let task = session.dataTaskWithRequest(request) {
+            (data, response, error) -> Void in
+            
+            
+            print("enter callback fetch")
+            //let myJSON = try NSJSONSerialization.JSONObjectWithData(data!, options:.MutableLeaves)
+            
+            //print(myJSON)
+            if data == nil {
+                print("Network Connection Died, Cannot Send Data")
+                return
+            }
+            completionHandler(data: data!);
+            
+            
+            // look at the response
+            if let httpResponse = response as? NSHTTPURLResponse {
+                print("HTTP response: \(httpResponse.statusCode)")
+            } else {
+                print("No HTTP response")
+            }
+            
+        }
+        task.resume()
+    }
+    
     func fetch(username : String, url : String, completionHandler: (data: NSData) -> ()) {
         
         let url2 = url + "?name=" + username
