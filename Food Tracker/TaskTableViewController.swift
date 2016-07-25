@@ -45,8 +45,10 @@ class TaskTableViewController: UITableViewController {
                 TaskUtils.passTasksToViews(tvc)
 
                 // Do an initial reload on our current list
-                self.reloadCurrent(NSTimer())
-                self.tableView.reloadData()
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.tableView.reloadData()
+                    self.reloadCurrent(NSTimer())
+                }
             }
         }
 
@@ -295,27 +297,19 @@ class TaskTableViewController: UITableViewController {
                 }
             }
         }
+        tableView.reloadData()
         //sync with server only when something is delayed
         if delayed {
-            syncServer()
+            syncServer(true)
+        } else {
+            //don't fetch twice in first call
+            //static var first_call = false
+            fetchFromServer()
         }
         
-        if username != nil {
-            let tvc = self.parentViewController?.parentViewController as! UITabBarController
-            TaskUtils.fetch_task_group(tvc)
-            
-            JsonManager.getInstance().fetch(self.username!, url: "http://lit-plains-99831.herokuapp.com/get_task") {
-                data in
-                let tasks = JsonManager.getInstance().convertToTasksWithID(data)
-                TaskUtils.saveServerTasks(tasks)
-                TaskUtils.passTasksToViews(tvc)
-                self.tableView.reloadData()
-            }
-        }
-        tableView.reloadData()
     }
     
-    func syncServer() {
+    func syncServer(fetchAfterSync : Bool = false) {
         
         let tvc = self.parentViewController?.parentViewController as! UITabBarController
         TaskUtils.fetch_task_group(tvc)
@@ -325,19 +319,40 @@ class TaskTableViewController: UITableViewController {
             print("sync with server")
             let delobj = JsonObject()
             delobj.setPermanentEntry("name", obj: JsonString(str : self.username!))
-            JsonManager.getInstance().send( delobj , url: "http://lit-plains-99831.herokuapp.com/delete_user_tasks", type: "DELETE")
-            
-            let sendobj = JsonObject()
-            sendobj.setPermanentEntry("name", obj: JsonString(str : self.username!))
-            
-            let alltasks = mainGroup!.getAllTasks()
-            
-            sendobj.setPermanentEntry("tasks", obj: JsonObjectList(objs: alltasks))
-            
-            JsonManager.getInstance().send( sendobj , url: "http://lit-plains-99831.herokuapp.com/create_tasks", type: "POST")
+            JsonManager.getInstance().send( delobj , url: "http://lit-plains-99831.herokuapp.com/delete_user_tasks", type: "DELETE") {_ in 
+                print("Delete data finished")
+                let sendobj = JsonObject()
+                sendobj.setPermanentEntry("name", obj: JsonString(str : self.username!))
+                
+                let alltasks = mainGroup!.getAllTasks()
+                
+                sendobj.setPermanentEntry("tasks", obj: JsonObjectList(objs: alltasks))
+                
+                JsonManager.getInstance().send( sendobj , url: "http://lit-plains-99831.herokuapp.com/create_tasks", type: "POST") { _ in
+                    print("Post data finished")
+                    if fetchAfterSync {
+                        self.fetchFromServer()
+                    }
+                }
+            }
         }
     }
-
+    
+    func fetchFromServer() {
+        let tvc = self.parentViewController?.parentViewController as! UITabBarController
+        TaskUtils.fetch_task_group(tvc)
+        
+        JsonManager.getInstance().fetch(self.username!, url: "http://lit-plains-99831.herokuapp.com/get_task") {
+            data in
+            print("Fetch data finished")
+            let tasks = JsonManager.getInstance().convertToTasksWithID(data)
+            TaskUtils.saveServerTasks(tasks)
+            TaskUtils.passTasksToViews(tvc)
+            dispatch_async(dispatch_get_main_queue()) {
+                self.tableView.reloadData()
+            }
+        }
+    }
     
     // MARK: - Navigation
 
