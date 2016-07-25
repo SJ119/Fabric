@@ -26,12 +26,15 @@ class User: NSObject, NSCoding{
     }
     
     class func getGloablInstance() -> User{
+        if self.user == nil {
+            self.user = User(userid: "Default", password: "Default", status: false)!
+        }
         return self.user!
     }
     
     class func setGlobalInstance(userid: String, password: String, status: Bool) {
         if self.user == nil {
-            self.user = User(userid: "uid", password: "pswd", status: false)!
+            self.user = User(userid: "Default", password: "Default", status: false)!
         }
         self.user!.userid = userid
         self.user!.password = password
