@@ -38,8 +38,8 @@ class recipientTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let usrname = User.getGloablInstance().userid
-        contacts.append(Contact(name: usrname, nickName: "Me", email: "", photo: UIImage(named: "contacts"), sending: false)!)
+        //let usrname = User.getGloablInstance().userid
+        //contacts.append(Contact(name: usrname, nickName: "Me", email: "", photo: UIImage(named: "contacts"), sending: false)!)
         // Load any saved meals, otherwise load sample data.
         if let savedContacts = loadContacts() {
             contacts += savedContacts
@@ -92,7 +92,11 @@ class recipientTableViewController: UITableViewController {
     
     //MARK: NSCoding
     func loadContacts() -> [Contact]? {
-        return NSKeyedUnarchiver.unarchiveObjectWithFile(Contact.ArchiveURL.path!) as? [Contact]
+        if (NSKeyedUnarchiver.unarchiveObjectWithFile(Contact.ArchiveURL.path!) != nil) {
+            return NSKeyedUnarchiver.unarchiveObjectWithFile(Contact.ArchiveURL.path!) as? [Contact]
+        } else {
+            return NSKeyedUnarchiver.unarchiveObjectWithFile(Contact.ArchiveURL.path!) as? [Contact]
+        }
     }
 
 }

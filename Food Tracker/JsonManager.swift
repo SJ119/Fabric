@@ -272,15 +272,16 @@ class JsonManager {
         do {
             let jsonDict = try NSJSONSerialization.JSONObjectWithData(data, options: []) as! NSDictionary
             let taskEntries = jsonDict["tasks"]
-            
-            let optTasks = taskEntries! as? [NSDictionary]
-            
+            var optTasks = taskEntries
+            if (taskEntries != nil) {
+                optTasks = taskEntries! as? [NSDictionary]
+            }
             if optTasks == nil {
                 print("no tasks in data")
             } else {
                 let tasks = optTasks!
                 //print (entries.count)
-                for task in tasks {
+                for task in tasks as! [AnyObject] {
                     let task_name = task["task_name"] as! String
                     let task_status = task["status"] as! String
                     let task_description = task["description"] as! String
