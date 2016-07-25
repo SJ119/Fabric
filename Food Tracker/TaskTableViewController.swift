@@ -25,7 +25,7 @@ class TaskTableViewController: UITableViewController {
         
         // Use the edit button item provided by the table view controller.
         navigationItem.leftBarButtonItem = editButtonItem()
-        
+        self.navigationItem.leftBarButtonItem?.tintColor = UIColor.whiteColor()
         // Restore our saved tasks
         /*if let savedTasks = loadTasks(Task.ArchiveURL) {
             tasks = savedTasks
@@ -69,7 +69,7 @@ class TaskTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        cell.backgroundColor = UIColor.clearColor()
+        cell.backgroundColor = UIColor(red:0.15, green:0.16, blue:0.16, alpha:1.0)
     }
     
     override func didReceiveMemoryWarning() {

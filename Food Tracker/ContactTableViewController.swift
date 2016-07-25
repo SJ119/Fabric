@@ -21,6 +21,7 @@ class ContactTableViewController: UITableViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
+        self.navigationItem.leftBarButtonItem?.tintColor = UIColor.whiteColor()
         
         if let savedContacts = loadContacts() {
             contacts += savedContacts

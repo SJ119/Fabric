@@ -345,6 +345,9 @@ class ShowSplashScreen: UIViewController {
     override func viewDidLoad()
     {
         print("ready")
+        var navigationBarAppearace = UINavigationBar.appearance()
+        navigationBarAppearace.barTintColor = UIColor(red:0.91, green:0.08, blue:0.32, alpha:1.0)
+        
         remainSignedIn.on = false
         super.viewDidLoad()
         

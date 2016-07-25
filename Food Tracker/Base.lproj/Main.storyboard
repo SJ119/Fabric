@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="JA5-BI-dUU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="JA5-BI-dUU">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -45,21 +45,21 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50pts" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6nr-ok-wC6">
-                                <rect key="frame" x="20" y="175" width="560" height="179"/>
+                                <rect key="frame" x="20" y="209" width="560" height="179"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="179" id="aAs-jy-7ss"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="70"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="100"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KsB-JA-nYX">
-                                <rect key="frame" x="20" y="89" width="560" height="21"/>
+                                <rect key="frame" x="20" y="89" width="560" height="55"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="Nqf-K6-xEc"/>
+                                    <constraint firstAttribute="height" constant="55" id="Nqf-K6-xEc"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="SnellRoundhand" family="Snell Roundhand" pointSize="25"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="SnellRoundhand" family="Snell Roundhand" pointSize="70"/>
+                                <color key="textColor" red="0.94932100789999996" green="0.0" blue="0.11632946969999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-15 points per delay" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JZE-ph-KCA">
@@ -95,7 +95,9 @@
                                 <rect key="frame" x="507" y="7" width="73" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <state key="normal" title="LOG OUT"/>
+                                <state key="normal" title="LOG OUT">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <segue destination="JA5-BI-dUU" kind="popoverPresentation" identifier="logout" popoverAnchorView="t7x-oh-E4i" id="m1N-vG-D9k">
                                         <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
@@ -126,14 +128,14 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fNa-3f-83E" id="toJ-we-nsS">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="59.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="59"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="contacts" translatesAutoresizingMaskIntoConstraints="NO" id="Atm-pY-jxO">
                                             <rect key="frame" x="0.0" y="0.0" width="56" height="60"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WV2-wf-l31">
-                                            <rect key="frame" x="64" y="37" width="528" height="22.5"/>
+                                            <rect key="frame" x="64" y="37" width="528" height="23"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -166,6 +168,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Contacts" id="tFc-ab-47t">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="y38-XG-wDK">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="ICS-zG-E82" kind="presentation" identifier="AddContact" id="Qji-og-3J4"/>
                             </connections>
@@ -230,11 +233,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="New Contact" id="V7A-RH-v2W">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="uSA-04-dnX">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="cancel:" destination="ax1-oN-H1D" id="2TJ-aB-F13"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="MXR-Je-sgS">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="dXT-3W-6VR" kind="unwind" unwindAction="unwindToContactList:" id="zhK-kQ-Be2"/>
                             </connections>
@@ -271,13 +276,13 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qcZ-5g-Hdk" id="wfb-AH-mIE">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E8u-yR-mem">
                                             <rect key="frame" x="8" y="0.0" width="256" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -312,13 +317,13 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6Xd-qt-uEA" id="nL8-Pf-4t1">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="89.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="89"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QIn-ie-Ohl">
                                             <rect key="frame" x="8" y="8" width="584" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -352,13 +357,13 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QTr-c1-ser" id="Rit-NK-aSQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="59.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="59"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XAL-nV-7dN">
                                             <rect key="frame" x="8" y="8" width="54" height="27"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qes-Fk-3es">
@@ -389,6 +394,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Your Tasks" id="idz-DB-Rg1">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="9fI-XT-J9K">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="07g-ev-gsC" kind="presentation" identifier="AddItem" id="GJs-zE-HmL"/>
                             </connections>
@@ -519,11 +525,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="New Task" id="Mm3-KY-8FM">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="eHZ-Co-Qio">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="cancel:" destination="BYZ-38-t0r" id="59A-vg-DiA"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="xkz-vx-t3Q">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="SDT-tu-1SV" kind="unwind" unwindAction="unwindToTaskList:" id="hdq-aD-sjv"/>
                             </connections>
@@ -570,7 +578,7 @@
                                 <rect key="frame" x="0.0" y="136" width="600" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M86-hV-Qv5" id="9U1-Ah-tyz">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="59.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="59"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="contacts" translatesAutoresizingMaskIntoConstraints="NO" id="EeN-DP-4cx">
@@ -618,6 +626,7 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="9ph-kZ-wcS">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="save:" destination="Po5-7v-9qE" id="lEg-OT-s2Q"/>
                                 <segue destination="m18-DX-fwh" kind="unwind" unwindAction="unwindToTask:" id="1Fv-h3-nNC"/>
@@ -642,11 +651,17 @@
             </objects>
             <point key="canvasLocation" x="2395" y="616"/>
         </scene>
-        <!--Current-->
+        <!--Navigation Controller-->
         <scene sceneID="dQP-bs-7cp">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="iQO-0e-Pe8" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Current" image="Current" id="2LJ-Ld-ZYr"/>
+                    <tabBarItem key="tabBarItem" title="" image="Current" id="2LJ-Ld-ZYr">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="i2u-OR-H1A">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -679,11 +694,17 @@
             </objects>
             <point key="canvasLocation" x="135" y="1056"/>
         </scene>
-        <!--Contacts-->
+        <!--Navigation Controller-->
         <scene sceneID="6n2-FD-3uc">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fRl-Id-Y3g" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Contacts" image="contact" id="j1R-H6-liJ"/>
+                    <tabBarItem key="tabBarItem" title="" image="contact" id="j1R-H6-liJ">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gr4-rm-UL1">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -744,13 +765,13 @@
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="s7v-1m-OEz">
                                 <rect key="frame" x="20" y="199" width="560" height="344"/>
-                                <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="0.30487607758620688" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="taskcell" rowHeight="70" id="wMz-O3-wOK" customClass="TaskTableViewCell" customModule="Fabric" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="560" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wMz-O3-wOK" id="oWS-bt-xlo">
-                                            <rect key="frame" x="0.0" y="0.0" width="560" height="69.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="560" height="69"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Upi-pM-QhP">
@@ -760,7 +781,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7CY-1F-t0x">
-                                                    <rect key="frame" x="510" y="40.5" width="42" height="21"/>
+                                                    <rect key="frame" x="510" y="41" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -825,11 +846,17 @@
             </objects>
             <point key="canvasLocation" x="352" y="-1114"/>
         </scene>
-        <!--Achievements-->
+        <!--Navigation Controller-->
         <scene sceneID="Bet-Db-da3">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ogk-pe-sXb" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Achievements" image="achievements" id="Wzl-Uw-PcO"/>
+                    <tabBarItem key="tabBarItem" title="" image="achievements" id="Wzl-Uw-PcO">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="f7J-2Y-xnp">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -848,7 +875,13 @@
         <scene sceneID="xmb-WQ-KoU">
             <objects>
                 <navigationController title="Complete" automaticallyAdjustsScrollViewInsets="NO" id="wrI-ux-HzF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Complete" image="Complete" id="WFn-1L-tlj"/>
+                    <tabBarItem key="tabBarItem" title="" image="Complete" id="WFn-1L-tlj">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="aWN-rZ-FEd">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -867,7 +900,13 @@
         <scene sceneID="E32-cK-cko">
             <objects>
                 <navigationController title="Delayed" automaticallyAdjustsScrollViewInsets="NO" id="egL-Fp-TkY" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Delayed" image="Delay" id="kfW-gz-ZGV"/>
+                    <tabBarItem key="tabBarItem" title="" image="Delay" id="kfW-gz-ZGV">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="1Jr-Z1-K6y">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1006,16 +1045,16 @@
     </scenes>
     <resources>
         <image name="AppName" width="590" height="295"/>
-        <image name="Complete" width="40" height="40"/>
+        <image name="Complete" width="35" height="35"/>
         <image name="Current" width="40" height="40"/>
         <image name="Delay" width="40" height="40"/>
         <image name="achievements" width="40" height="40"/>
         <image name="contact" width="40" height="40"/>
-        <image name="contacts" width="931" height="1200"/>
+        <image name="contacts" width="125" height="125"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="bi2-ln-VU8"/>
         <segue reference="hhR-LN-wKI"/>
-        <segue reference="Qhq-89-ENo"/>
+        <segue reference="bi2-ln-VU8"/>
+        <segue reference="Ono-0F-M0f"/>
     </inferredMetricsTieBreakers>
 </document>
