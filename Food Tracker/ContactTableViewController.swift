@@ -25,6 +25,7 @@ class ContactTableViewController: UITableViewController {
         if let savedContacts = loadContacts() {
             contacts += savedContacts
         }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,12 +39,32 @@ class ContactTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
+    
+    // Override to support conditional editing of the table view.
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        // Return false if you do not want the specified item to be editable.
+        return true
+    }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return contacts.count
     }
 
+    
+    // Override to support editing the table view.
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            // Delete the row from the data source
+            contacts.removeAtIndex(indexPath.row)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            saveContacts()
+
+        } else if editingStyle == .Insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        }
+    }
+    
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
@@ -108,7 +129,11 @@ class ContactTableViewController: UITableViewController {
     }
     
     func loadContacts() -> [Contact]? {
-        return NSKeyedUnarchiver.unarchiveObjectWithFile(Contact.ArchiveURL.path!) as? [Contact]
+        let contacts = NSKeyedUnarchiver.unarchiveObjectWithFile(Contact.ArchiveURL.path!) as! [Contact]
+        
+        let c = contacts.sort { $0.name < $1.name }
+        
+        return c
     }
 
 }
