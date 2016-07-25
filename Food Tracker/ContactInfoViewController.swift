@@ -8,23 +8,24 @@
 
 import UIKit
 
-class ContactInfoViewController: UIViewController, UINavigationControllerDelegate {
+class ContactInfoViewController: UIViewController, UINavigationControllerDelegate,  UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     // When page is called it fills this value with the contact that was clicked on
+    
+    var tasks = [Task]()
+    var delayedTasks = [Task]()
+    var completedTasks = [Task]()
     
     //MARK: Properties
     @IBOutlet weak var ContactPhoto: UIImageView!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var nickNameLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
     
     var contact: Contact?
-    
-    // MARK: Action
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Handle the text field's user input through delegate callbacks
-        //nameTextField.delegate = self
         
         // Set up views if editing an existing Contact.
         if let contact = contact {
@@ -32,15 +33,93 @@ class ContactInfoViewController: UIViewController, UINavigationControllerDelegat
             ContactPhoto.image = contact.photo
             nickNameLabel.text = contact.nickName
             emailLabel.text = contact.email
-            //nameTextField.text = task.name
-           // descTextField.text = task.desc
-           // dueDatePicker.date = task.dueDate
             
+            tableView.delegate = self
+            tableView.dataSource = self
+            
+            //fetch the contacts tasks
+            JsonManager.getInstance().fetch(contact.name, url: "http://lit-plains-99831.herokuapp.com/get_task") {
+                data in
+                let taskDict = JsonManager.getInstance().convertToTasksWithID(data)
+                
+                for key in taskDict {
+                    let t = key.1
+                    if t.status == "Delayed" {
+                        self.delayedTasks += [t]
+                    } else if t.status == "Completed" {
+                        self.completedTasks += [t]
+                    } else {
+                        self.tasks += [t]
+                    }
+                    
+                }
+                self.tableView.performSelectorOnMainThread(#selector(UITableView.reloadData), withObject: nil, waitUntilDone: true)
+            }
         }
-        
 
         
-        //Enable the Save button only if the text field has a valid Task name.
+        self.tableView.reloadData()
+    }
+    
+    // MARK: Action
+    
+    @IBAction func refreshTableView(sender: AnyObject) {
+        
+        print("test")
+        
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+            return tasks.count
+        } else if section == 1 {
+            return delayedTasks.count
+        } else {
+            return completedTasks.count
+        }
+        
+    }
+    
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 3
+    }
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String?{
+        if (section == 0){
+            return "Current"
+        } else if (section == 1){
+            return "Delayed"
+        } else {
+            return "Completed"
+        }
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
+        let cell : TaskTableViewCell = tableView.dequeueReusableCellWithIdentifier("taskcell", forIndexPath: indexPath) as! TaskTableViewCell
+        
+        
+        var task_section = tasks
+        if indexPath.section == 1 {
+            task_section = delayedTasks
+        } else if indexPath.section == 2 {
+            task_section = completedTasks
+        }
+        
+        cell.nameLabel.text = task_section[indexPath.row].name
+        let date = task_section[indexPath.row].dueDate
+        let dateFormater = NSDateFormatter()
+        dateFormater.dateStyle = .MediumStyle
+        dateFormater.timeStyle = .ShortStyle
+        
+        if let d = date {
+            let ds = dateFormater.stringFromDate(d)
+            cell.DateLabel.text = ds
+        } else {
+            cell.DateLabel.text = "Cannot load date"
+        }
+        
+        return cell
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

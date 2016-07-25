@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Fabric.jpg",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "FabricName.png",
       "scale" : "2x"
     },
     {

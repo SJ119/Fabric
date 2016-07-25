@@ -41,7 +41,7 @@ class ShowSplashScreen: UIViewController {
 //            print(self.originalPassword)
         }
         var newPW:String = ""
-        for i in 0..<len{
+        for _ in 0..<len{
             newPW = "*" + newPW
             
         }
@@ -335,7 +335,7 @@ class ShowSplashScreen: UIViewController {
                     //                print("WANTS TO LOAD AUTO")
                     let len = currentUser.password.characters.count
                     var newPW:String = ""
-                    for i in 0..<len{
+                    for _ in 0..<len{
                         newPW = "*" + newPW
                         
                     }

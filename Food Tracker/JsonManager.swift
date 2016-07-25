@@ -182,6 +182,8 @@ class JsonObjectList : JsonWritableObject {
 }
 
 class JsonManager {
+    
+    var lastSentSuccess = true
     private static let m = JsonManager()
     
     private init() {
@@ -298,6 +300,12 @@ class JsonManager {
     }
     
     func send(obj : JsonWritableObject, url : String, type : String) {
+        //don't send delete request if last sent failed
+        if type == "DELETE" && !self.lastSentSuccess {
+            print("last send failed, don't send delete")
+            return
+        }
+        
         // create the request & response
         let request = NSMutableURLRequest(URL: NSURL(string: url)!, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData, timeoutInterval: 5)
     
@@ -333,8 +341,10 @@ class JsonManager {
                         print(parseJSON["message"])
                     }
                 }
+                self.lastSentSuccess = true
                 
             } catch {
+                self.lastSentSuccess = false
                 print("error catched send")
                 print(error)
             }
