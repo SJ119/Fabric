@@ -309,6 +309,7 @@ class TaskTableViewController: UITableViewController {
                 let tasks = JsonManager.getInstance().convertToTasksWithID(data)
                 TaskUtils.saveServerTasks(tasks)
                 TaskUtils.passTasksToViews(tvc)
+                self.tableView.reloadData()
             }
         }
         tableView.reloadData()
