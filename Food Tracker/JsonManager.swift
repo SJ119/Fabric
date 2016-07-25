@@ -252,9 +252,8 @@ class JsonManager {
                 let name = String(entry["name"]!)
                 let desc = String(entry["description"]!)
                 let status = String(entry["status"]!)
-                //let visible = String(entry["visible"]!) == "True"
-                let task = Task(name: name, desc: desc, dueDate: nsdate, status: status, visible: true)!
-                //print(task)
+                let visible = entry["visible"] as! Bool
+                let task = Task(name: name, desc: desc, dueDate: nsdate, status: status, visible: visible)!
                 tasks.append(task)
             }
         } catch {
@@ -284,10 +283,9 @@ class JsonManager {
                     let task_description = task["description"] as! String
                     let task_due_date_string = task["due_date"] as! String
                     let id = task["id"] as! Int
-                    
+                    let visible = task["visible"] as! Bool
                     let task_due_date = DateUtils.dateFromString(task_due_date_string, format: "yyyy:MM:dd:HH:mm")
-                    let t = Task(name: task_name, desc: task_description, dueDate: task_due_date, status: task_status, visible: true)
-                    
+                    let t = Task(name: task_name, desc: task_description, dueDate: task_due_date, status: task_status, visible: visible)
                     idtasks[id] = t
                 }
             }

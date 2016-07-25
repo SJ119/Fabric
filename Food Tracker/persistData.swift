@@ -30,3 +30,25 @@ func loadTasks(url:NSURL) -> [Task]? {
     }*/
     return NSKeyedUnarchiver.unarchiveObjectWithFile(url_str) as? [Task]
 }
+
+func syncServer(tvc: UITabBarController, username:String?) {
+    
+    TaskUtils.fetch_task_group(tvc)
+    
+    let mainGroup = TaskUtils.getMainTaskGroup()
+    if mainGroup != nil && username != nil {
+        print("sync with server")
+        let delobj = JsonObject()
+        delobj.setPermanentEntry("name", obj: JsonString(str : username!))
+        JsonManager.getInstance().send( delobj , url: "http://lit-plains-99831.herokuapp.com/delete_user_tasks", type: "DELETE")
+        
+        let sendobj = JsonObject()
+        sendobj.setPermanentEntry("name", obj: JsonString(str : username!))
+        
+        let alltasks = mainGroup!.getAllTasks()
+        
+        sendobj.setPermanentEntry("tasks", obj: JsonObjectList(objs: alltasks))
+        
+        JsonManager.getInstance().send( sendobj , url: "http://lit-plains-99831.herokuapp.com/create_tasks", type: "POST")
+    }
+}

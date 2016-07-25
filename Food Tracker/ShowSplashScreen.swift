@@ -256,8 +256,12 @@ class ShowSplashScreen: UIViewController {
             
             let achievementsViewController = tabBarViewController.childViewControllers[0].childViewControllers[0] as? AchievementsViewController
             achievementsViewController!.username = self.userID.text!
+            let delayTableViewController = tabBarViewController.childViewControllers[1].childViewControllers[0] as? DelayTableViewController
+            delayTableViewController!.username = self.userID.text!
             let taskTableViewController = tabBarViewController.childViewControllers[2].childViewControllers[0] as? TaskTableViewController
             taskTableViewController!.username = self.userID.text!
+            let doneTableViewController = tabBarViewController.childViewControllers[3].childViewControllers[0] as? DoneTableViewController
+            doneTableViewController!.username = self.userID.text!
         }
     }
     

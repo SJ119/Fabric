@@ -120,8 +120,9 @@ class TaskTableViewController: UITableViewController {
             self.presentDestinationViewControllerAchievement(task)
             let vcd = self.getViewControllerDone()
             vcd?.addTask(task)
+            syncServer(self.parentViewController?.parentViewController as! UITabBarController, username: self.username)
             saveTasks(self.tasks, url: Task.ArchiveURL)
-
+        
             return true
         })]
         cell.leftSwipeSettings.transition = MGSwipeTransition.Border
@@ -140,6 +141,7 @@ class TaskTableViewController: UITableViewController {
             self.presentDestinationViewControllerAchievement(task)
             let vcd = self.getViewControllerDelay()
             vcd?.addTask(task)
+            syncServer(self.parentViewController?.parentViewController as! UITabBarController, username: self.username)
             saveTasks(self.tasks, url: Task.ArchiveURL)
 
             return true
@@ -169,7 +171,7 @@ class TaskTableViewController: UITableViewController {
             tasks.removeAtIndex(indexPath.row)
             saveTasks(tasks, url: Task.ArchiveURL)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-            syncServer()
+            syncServer(self.parentViewController?.parentViewController as! UITabBarController, username: self.username)
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
@@ -295,33 +297,12 @@ class TaskTableViewController: UITableViewController {
         }
         //sync with server only when something is delayed
         if delayed {
-            syncServer()
+            syncServer(self.parentViewController?.parentViewController as! UITabBarController, username: self.username)
         }
         tableView.reloadData()
     }
     
-    func syncServer() {
-        
-        let tvc = self.parentViewController?.parentViewController as! UITabBarController
-        TaskUtils.fetch_task_group(tvc)
-        
-        let mainGroup = TaskUtils.getMainTaskGroup()
-        if mainGroup != nil && self.username != nil {
-            print("sync with server")
-            let delobj = JsonObject()
-            delobj.setPermanentEntry("name", obj: JsonString(str : self.username!))
-            JsonManager.getInstance().send( delobj , url: "http://lit-plains-99831.herokuapp.com/delete_user_tasks", type: "DELETE")
-            
-            let sendobj = JsonObject()
-            sendobj.setPermanentEntry("name", obj: JsonString(str : self.username!))
-            
-            let alltasks = mainGroup!.getAllTasks()
-            
-            sendobj.setPermanentEntry("tasks", obj: JsonObjectList(objs: alltasks))
-            
-            JsonManager.getInstance().send( sendobj , url: "http://lit-plains-99831.herokuapp.com/create_tasks", type: "POST")
-        }
-    }
+    
 
     
     // MARK: - Navigation
