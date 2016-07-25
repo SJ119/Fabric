@@ -179,6 +179,34 @@ class TaskUtils {
     class func saveServerTasks(tasks : [Int : Task]) {
         serverTasks = tasks
     }
+    
+    class func retriveTaskContacts(task : Task) -> [String] {
+        var names = [String]()
+        var name = ""
+        var count = 0
+        
+        if task.status.characters.count > 8 {
+            if task.status[task.status.startIndex..<task.status.startIndex.advancedBy(8)] != "ToBeSent" {
+                return names
+            }
+        } else {
+            return names
+        }
+        
+        for char in task.status.characters {
+            if char == "," {
+                names.append(name)
+                name = ""
+            } else if count < 8 {
+                
+                count = count + 1
+            } else if char != " " {
+                name = name + String(char)
+            }
+        }
+        return names
+        
+    }
 
     /*class func add_to_server(username: String) {
         print("ADDING TO SERVER: ")
