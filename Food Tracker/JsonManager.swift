@@ -365,21 +365,17 @@ class JsonManager {
         print("fetch")
         let task = session.dataTaskWithRequest(request) {
             (data, response, error) -> Void in
-            do {
-                print("enter callback fetch")
-                //let myJSON = try NSJSONSerialization.JSONObjectWithData(data!, options:.MutableLeaves)
-                
-                //print(myJSON)
-                if data == nil {
-                    print("Network Connection Died, Cannot Send Data")
-                    return
-                }
-                completionHandler(data: data!);
-                
-            } catch {
-                print("error catched fetch")
-                print(error)
+
+            print("enter callback fetch")
+            //let myJSON = try NSJSONSerialization.JSONObjectWithData(data!, options:.MutableLeaves)
+            
+            //print(myJSON)
+            if data == nil {
+                print("Network Connection Died, Cannot Send Data")
+                return
             }
+            completionHandler(data: data!);
+            
             
             // look at the response
             if let httpResponse = response as? NSHTTPURLResponse {

@@ -365,6 +365,9 @@ class TaskTableViewController: UITableViewController {
                 print(usrnames.count)
                 if usrnames.count != 0 {
                     task.status = "Current"
+                    if self.username != nil {
+                        task.desc = task.desc + " Sent by " + self.username!
+                    }
                     for usrname in usrnames {
                         //let sendobj = task
                         let sendobj = JsonObject()

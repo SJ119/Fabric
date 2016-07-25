@@ -95,6 +95,7 @@ class ShowSplashScreen: UIViewController {
                             {
                                 self.updateWarning("SUCCESS")
                                 actionB = true
+                                User.setGlobalInstance(self.userID.text!, password: self.password.text!, status: true)
                             }
                             else
                             {
