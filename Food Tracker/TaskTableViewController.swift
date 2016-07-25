@@ -120,7 +120,8 @@ class TaskTableViewController: UITableViewController {
             self.presentDestinationViewControllerAchievement(task)
             let vcd = self.getViewControllerDone()
             vcd?.addTask(task)
-            saveTasks(self.tasks, url: Task.ArchiveURL)
+            self.syncServer()
+            //saveTasks(self.tasks, url: Task.ArchiveURL)
 
             return true
         })]
@@ -140,7 +141,8 @@ class TaskTableViewController: UITableViewController {
             self.presentDestinationViewControllerAchievement(task)
             let vcd = self.getViewControllerDelay()
             vcd?.addTask(task)
-            saveTasks(self.tasks, url: Task.ArchiveURL)
+            self.syncServer()
+            //saveTasks(self.tasks, url: Task.ArchiveURL)
 
             return true
         })]
@@ -297,6 +299,18 @@ class TaskTableViewController: UITableViewController {
         if delayed {
             syncServer()
         }
+        
+        if username != nil {
+            let tvc = self.parentViewController?.parentViewController as! UITabBarController
+            TaskUtils.fetch_task_group(tvc)
+            
+            JsonManager.getInstance().fetch(self.username!, url: "http://lit-plains-99831.herokuapp.com/get_task") {
+                data in
+                let tasks = JsonManager.getInstance().convertToTasksWithID(data)
+                TaskUtils.saveServerTasks(tasks)
+                TaskUtils.passTasksToViews(tvc)
+            }
+        }
         tableView.reloadData()
     }
     
@@ -393,13 +407,13 @@ class TaskTableViewController: UITableViewController {
                     if self.username != nil {
                         let usrname = self.username!
                         //uncomment when new_task is fixed
-                        //let sendobj = task
-                        //sendobj.setPermanentEntry("user", obj: JsonString(str : usrname))
-                        //JsonManager.getInstance().send( sendobj , url: "http://lit-plains-99831.herokuapp.com/new_task", type: "POST")
-                        let sendobj = JsonObject()
+                        let sendobj = task
+                        sendobj.setPermanentEntry("user", obj: JsonString(str : usrname))
+                        JsonManager.getInstance().send( sendobj , url: "http://lit-plains-99831.herokuapp.com/new_task", type: "POST")
+                        /*let sendobj = JsonObject()
                         sendobj.setPermanentEntry("name", obj: JsonString(str : usrname))
                         sendobj.setPermanentEntry("tasks", obj: JsonObjectList(objs : [task]))
-                        JsonManager.getInstance().send( sendobj , url: "http://lit-plains-99831.herokuapp.com/create_tasks", type: "POST")
+                        JsonManager.getInstance().send( sendobj , url: "http://lit-plains-99831.herokuapp.com/create_tasks", type: "POST")*/
                     } else {
                         print ("nil usrname detected, cannot send")
                     }
