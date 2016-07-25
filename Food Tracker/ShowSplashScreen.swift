@@ -251,9 +251,8 @@ class ShowSplashScreen: UIViewController {
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "showSplashScreen" || segue.identifier == "registered" {
+        if (segue.identifier == "showSplashScreen" || segue.identifier == "registered" || segue.identifier == "autoSeg") {
             let tabBarViewController = segue.destinationViewController as! UITabBarController
-            
             
             let achievementsViewController = tabBarViewController.childViewControllers[0].childViewControllers[0] as? AchievementsViewController
             achievementsViewController!.username = self.userID.text!
@@ -261,8 +260,6 @@ class ShowSplashScreen: UIViewController {
             taskTableViewController!.username = self.userID.text!
         }
     }
-    
-    
     
     override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
         if let ident = identifier {

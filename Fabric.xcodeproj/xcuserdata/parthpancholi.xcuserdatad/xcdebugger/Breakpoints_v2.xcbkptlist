@@ -121,11 +121,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Food Tracker/ShowSplashScreen.swift"
-            timestampString = "491102412.356894"
+            timestampString = "491105347.718675"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "387"
-            endingLineNumber = "387"
+            startingLineNumber = "384"
+            endingLineNumber = "384"
             landmarkName = "saveUser(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -169,11 +169,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Food Tracker/ShowSplashScreen.swift"
-            timestampString = "491102355.137585"
+            timestampString = "491105347.718675"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "311"
-            endingLineNumber = "311"
+            startingLineNumber = "308"
+            endingLineNumber = "308"
             landmarkName = "shouldPerformSegueWithIdentifier(_:sender:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -185,11 +185,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Food Tracker/ShowSplashScreen.swift"
-            timestampString = "491102412.356894"
+            timestampString = "491105347.718675"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "381"
-            endingLineNumber = "381"
+            startingLineNumber = "378"
+            endingLineNumber = "378"
             landmarkName = "saveUser(_:)"
             landmarkType = "5">
          </BreakpointContent>
