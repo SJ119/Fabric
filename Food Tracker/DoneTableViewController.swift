@@ -87,7 +87,7 @@ class DoneTableViewController: UITableViewController {
 
         let task = tasks[indexPath.row]
         cell.nameLabel.text = task.name
-        cell.backgroundColor = UIColor(red:0.15, green:0.16, blue:0.16, alpha:1.0)
+        cell.backgroundColor = UIColor(red: 0.9882, green: 0.9882, blue: 0.9882, alpha: 1.0)
         // Configure the cell...
 
         return cell
