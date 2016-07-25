@@ -46,7 +46,7 @@ class ContactInfoViewController: UIViewController, UINavigationControllerDelegat
                     let t = key.1
                     if t.status == "Delayed" {
                         self.delayedTasks += [t]
-                    } else if t.status == "Completed" {
+                    } else if t.status == "Complete" {
                         self.completedTasks += [t]
                     } else {
                         self.tasks += [t]
@@ -94,6 +94,17 @@ class ContactInfoViewController: UIViewController, UINavigationControllerDelegat
             return "Completed"
         }
     }
+    
+    /*func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
+    {
+        let headerView = UIView(frame: CGRectMake(0, 0, tableView.bounds.size.width, 30))
+        if (section == 0) {
+            headerView.backgroundColor = UIColor.blueColor()
+        } else {
+            headerView.backgroundColor = UIColor.clearColor()
+        }
+        return headerView
+    }*/
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         let cell : TaskTableViewCell = tableView.dequeueReusableCellWithIdentifier("taskcell", forIndexPath: indexPath) as! TaskTableViewCell

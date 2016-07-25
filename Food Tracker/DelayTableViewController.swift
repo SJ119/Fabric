@@ -48,7 +48,7 @@ class DelayTableViewController: UITableViewController {
         
         // Use the edit button item provided by the table view controller.
         navigationItem.leftBarButtonItem = editButtonItem()
-        
+        self.navigationItem.leftBarButtonItem?.tintColor = UIColor.whiteColor()
         // Load saved delayed tasks
         initTasks()
     }
@@ -75,7 +75,7 @@ class DelayTableViewController: UITableViewController {
         
         let task = tasks[indexPath.row]
         cell.nameLabel.text = task.name
-
+        cell.backgroundColor = UIColor(red: 0.9882, green: 0.9882, blue: 0.9882, alpha: 1.0)
         // Configure the cell...
         
         return cell

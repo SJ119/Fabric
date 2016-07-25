@@ -21,6 +21,7 @@ class ContactTableViewController: UITableViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
+        self.navigationItem.leftBarButtonItem?.tintColor = UIColor.whiteColor()
         
         if let savedContacts = loadContacts() {
             contacts += savedContacts
@@ -75,6 +76,7 @@ class ContactTableViewController: UITableViewController {
         let contact = contacts[indexPath.row]
         
         cell.nameLabel.text = contact.name
+        cell.nickNameLabel.text = contact.nickName
         cell.photoImageView.image = contact.photo
 
         return cell
@@ -129,9 +131,12 @@ class ContactTableViewController: UITableViewController {
     }
     
     func loadContacts() -> [Contact]? {
-        let contacts = NSKeyedUnarchiver.unarchiveObjectWithFile(Contact.ArchiveURL.path!) as! [Contact]
+        var c = contacts
+        if (NSKeyedUnarchiver.unarchiveObjectWithFile(Contact.ArchiveURL.path!) != nil) {
+            let contacts = NSKeyedUnarchiver.unarchiveObjectWithFile(Contact.ArchiveURL.path!) as! [Contact]
         
-        let c = contacts.sort { $0.name < $1.name }
+            c = contacts.sort { $0.name < $1.name }
+        }
         
         return c
     }
