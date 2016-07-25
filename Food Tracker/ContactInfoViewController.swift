@@ -26,7 +26,7 @@ class ContactInfoViewController: UIViewController, UINavigationControllerDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
         // Set up views if editing an existing Contact.
         if let contact = contact {
             navigationItem.title = contact.name
