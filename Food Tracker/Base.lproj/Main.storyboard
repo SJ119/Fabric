@@ -932,7 +932,7 @@
                                 <rect key="frame" x="481" y="294" width="51" height="31"/>
                             </switch>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppName" translatesAutoresizingMaskIntoConstraints="NO" id="erT-on-kKd">
-                                <rect key="frame" x="95" y="60" width="410" height="69"/>
+                                <rect key="frame" x="100" y="50" width="400" height="89"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -941,24 +941,24 @@
                             <constraint firstItem="o2K-hH-XE0" firstAttribute="top" secondItem="vBQ-vb-Kgf" secondAttribute="bottom" constant="149" id="56w-uN-FsG"/>
                             <constraint firstItem="OSX-6o-QO7" firstAttribute="top" secondItem="kAT-is-opj" secondAttribute="bottom" constant="43" id="5Yb-26-z9W"/>
                             <constraint firstItem="kAT-is-opj" firstAttribute="trailing" secondItem="N5Y-C0-LeQ" secondAttribute="trailingMargin" id="8bU-Zc-mPl"/>
-                            <constraint firstItem="erT-on-kKd" firstAttribute="top" secondItem="vBQ-vb-Kgf" secondAttribute="bottom" constant="40" id="GAv-ul-2jI"/>
+                            <constraint firstItem="erT-on-kKd" firstAttribute="top" secondItem="vBQ-vb-Kgf" secondAttribute="bottom" constant="30" id="JCU-84-goG"/>
                             <constraint firstAttribute="trailingMargin" secondItem="OSX-6o-QO7" secondAttribute="trailing" constant="50" id="JCg-0e-1W0"/>
                             <constraint firstItem="tyE-If-VKz" firstAttribute="trailing" secondItem="8Rv-GT-ftu" secondAttribute="trailing" id="JQN-1B-EAv"/>
                             <constraint firstItem="tyE-If-VKz" firstAttribute="leading" secondItem="rei-ci-f2U" secondAttribute="leading" id="Jcm-Wn-dMv"/>
                             <constraint firstItem="o2K-hH-XE0" firstAttribute="leading" secondItem="N5Y-C0-LeQ" secondAttribute="leadingMargin" id="MY1-Cn-lEH"/>
                             <constraint firstItem="Xmr-T2-8fJ" firstAttribute="leading" secondItem="N5Y-C0-LeQ" secondAttribute="leadingMargin" constant="50" id="MyP-Lc-uCG"/>
+                            <constraint firstItem="erT-on-kKd" firstAttribute="leading" secondItem="N5Y-C0-LeQ" secondAttribute="leadingMargin" constant="80" id="S8x-eI-4KR"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="erT-on-kKd" secondAttribute="trailing" constant="80" id="Uec-Pm-ch0"/>
                             <constraint firstItem="8Rv-GT-ftu" firstAttribute="trailing" secondItem="N5Y-C0-LeQ" secondAttribute="trailingMargin" id="VXN-PH-h7G"/>
                             <constraint firstItem="8Rv-GT-ftu" firstAttribute="top" secondItem="OSX-6o-QO7" secondAttribute="bottom" constant="37" id="WQF-yG-pse"/>
                             <constraint firstItem="rei-ci-f2U" firstAttribute="leading" secondItem="N5Y-C0-LeQ" secondAttribute="leadingMargin" id="XMu-cH-ozg"/>
                             <constraint firstItem="kAT-is-opj" firstAttribute="top" secondItem="o2K-hH-XE0" secondAttribute="bottom" constant="22" id="acB-dn-MoA"/>
                             <constraint firstItem="Xmr-T2-8fJ" firstAttribute="top" secondItem="kAT-is-opj" secondAttribute="bottom" constant="50" id="bJC-B0-ow5"/>
                             <constraint firstItem="rei-ci-f2U" firstAttribute="top" secondItem="Xmr-T2-8fJ" secondAttribute="bottom" constant="44" id="dUy-9R-pNV"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="erT-on-kKd" secondAttribute="trailing" constant="75" id="jRM-Bv-osG"/>
                             <constraint firstItem="o2K-hH-XE0" firstAttribute="trailing" secondItem="N5Y-C0-LeQ" secondAttribute="trailingMargin" id="jUN-eR-apm"/>
                             <constraint firstItem="tyE-If-VKz" firstAttribute="top" secondItem="8Rv-GT-ftu" secondAttribute="bottom" constant="47" id="kS9-wf-FLN"/>
                             <constraint firstItem="tyE-If-VKz" firstAttribute="trailing" secondItem="N5Y-C0-LeQ" secondAttribute="trailingMargin" id="kkE-QV-QZT"/>
-                            <constraint firstItem="o2K-hH-XE0" firstAttribute="top" secondItem="erT-on-kKd" secondAttribute="bottom" constant="40" id="lTX-E3-fM4"/>
-                            <constraint firstItem="erT-on-kKd" firstAttribute="leading" secondItem="N5Y-C0-LeQ" secondAttribute="leadingMargin" constant="75" id="rJk-Ya-GET"/>
+                            <constraint firstItem="o2K-hH-XE0" firstAttribute="top" secondItem="erT-on-kKd" secondAttribute="bottom" constant="30" id="ku3-yD-s6Y"/>
                             <constraint firstItem="kAT-is-opj" firstAttribute="leading" secondItem="N5Y-C0-LeQ" secondAttribute="leadingMargin" id="vFJ-ri-AAn"/>
                         </constraints>
                     </view>
