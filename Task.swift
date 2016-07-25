@@ -70,7 +70,8 @@ class Task: JsonObject, NSCoding {
                   desc: (desc == nil ? "" : desc!),
                   dueDate: (dueDate == nil ? NSDate() : dueDate!),
                   status: (status == nil ? "" : status!),
-                  visible: (visible == nil ? false : visible!))
+                  visible: (visible == nil ? false : visible!)
+                  )
         
     }
     
@@ -83,7 +84,7 @@ class Task: JsonObject, NSCoding {
         self.setEntry("description", obj: JsonString(str: self.desc))
         self.setEntry("due_date", obj: JsonString(str: date))
         self.setEntry("status", obj: JsonString(str: self.status))
-        //self.setEntry("user", obj: JsonString(str: "kevin"))
-        //self.setEntry("visible", obj: JsonString(str: visible))
+        self.setEntry("visible", obj: JsonString(str: visible))
+        
     }
 }

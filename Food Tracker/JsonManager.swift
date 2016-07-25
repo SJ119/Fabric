@@ -254,9 +254,8 @@ class JsonManager {
                 let name = String(entry["name"]!)
                 let desc = String(entry["description"]!)
                 let status = String(entry["status"]!)
-                //let visible = String(entry["visible"]!) == "True"
-                let task = Task(name: name, desc: desc, dueDate: nsdate, status: status, visible: true)!
-                //print(task)
+                let visible = entry["visible"] as! Bool
+                let task = Task(name: name, desc: desc, dueDate: nsdate, status: status, visible: visible)!
                 tasks.append(task)
             }
         } catch {
@@ -287,10 +286,9 @@ class JsonManager {
                     let task_description = task["description"] as! String
                     let task_due_date_string = task["due_date"] as! String
                     let id = task["id"] as! Int
-                    
+                    let visible = task["visible"] as! Bool || false
                     let task_due_date = DateUtils.dateFromString(task_due_date_string, format: "yyyy:MM:dd:HH:mm")
-                    let t = Task(name: task_name, desc: task_description, dueDate: task_due_date, status: task_status, visible: true)
-                    
+                    let t = Task(name: task_name, desc: task_description, dueDate: task_due_date, status: task_status, visible: visible)
                     idtasks[id] = t
                 }
             }
@@ -360,6 +358,42 @@ class JsonManager {
         }
         task.resume()
         print("Json Sent")
+    }
+    
+    func check(username : String, completionHandler: (data:NSData) -> ()) {
+        let url = "http://lit-plains-99831.herokuapp.com/confirm_user?name=" + username
+        print(url)
+        let request = NSMutableURLRequest(URL: NSURL(string: url)!, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData, timeoutInterval: 5)
+        
+        request.HTTPMethod = "GET"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        let session = NSURLSession.sharedSession()
+        print("check")
+        let task = session.dataTaskWithRequest(request) {
+            (data, response, error) -> Void in
+            
+            
+            print("enter callback fetch")
+            //let myJSON = try NSJSONSerialization.JSONObjectWithData(data!, options:.MutableLeaves)
+            
+            //print(myJSON)
+            if data == nil {
+                print("Network Connection Died, Cannot Send Data")
+                return
+            }
+            completionHandler(data: data!);
+            
+            
+            // look at the response
+            if let httpResponse = response as? NSHTTPURLResponse {
+                print("HTTP response: \(httpResponse.statusCode)")
+            } else {
+                print("No HTTP response")
+            }
+            
+        }
+        task.resume()
     }
     
     func fetch(username : String, url : String, completionHandler: (data: NSData) -> ()) {

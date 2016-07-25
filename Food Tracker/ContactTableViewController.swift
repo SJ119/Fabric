@@ -96,6 +96,11 @@ class ContactTableViewController: UITableViewController {
                 contactInfoViewController.contact = selectedContact
             }
 
+        } else if segue.identifier == "AddContact" {
+            print ("ADDING CONTACT")
+            let uiNavigationController = segue.destinationViewController as! UINavigationController
+            let contactViewController = uiNavigationController.topViewController as! ContactViewController
+            contactViewController.contacts = self.contacts
         }
         
     }
