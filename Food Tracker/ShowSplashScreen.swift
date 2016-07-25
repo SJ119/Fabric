@@ -139,7 +139,33 @@ class ShowSplashScreen: UIViewController {
         
         var actionB = false
         var visited = false
-        if (userID.text! != "" && password.text! != "")
+        
+        var possibleUser = true
+        var possiblePassword = true
+        
+        for char in userID.text!.characters {
+            if (char == " ") {
+                possibleUser = false
+                break
+            }
+        }
+        for char in password.text!.characters {
+            if (char == " ") {
+                possiblePassword = false
+                break
+            }
+        }
+        
+        if (!possibleUser) {
+            self.updateWarning("USERID cannot contain a space")
+            visited = true
+        }
+        else if (!possiblePassword) {
+            self.updateWarning("PASSWORD cannot contain a space")
+            visited = true
+        }
+        
+        else if (userID.text! != "" && password.text! != "")
         {
             let url = "http://lit-plains-99831.herokuapp.com/get_task?name=" + userID.text!
             let requestURL: NSURL = NSURL(string: url)!
