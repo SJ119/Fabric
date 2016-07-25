@@ -53,7 +53,7 @@ class ContactInfoViewController: UIViewController, UINavigationControllerDelegat
                     }
                     
                 }
-                self.tableView.performSelectorOnMainThread(Selector("reloadData"), withObject: nil, waitUntilDone: true)
+                self.tableView.performSelectorOnMainThread(#selector(UITableView.reloadData), withObject: nil, waitUntilDone: true)
             }
         }
 
