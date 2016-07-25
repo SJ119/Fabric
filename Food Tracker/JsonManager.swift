@@ -305,7 +305,7 @@ class JsonManager {
         let jsonString = obj.toJson()
         print("Generate Json")
         print(jsonString)
-        request.HTTPBody = jsonString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+        request.HTTPBody = jsonString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
         request.HTTPMethod = type
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
     

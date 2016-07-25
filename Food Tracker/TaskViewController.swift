@@ -31,7 +31,7 @@ class TaskViewController: UIViewController, UITextFieldDelegate, UINavigationCon
     var task: Task?
     var origin: String?
     var origin_idx: Int?
-    var recievingContacts: String = ""
+    var receivingContacts: String = ""
     
 
     override func viewDidLoad() {
@@ -103,12 +103,12 @@ class TaskViewController: UIViewController, UITextFieldDelegate, UINavigationCon
                 if cell.sending.on {
                     if (cell.nameLabel.text != nil) {
                         let user = cell.nameLabel.text
-                        recievingContacts += String(user!) + ", "
+                        receivingContacts += String(user!) + ", "
                     }
                 }
             }
         }
-        listContactsForSending.text = recievingContacts
+        listContactsForSending.text = receivingContacts
         
     }
     
@@ -122,7 +122,15 @@ class TaskViewController: UIViewController, UITextFieldDelegate, UINavigationCon
             let status = "Current"
             let visible = publicSwitch.on ?? true
             // set the task to be passed to TaskTableViewController after the unwind segue.
-            task = Task(name: name, desc: desc, dueDate: dueDate, status: status, visible: visible)
+            
+            print("taskview prepareforsegue")
+            print(receivingContacts)
+            
+            if receivingContacts == "" {
+                task = Task(name: name, desc: desc, dueDate: dueDate, status: status, visible: visible)
+            } else {
+                task = Task(name: name, desc: desc, dueDate: dueDate, status: "ToBeSent " + receivingContacts, visible: true)
+            }
             
             if origin != nil {
                 navigationController!.popViewControllerAnimated(false)
