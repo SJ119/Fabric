@@ -46,7 +46,7 @@ class ContactInfoViewController: UIViewController, UINavigationControllerDelegat
                     let t = key.1
                     if t.status == "Delayed" {
                         self.delayedTasks += [t]
-                    } else if t.status == "Completed" {
+                    } else if t.status == "Complete" {
                         self.completedTasks += [t]
                     } else {
                         self.tasks += [t]
