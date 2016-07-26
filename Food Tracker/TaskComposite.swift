@@ -185,6 +185,9 @@ class TaskUtils {
                 sendobj.setPermanentEntry("id", obj: JsonString (str : String(idTask.0)))
                 JsonManager.getInstance().send(sendobj, url: "http://lit-plains-99831.herokuapp.com/delete_task", type: "DELETE")
                 print("saveServerTask: sent task detected, delete on server")
+                let sendobj2 = idTask.1
+                sendobj2.setPermanentEntry("user", obj: JsonString(str : User.getGloablInstance().userid))
+                JsonManager.getInstance().send( sendobj , url: "http://lit-plains-99831.herokuapp.com/new_task", type: "POST")
             }
         }
     }

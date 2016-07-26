@@ -66,12 +66,12 @@ class PersistData {
         
         JsonManager.getInstance().fetch(username!, url: "http://lit-plains-99831.herokuapp.com/get_task") {
             data in
-            print("Fetch data finished")
-            let tasks = JsonManager.getInstance().convertToTasksWithID(data)
-            TaskUtils.saveServerTasks(tasks)
-            TaskUtils.passTasksToViews(tvc)
-            TaskUtils.fetch_task_group(tvc)
             dispatch_async(dispatch_get_main_queue()) {
+                print("Fetch data finished")
+                let tasks = JsonManager.getInstance().convertToTasksWithID(data)
+                TaskUtils.saveServerTasks(tasks)
+                TaskUtils.passTasksToViews(tvc)
+                TaskUtils.fetch_task_group(tvc)
                 tblvc.tableView.reloadData()
             }
         }
