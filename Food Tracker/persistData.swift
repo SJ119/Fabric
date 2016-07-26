@@ -70,6 +70,7 @@ class PersistData {
             let tasks = JsonManager.getInstance().convertToTasksWithID(data)
             TaskUtils.saveServerTasks(tasks)
             TaskUtils.passTasksToViews(tvc)
+            TaskUtils.fetch_task_group(tvc)
             dispatch_async(dispatch_get_main_queue()) {
                 tblvc.tableView.reloadData()
             }
