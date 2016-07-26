@@ -31,7 +31,7 @@ func loadTasks(url:NSURL) -> [Task]? {
     return NSKeyedUnarchiver.unarchiveObjectWithFile(url_str) as? [Task]
 }
 
-func syncServer(tvc: UITabBarController, username:String?) {
+func syncServer(tvc: UITabBarController, tblvc: UITableViewController, username:String?, fetchAfterSync : Bool = false) {
     
     TaskUtils.fetch_task_group(tvc)
     
@@ -40,15 +40,36 @@ func syncServer(tvc: UITabBarController, username:String?) {
         print("sync with server")
         let delobj = JsonObject()
         delobj.setPermanentEntry("name", obj: JsonString(str : username!))
-        JsonManager.getInstance().send( delobj , url: "http://lit-plains-99831.herokuapp.com/delete_user_tasks", type: "DELETE")
-        
-        let sendobj = JsonObject()
-        sendobj.setPermanentEntry("name", obj: JsonString(str : username!))
-        
-        let alltasks = mainGroup!.getAllTasks()
-        
-        sendobj.setPermanentEntry("tasks", obj: JsonObjectList(objs: alltasks))
-        
-        JsonManager.getInstance().send( sendobj , url: "http://lit-plains-99831.herokuapp.com/create_tasks", type: "POST")
+        JsonManager.getInstance().send( delobj , url: "http://lit-plains-99831.herokuapp.com/delete_user_tasks", type: "DELETE") {_ in
+            print("Delete data finished")
+            let sendobj = JsonObject()
+            sendobj.setPermanentEntry("name", obj: JsonString(str : username!))
+            
+            let alltasks = mainGroup!.getAllTasks()
+            
+            sendobj.setPermanentEntry("tasks", obj: JsonObjectList(objs: alltasks))
+            
+            JsonManager.getInstance().send( sendobj , url: "http://lit-plains-99831.herokuapp.com/create_tasks", type: "POST") { _ in
+                print("Post data finished")
+                if fetchAfterSync {
+                    fetchFromServer(tvc,tblvc: tblvc, username: username)
+                }
+            }
+        }
+    }
+}
+
+func fetchFromServer(tvc: UITabBarController, tblvc: UITableViewController, username: String?) {
+    TaskUtils.fetch_task_group(tvc)
+    
+    JsonManager.getInstance().fetch(username!, url: "http://lit-plains-99831.herokuapp.com/get_task") {
+        data in
+        print("Fetch data finished")
+        let tasks = JsonManager.getInstance().convertToTasksWithID(data)
+        TaskUtils.saveServerTasks(tasks)
+        TaskUtils.passTasksToViews(tvc)
+        dispatch_async(dispatch_get_main_queue()) {
+            tblvc.tableView.reloadData()
+        }
     }
 }

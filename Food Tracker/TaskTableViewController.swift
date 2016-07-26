@@ -45,8 +45,10 @@ class TaskTableViewController: UITableViewController {
                 TaskUtils.passTasksToViews(tvc)
 
                 // Do an initial reload on our current list
-                self.reloadCurrent(NSTimer())
-                self.tableView.reloadData()
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.tableView.reloadData()
+                    self.reloadCurrent(NSTimer())
+                }
             }
         }
 
@@ -120,7 +122,7 @@ class TaskTableViewController: UITableViewController {
             self.presentDestinationViewControllerAchievement(task)
             let vcd = self.getViewControllerDone()
             vcd?.addTask(task)
-            syncServer(self.parentViewController?.parentViewController as! UITabBarController, username: self.username)
+            syncServer(self.parentViewController?.parentViewController as! UITabBarController, tblvc: self, username: self.username, fetchAfterSync: false)
             saveTasks(self.tasks, url: Task.ArchiveURL)
 
             return true
@@ -142,7 +144,7 @@ class TaskTableViewController: UITableViewController {
             let vcd = self.getViewControllerDelay()
             vcd?.addTask(task)
 
-            syncServer(self.parentViewController?.parentViewController as! UITabBarController, username: self.username)
+            syncServer(self.parentViewController?.parentViewController as! UITabBarController, tblvc: self, username: self.username, fetchAfterSync: false)
             saveTasks(self.tasks, url: Task.ArchiveURL)
 
             return true
@@ -172,7 +174,7 @@ class TaskTableViewController: UITableViewController {
             tasks.removeAtIndex(indexPath.row)
             saveTasks(tasks, url: Task.ArchiveURL)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-            syncServer(self.parentViewController?.parentViewController as! UITabBarController, username: self.username)
+            syncServer(self.parentViewController?.parentViewController as! UITabBarController, tblvc: self, username: self.username, fetchAfterSync: false)
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
@@ -187,66 +189,6 @@ class TaskTableViewController: UITableViewController {
     }
 
     func reloadCurrent(timer: NSTimer) {
-        /*if var savedTasks = loadTasks(Task.ArchiveURL) {
-            if savedTasks.count == 0 {
-                // nothing to process
-                print("nothing to process")
-                return
-            }
-            
-            // saved Tasks is an array of tasks if any are past their deadline move it to delay list
-            let currentDate = NSDate()
-            
-            var delayIdx = [Int]()
-            for (i, item) in savedTasks.enumerate() {
-                if (item.dueDate!.compare(currentDate) == NSComparisonResult.OrderedAscending) {
-                    print("Task \(i) is delayed, recorded \(i) as need to remove")
-                    delayIdx.append(i);
-                } else {
-                    print("Task \(i) is not delayed")
-                    let dateDifference = daysBetweenDates(currentDate, endDate: item.dueDate!)
-                    if (dateDifference == 0) {
-                        self.tasks[i].status = "Urgent"
-                    }
-                }
-                
-            }
-            tableView.reloadData()
-            
-            delayIdx = delayIdx.reverse()
-            print("Tasks needed to be removed in reverse order are \(delayIdx)")
-            print("Tasks length: \(self.tasks.count)")
-            let taskLength = self.tasks.count
-            for idx in delayIdx {
-                if (idx < taskLength) {
-                    print("idx: " + String(idx))
-                    //due date has passed, move to delayed
-                    let task = savedTasks[idx]
-                    self.tasks.removeAtIndex(idx)
-                    let indexPath = NSIndexPath(forRow: idx, inSection: 0)
-                    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
-                    tableView.reloadData()
-                    task.status = "Delayed"
-
-                    self.presentDestinationViewControllerAchievement(task)
-                    let vcd = self.getViewControllerDelay()
-                    vcd?.addTask(task)
-                }
-            }
-            
-            saveTasks(self.tasks, url: Task.ArchiveURL)
-            
-
-            
-            //if we add a task and the timer is hit, we don't want this to be called
-            //get from server should happen once at the begining i.e. view_did_load
-            /*if username != nil {
-                //            add_to_server(username)
-                get_from_server(tvc, username: username!)
-            }*/
-            
-
-        }*/
         
         //make sure maingroup is up to date
         let tvc = self.parentViewController?.parentViewController as! UITabBarController
@@ -296,26 +238,15 @@ class TaskTableViewController: UITableViewController {
                 }
             }
         }
+        tableView.reloadData()
         //sync with server only when something is delayed
         if delayed {
-            syncServer(self.parentViewController?.parentViewController as! UITabBarController, username: self.username)
+            syncServer(self.parentViewController?.parentViewController as! UITabBarController, tblvc: self, username: self.username, fetchAfterSync: false)
+        } else {
+            fetchFromServer(self.parentViewController?.parentViewController as! UITabBarController, tblvc: self, username: self.username)
         }
         
-        if username != nil {
-            let tvc = self.parentViewController?.parentViewController as! UITabBarController
-            TaskUtils.fetch_task_group(tvc)
-            
-            JsonManager.getInstance().fetch(self.username!, url: "http://lit-plains-99831.herokuapp.com/get_task") {
-                data in
-                let tasks = JsonManager.getInstance().convertToTasksWithID(data)
-                TaskUtils.saveServerTasks(tasks)
-                TaskUtils.passTasksToViews(tvc)
-                self.tableView.reloadData()
-            }
-        }
-        tableView.reloadData()
     }
-    
     
 
     

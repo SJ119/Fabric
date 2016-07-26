@@ -298,7 +298,7 @@ class JsonManager {
         return idtasks
     }
     
-    func send(obj : JsonWritableObject, url : String, type : String) {
+    func send(obj : JsonWritableObject, url : String, type : String, completionHandler: (data: NSData) -> () = {_ in}) {
         //don't send delete request if last sent failed
         if type == "DELETE" && !self.lastSentSuccess {
             print("last send failed, don't send delete")
@@ -322,31 +322,13 @@ class JsonManager {
         
         let task = session.dataTaskWithRequest(request) {
             (data, response, error) -> Void in
-            do {
-                if data == nil {
-                    print("Network Connection Died, Cannot Send Data")
-                    return
-                }
-                let myJSON = try NSJSONSerialization.JSONObjectWithData(data!, options:.MutableLeaves) as? NSDictionary
-                
-                if let parseJSON = myJSON {
-                    let status = parseJSON["status"] as? String
-                    if(status! == "OK")
-                    {
-                        print("Status OK")
-                    }
-                    else
-                    {
-                        print(parseJSON["message"])
-                    }
-                }
-                self.lastSentSuccess = true
-                
-            } catch {
-                self.lastSentSuccess = false
-                print("error catched send")
-                print(error)
+
+            if data == nil {
+                print("Network Connection Died, Cannot Send Data")
+                return
             }
+            self.lastSentSuccess = true
+                
             
             // look at the response
             if let httpResponse = response as? NSHTTPURLResponse {
@@ -354,6 +336,7 @@ class JsonManager {
             } else {
                 print("No HTTP response")
             }
+            completionHandler(data: data!);
             
         }
         task.resume()
