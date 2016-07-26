@@ -16,10 +16,10 @@ class DoneTableViewController: UITableViewController {
     var username: String?
     
     func initTasks() {
-        if let savedTasks = loadTasks(Task.ArchiveURLDone) {
+        /*if let savedTasks = loadTasks(Task.ArchiveURLDone) {
             tasks = savedTasks
             print("task count 2 is: \(tasks.count)")
-        }
+        }*/
     }
     
     func addTask(task: Task) {
@@ -29,7 +29,7 @@ class DoneTableViewController: UITableViewController {
         tasks += [task]
         
         // Save done tasks
-        saveTasks(tasks, url: Task.ArchiveURLDone)
+        //saveTasks(tasks, url: Task.ArchiveURLDone)
         
         self.tableView.reloadData()
     }
@@ -74,9 +74,9 @@ class DoneTableViewController: UITableViewController {
         if editingStyle == .Delete {
             // Delete the row from the data source
             tasks.removeAtIndex(indexPath.row)
-            saveTasks(tasks, url: Task.ArchiveURLDone)
+            //saveTasks(tasks, url: Task.ArchiveURLDone)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-            syncServer(self.parentViewController?.parentViewController as! UITabBarController, tblvc: self as UITableViewController, username: self.username, fetchAfterSync: false)
+            //PersistData.syncServer(self.parentViewController?.parentViewController as! UITabBarController, tblvc: self as UITableViewController, username: self.username, fetchAfterSync: false)
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }

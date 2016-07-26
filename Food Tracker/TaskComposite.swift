@@ -156,9 +156,9 @@ class TaskUtils {
         print(currentTasks.count)
         print(completedTasks.count)
         
-        saveTasks(taskViewController!.tasks, url: Task.ArchiveURL)
-        saveTasks(doneViewController!.tasks, url: Task.ArchiveURLDone)
-        saveTasks(delayViewController!.tasks, url: Task.ArchiveURLDelay)
+        //saveTasks(taskViewController!.tasks, url: Task.ArchiveURL)
+        //saveTasks(doneViewController!.tasks, url: Task.ArchiveURLDone)
+        //saveTasks(delayViewController!.tasks, url: Task.ArchiveURLDelay)
     }
 
     /*class func convertJSONTasks(jsonTasks: [AnyObject]) {
@@ -178,6 +178,15 @@ class TaskUtils {
     
     class func saveServerTasks(tasks : [Int : Task]) {
         serverTasks = tasks
+        for idTask in serverTasks {
+            if idTask.1.status == "sent" {
+                idTask.1.status = "Current"
+                let sendobj = JsonObject()
+                sendobj.setPermanentEntry("id", obj: JsonString (str : String(idTask.0)))
+                JsonManager.getInstance().send(sendobj, url: "http://lit-plains-99831.herokuapp.com/delete_user_tasks", type: "DELETE")
+                print("saveServerTask: sent task detected, delete on server")
+            }
+        }
     }
     
     class func retriveTaskContacts(task : Task) -> [String] {
