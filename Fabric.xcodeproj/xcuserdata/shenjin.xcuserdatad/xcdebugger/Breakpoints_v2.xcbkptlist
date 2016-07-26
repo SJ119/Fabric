@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Food Tracker/ShowSplashScreen.swift"
-            timestampString = "491178739.049521"
+            timestampString = "491229350.057474"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "383"
-            endingLineNumber = "383"
+            startingLineNumber = "395"
+            endingLineNumber = "395"
             landmarkName = "viewDidLoad()"
             landmarkType = "5">
          </BreakpointContent>
