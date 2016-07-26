@@ -275,6 +275,7 @@ class TaskTableViewController: UITableViewController {
         print("Call to unwindToTaskList")
         if let sourceViewController = sender.sourceViewController as? TaskViewController, task = sourceViewController.task {
             print("Call from TaskViewController")
+            var updateSource = true
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
                 print("Updating existing path")
                 // Update an existing task.
@@ -291,6 +292,7 @@ class TaskTableViewController: UITableViewController {
                 print(usrnames.count)
                 if usrnames.count != 0 {
                     //task.status = "Current"
+                    updateSource = false
                     if self.username != nil {
                         task.desc = task.desc + " Sent by " + self.username!
                     }
@@ -300,8 +302,9 @@ class TaskTableViewController: UITableViewController {
                             task.status = "Current"
                             tasks.append(task)
                             tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
+                        } else {
+                            task.status = "sent"
                         }
-                        task.status = "sent"
                         let sendobj = task
                         sendobj.setPermanentEntry("user", obj: JsonString(str : usrname))
                         JsonManager.getInstance().send( sendobj , url: "http://lit-plains-99831.herokuapp.com/new_task", type: "POST")
@@ -333,11 +336,12 @@ class TaskTableViewController: UITableViewController {
                         print ("nil usrname detected, cannot send")
                     }
 
-                    // check origin of TaskViewController
-                    if sourceViewController.origin != nil {
-                        let vcd = getViewControllerDelay()
-                        vcd?.removeTask(sourceViewController.origin_idx!)
-                    }
+                }
+                
+                // check origin of TaskViewController
+                if sourceViewController.origin != nil && updateSource {
+                    let vcd = getViewControllerDelay()
+                    vcd?.removeTask(sourceViewController.origin_idx!)
                 }
             }
             // Save the tasks.
