@@ -286,6 +286,7 @@ class JsonManager {
                     let task_description = task["description"] as! String
                     let task_due_date_string = task["due_date"] as! String
                     let id = task["id"] as! Int
+                    print("task \(id) visible: \(task["visible"] )")
                     let visible = task["visible"] as! Bool || false
                     let task_due_date = DateUtils.dateFromString(task_due_date_string, format: "yyyy:MM:dd:HH:mm")
                     let t = Task(name: task_name, desc: task_description, dueDate: task_due_date, status: task_status, visible: visible)
