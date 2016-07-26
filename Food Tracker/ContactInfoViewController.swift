@@ -95,16 +95,6 @@ class ContactInfoViewController: UIViewController, UINavigationControllerDelegat
         }
     }
     
-    /*func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
-    {
-        let headerView = UIView(frame: CGRectMake(0, 0, tableView.bounds.size.width, 30))
-        if (section == 0) {
-            headerView.backgroundColor = UIColor.blueColor()
-        } else {
-            headerView.backgroundColor = UIColor.clearColor()
-        }
-        return headerView
-    }*/
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         let cell : TaskTableViewCell = tableView.dequeueReusableCellWithIdentifier("taskcell", forIndexPath: indexPath) as! TaskTableViewCell
