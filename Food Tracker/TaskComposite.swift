@@ -183,7 +183,7 @@ class TaskUtils {
                 idTask.1.status = "Current"
                 let sendobj = JsonObject()
                 sendobj.setPermanentEntry("id", obj: JsonString (str : String(idTask.0)))
-                JsonManager.getInstance().send(sendobj, url: "http://lit-plains-99831.herokuapp.com/delete_user_tasks", type: "DELETE")
+                JsonManager.getInstance().send(sendobj, url: "http://lit-plains-99831.herokuapp.com/delete_task", type: "DELETE")
                 print("saveServerTask: sent task detected, delete on server")
             }
         }
