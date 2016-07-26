@@ -26,7 +26,7 @@ class ContactInfoViewController: UIViewController, UINavigationControllerDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
         // Set up views if editing an existing Contact.
         if let contact = contact {
             navigationItem.title = contact.name
@@ -44,6 +44,10 @@ class ContactInfoViewController: UIViewController, UINavigationControllerDelegat
                 
                 for key in taskDict {
                     let t = key.1
+                    print("visible: \(t.visible)")
+                    if !t.visible {
+                        continue
+                    }
                     if t.status == "Delayed" {
                         self.delayedTasks += [t]
                     } else if t.status == "Complete" {
@@ -95,16 +99,6 @@ class ContactInfoViewController: UIViewController, UINavigationControllerDelegat
         }
     }
     
-    /*func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
-    {
-        let headerView = UIView(frame: CGRectMake(0, 0, tableView.bounds.size.width, 30))
-        if (section == 0) {
-            headerView.backgroundColor = UIColor.blueColor()
-        } else {
-            headerView.backgroundColor = UIColor.clearColor()
-        }
-        return headerView
-    }*/
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         let cell : TaskTableViewCell = tableView.dequeueReusableCellWithIdentifier("taskcell", forIndexPath: indexPath) as! TaskTableViewCell

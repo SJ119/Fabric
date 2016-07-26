@@ -21,7 +21,7 @@ class TaskTableViewController: UITableViewController {
         
         print("Loading TaskTableView")
         
-        NSTimer.scheduledTimerWithTimeInterval(60, target: self, selector: #selector(TaskTableViewController.reloadCurrent(_:)), userInfo: nil, repeats: true)
+        NSTimer.scheduledTimerWithTimeInterval(10, target: self, selector: #selector(TaskTableViewController.reloadCurrent(_:)), userInfo: nil, repeats: true)
         
         // Use the edit button item provided by the table view controller.
         navigationItem.leftBarButtonItem = editButtonItem()
@@ -71,7 +71,7 @@ class TaskTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        cell.backgroundColor = UIColor(red: 0.9882, green: 0.9882, blue: 0.9882, alpha: 1.0)
+        //cell.backgroundColor = UIColor(red: 0.9882, green: 0.9882, blue: 0.9882, alpha: 1.0)
     }
     
     override func didReceiveMemoryWarning() {
