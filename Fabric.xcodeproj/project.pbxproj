@@ -315,7 +315,7 @@
 				TargetAttributes = {
 					5D001CF51C6D5AF200AAB05A = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = 4CJMRU4X6D;
+						DevelopmentTeam = XBCLLL3LR9;
 					};
 					5D001D091C6D5AF300AAB05A = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -619,12 +619,12 @@
 			baseConfigurationReference = 3079EFBD6CA1AE94C3B4D2A2 /* Pods-Food Tracker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: samantha_lauer@hotmail.com (9MC29LH379)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Food Tracker/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.Fabricq;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.Fabric;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -636,12 +636,12 @@
 			baseConfigurationReference = 356CDDC1CFADE143295D687D /* Pods-Food Tracker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: samantha_lauer@hotmail.com (9MC29LH379)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Food Tracker/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.Fabricq;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.Fabric;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
