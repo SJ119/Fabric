@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class ShowSplashScreen: UIViewController {
+class ShowSplashScreen: UIViewController, UITextFieldDelegate {
     
     var loggedout = false
     
@@ -22,6 +22,10 @@ class ShowSplashScreen: UIViewController {
     
     @IBOutlet weak var remainSignedIn: UISwitch!
     
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
     
     @IBAction func passwordTextBox(sender: UITextField) {
         let len = password.text!.characters.count
@@ -355,6 +359,8 @@ class ShowSplashScreen: UIViewController {
         
         remainSignedIn.on = false
         super.viewDidLoad()
+        userID.delegate = self
+        password.delegate = self
         
         if(loggedout)
         {

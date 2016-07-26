@@ -315,7 +315,7 @@
 				TargetAttributes = {
 					5D001CF51C6D5AF200AAB05A = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = XBCLLL3LR9;
+						DevelopmentTeam = 4CJMRU4X6D;
 					};
 					5D001D091C6D5AF300AAB05A = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -624,7 +624,7 @@
 				INFOPLIST_FILE = "Food Tracker/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.Fabric;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.Fabricq;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -641,7 +641,7 @@
 				INFOPLIST_FILE = "Food Tracker/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.Fabric;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.Fabricq;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;

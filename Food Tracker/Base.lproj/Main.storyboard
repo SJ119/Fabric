@@ -192,12 +192,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="NickName" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="McK-EP-97D">
-                                <rect key="frame" x="20" y="152" width="560" height="30"/>
+                                <rect key="frame" x="20" y="153" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RbB-gx-ORq">
-                                <rect key="frame" x="20" y="212" width="560" height="30"/>
+                                <rect key="frame" x="20" y="198" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -244,9 +244,9 @@
                             <constraint firstItem="McK-EP-97D" firstAttribute="trailing" secondItem="quU-l5-A6G" secondAttribute="trailing" id="KLk-KF-veE"/>
                             <constraint firstItem="McK-EP-97D" firstAttribute="leading" secondItem="quU-l5-A6G" secondAttribute="leading" id="UhD-ya-YVS"/>
                             <constraint firstItem="eKk-Q0-7Dk" firstAttribute="centerX" secondItem="RbB-gx-ORq" secondAttribute="centerX" id="Yrp-gY-Fhk"/>
-                            <constraint firstItem="RbB-gx-ORq" firstAttribute="top" secondItem="McK-EP-97D" secondAttribute="bottom" constant="30" id="aZy-A3-sfJ"/>
+                            <constraint firstItem="RbB-gx-ORq" firstAttribute="top" secondItem="McK-EP-97D" secondAttribute="bottom" constant="15" id="aZy-A3-sfJ"/>
                             <constraint firstItem="RbB-gx-ORq" firstAttribute="leading" secondItem="bcw-VP-87t" secondAttribute="leadingMargin" id="c1c-VR-AGT"/>
-                            <constraint firstItem="McK-EP-97D" firstAttribute="top" secondItem="quU-l5-A6G" secondAttribute="bottom" constant="14" id="gRc-bB-tja"/>
+                            <constraint firstItem="McK-EP-97D" firstAttribute="top" secondItem="quU-l5-A6G" secondAttribute="bottom" constant="15" id="gRc-bB-tja"/>
                             <constraint firstItem="quU-l5-A6G" firstAttribute="leading" secondItem="mcp-C6-Axb" secondAttribute="leading" id="jox-wh-02V"/>
                             <constraint firstItem="eKk-Q0-7Dk" firstAttribute="centerX" secondItem="bcw-VP-87t" secondAttribute="centerX" id="mgf-Em-dU8"/>
                             <constraint firstItem="guT-ZI-VWW" firstAttribute="top" secondItem="eKk-Q0-7Dk" secondAttribute="bottom" constant="27" id="wLW-n8-Kr4"/>
@@ -971,7 +971,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="o2K-hH-XE0">
                                 <rect key="frame" x="20" y="169" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rei-ci-f2U">
                                 <rect key="frame" x="20" y="362" width="70" height="30"/>
@@ -1013,7 +1013,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kAT-is-opj">
                                 <rect key="frame" x="20" y="221" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
                                     <action selector="passwordTextBox:" destination="JA5-BI-dUU" eventType="editingChanged" id="fdk-Fc-F0V"/>
                                 </connections>
