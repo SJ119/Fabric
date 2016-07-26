@@ -13,6 +13,7 @@ class DelayTableViewController: UITableViewController {
     // MARK: Properties
     
     var tasks = [Task]()
+    var username: String?
     
     func initTasks() {
         if let savedTasks = loadTasks(Task.ArchiveURLDelay) {
@@ -94,10 +95,13 @@ class DelayTableViewController: UITableViewController {
             tasks.removeAtIndex(indexPath.row)
             saveTasks(tasks, url: Task.ArchiveURLDelay)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            syncServer(self.parentViewController?.parentViewController as! UITabBarController, tblvc:  self as UITableViewController, username: self.username, fetchAfterSync: false)
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
     }
+    
+
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

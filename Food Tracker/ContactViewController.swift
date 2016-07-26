@@ -16,7 +16,12 @@ class ContactViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     @IBOutlet weak var EmailTextField: UITextField!
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var statusLabel: UILabel!
     
+    var contacts = [Contact]()
+    
+    var checked = false
+    var callback_called = false
     
     // contact ispassed by `ContactTableViewController` in `prepareForSegue(_:sender:)`
     // or constructed as part of adding a new contact.
@@ -82,6 +87,57 @@ class ContactViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         }
     }
     
+    
+    
+    override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
+        if saveButton === sender {
+            let userName = UserNameTextField.text ?? ""
+            
+            for contact in contacts {
+                if contact.name == userName {
+                    self.statusLabel.text = "Username already exists in contacts!"
+                    return false
+                }
+            }
+            
+            checked = false
+            callback_called = false
+            
+            JsonManager.getInstance().check(userName) {
+                data in
+                print("entered callback")
+                var message = ""
+                do {
+                    print(data)
+                    let jsonDict = try NSJSONSerialization.JSONObjectWithData(data, options: []) as! NSDictionary
+                    message = jsonDict["message"] as! String
+                    if message == "Password does not match" {
+                        self.checked = true
+                    }
+                    
+                } catch {
+                    print("caught")
+                }
+                self.callback_called = true
+            }
+            
+            while !checked && !callback_called {
+                let _ = "a"
+            }
+            
+            if !self.checked {
+                self.statusLabel.text = "User does not exist!"
+            } else {
+                self.statusLabel.text = ""
+            }
+            
+            return checked
+        } else {
+            return false
+        }
+    }
+    
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if saveButton === sender {
             let userName = UserNameTextField.text ?? ""
@@ -89,8 +145,11 @@ class ContactViewController: UIViewController, UITextFieldDelegate, UIImagePicke
             let email = EmailTextField.text ?? ""
             let photo = photoImageView.image
             
+            
+            
             contact = Contact(name: userName, nickName: nickName, email: email, photo: photo, sending: false)
         }
+        
     }
     
     //MARK: Actions
