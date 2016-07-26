@@ -95,7 +95,7 @@ class DelayTableViewController: UITableViewController {
             tasks.removeAtIndex(indexPath.row)
             //saveTasks(tasks, url: Task.ArchiveURLDelay)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-            //syncServer(self.parentViewController?.parentViewController as! UITabBarController, tblvc:  self as UITableViewController, username: self.username, fetchAfterSync: false)
+            PersistData.syncServer(self.parentViewController?.parentViewController as! UITabBarController, tblvc:  self as UITableViewController, username: self.username, fetchAfterSync: false)
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
