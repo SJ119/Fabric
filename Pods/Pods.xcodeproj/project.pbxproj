@@ -241,10 +241,10 @@
 				LastUpgradeCheck = 0700;
 				TargetAttributes = {
 					4E1263BFF45F6446CF3DE29AE234C893 = {
-						DevelopmentTeam = 4CJMRU4X6D;
+						DevelopmentTeam = XBCLLL3LR9;
 					};
 					E7B855514CC82328BDA16EE2E0A17CC2 = {
-						DevelopmentTeam = 4CJMRU4X6D;
+						DevelopmentTeam = XBCLLL3LR9;
 					};
 				};
 			};
@@ -318,7 +318,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/MGSwipeTableCell/MGSwipeTableCell.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = org.cocoapods.MGSwipeTableCella;
+				PRODUCT_BUNDLE_IDENTIFIER = org.cocoapods.MGSwipeTableCell;
 				PRODUCT_NAME = MGSwipeTableCell;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
@@ -355,6 +355,7 @@
 				PODS_ROOT = "$(SRCROOT)";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.Pods-Food-Trackezr";
 				PRODUCT_NAME = Pods_Food_Tracker;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -389,6 +390,7 @@
 				PODS_ROOT = "$(SRCROOT)";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.Pods-Food-Trackezr";
 				PRODUCT_NAME = Pods_Food_Tracker;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -460,7 +462,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/MGSwipeTableCell/MGSwipeTableCell.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = org.cocoapods.MGSwipeTableCella;
+				PRODUCT_BUNDLE_IDENTIFIER = org.cocoapods.MGSwipeTableCell;
 				PRODUCT_NAME = MGSwipeTableCell;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;

@@ -66,6 +66,18 @@ class ShowSplashScreen: UIViewController, UITextFieldDelegate {
         {
             
             userID.text = userID.text?.lowercaseString
+            
+            let whitespace = NSCharacterSet.whitespaceCharacterSet()
+            
+            
+            let range = userID.text!.rangeOfCharacterFromSet(whitespace)
+            
+            // range will be nil if no whitespace is found
+            if range != nil {
+                self.updateWarning("USERID DOES NOT EXIST")
+                return false
+            }
+            
             let url = "http://lit-plains-99831.herokuapp.com/confirm_user?name=" + userID.text! + "&password=" + self.originalPassword
             
             let requestURL: NSURL = NSURL(string: url)!
