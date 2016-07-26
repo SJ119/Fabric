@@ -202,7 +202,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="320" image="contacts" translatesAutoresizingMaskIntoConstraints="NO" id="eKk-Q0-7Dk">
-                                <rect key="frame" x="60" y="272" width="480" height="301"/>
+                                <rect key="frame" x="60" y="238" width="480" height="301"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="301" id="byy-Zl-mJ7"/>
@@ -229,7 +229,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="UserName" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="quU-l5-A6G">
                                 <rect key="frame" x="20" y="108" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" spellCheckingType="no"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -237,7 +237,6 @@
                             <constraint firstItem="RbB-gx-ORq" firstAttribute="trailing" secondItem="McK-EP-97D" secondAttribute="trailing" id="2d8-Ks-4VH"/>
                             <constraint firstItem="quU-l5-A6G" firstAttribute="top" secondItem="mcp-C6-Axb" secondAttribute="bottom" constant="8" symbolic="YES" id="6RZ-Cj-I6N"/>
                             <constraint firstItem="eKk-Q0-7Dk" firstAttribute="leading" secondItem="bcw-VP-87t" secondAttribute="leadingMargin" constant="40" id="EgY-Yb-d1X"/>
-                            <constraint firstItem="quU-l5-A6G" firstAttribute="top" secondItem="Kez-tT-Shn" secondAttribute="bottom" constant="28" id="Guk-gC-lf4"/>
                             <constraint firstItem="RbB-gx-ORq" firstAttribute="leading" secondItem="McK-EP-97D" secondAttribute="leading" id="He5-fm-TVo"/>
                             <constraint firstItem="mcp-C6-Axb" firstAttribute="top" secondItem="Kez-tT-Shn" secondAttribute="bottom" constant="15" id="IXY-lZ-ufX"/>
                             <constraint firstItem="quU-l5-A6G" firstAttribute="trailing" secondItem="mcp-C6-Axb" secondAttribute="trailing" id="K3g-Uu-dH0"/>
@@ -247,15 +246,10 @@
                             <constraint firstItem="RbB-gx-ORq" firstAttribute="top" secondItem="McK-EP-97D" secondAttribute="bottom" constant="15" id="aZy-A3-sfJ"/>
                             <constraint firstItem="RbB-gx-ORq" firstAttribute="leading" secondItem="bcw-VP-87t" secondAttribute="leadingMargin" id="c1c-VR-AGT"/>
                             <constraint firstItem="McK-EP-97D" firstAttribute="top" secondItem="quU-l5-A6G" secondAttribute="bottom" constant="15" id="gRc-bB-tja"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="eKk-Q0-7Dk" secondAttribute="trailing" constant="40" id="jJ2-LX-ezF"/>
                             <constraint firstItem="quU-l5-A6G" firstAttribute="leading" secondItem="mcp-C6-Axb" secondAttribute="leading" id="jox-wh-02V"/>
-                            <constraint firstItem="eKk-Q0-7Dk" firstAttribute="centerX" secondItem="bcw-VP-87t" secondAttribute="centerX" id="mgf-Em-dU8"/>
-                            <constraint firstItem="guT-ZI-VWW" firstAttribute="top" secondItem="eKk-Q0-7Dk" secondAttribute="bottom" constant="27" id="wLW-n8-Kr4"/>
+                            <constraint firstItem="eKk-Q0-7Dk" firstAttribute="top" secondItem="RbB-gx-ORq" secondAttribute="bottom" constant="10" id="o9K-sd-H6v"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="Guk-gC-lf4"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="New Contact" id="V7A-RH-v2W">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="uSA-04-dnX">
@@ -962,7 +956,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="o2K-hH-XE0">
                                 <rect key="frame" x="20" y="169" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                <textInputTraits key="textInputTraits" spellCheckingType="no" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rei-ci-f2U">
                                 <rect key="frame" x="20" y="362" width="70" height="30"/>
@@ -1004,7 +998,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kAT-is-opj">
                                 <rect key="frame" x="20" y="221" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                <textInputTraits key="textInputTraits" spellCheckingType="no" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
                                     <action selector="passwordTextBox:" destination="JA5-BI-dUU" eventType="editingChanged" id="fdk-Fc-F0V"/>
                                 </connections>
