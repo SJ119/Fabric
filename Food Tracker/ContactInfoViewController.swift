@@ -44,6 +44,10 @@ class ContactInfoViewController: UIViewController, UINavigationControllerDelegat
                 
                 for key in taskDict {
                     let t = key.1
+                    print("visible: \(t.visible)")
+                    if !t.visible {
+                        continue
+                    }
                     if t.status == "Delayed" {
                         self.delayedTasks += [t]
                     } else if t.status == "Complete" {
