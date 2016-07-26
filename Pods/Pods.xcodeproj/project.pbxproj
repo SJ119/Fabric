@@ -241,7 +241,10 @@
 				LastUpgradeCheck = 0700;
 				TargetAttributes = {
 					4E1263BFF45F6446CF3DE29AE234C893 = {
-						DevelopmentTeam = XBCLLL3LR9;
+						DevelopmentTeam = 4CJMRU4X6D;
+					};
+					E7B855514CC82328BDA16EE2E0A17CC2 = {
+						DevelopmentTeam = 4CJMRU4X6D;
 					};
 				};
 			};
@@ -330,6 +333,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F95744646B367E214D588F9EF13F2C11 /* Pods-Food Tracker.debug.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -349,7 +353,7 @@
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.Pods-Food-Trackezr";
 				PRODUCT_NAME = Pods_Food_Tracker;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -363,6 +367,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 606E5321CC67515F08E3831415BBAFFD /* Pods-Food Tracker.release.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -382,7 +387,7 @@
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.Pods-Food-Trackezr";
 				PRODUCT_NAME = Pods_Food_Tracker;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
