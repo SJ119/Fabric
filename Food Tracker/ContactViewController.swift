@@ -93,6 +93,17 @@ class ContactViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         if saveButton === sender {
             let userName = UserNameTextField.text ?? ""
             
+            let whitespace = NSCharacterSet.whitespaceCharacterSet()
+            
+            
+            let range = userName.rangeOfCharacterFromSet(whitespace)
+            
+            // range will be nil if no whitespace is found
+            if range != nil {
+                self.statusLabel.text = "User does not exist!"
+                return false
+            }
+            
             for contact in contacts {
                 if contact.name == userName {
                     self.statusLabel.text = "Username already exists in contacts!"
